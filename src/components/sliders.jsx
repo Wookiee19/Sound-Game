@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Slider from "@mui/material/Slider";
 import "./slider.css"
 
-function valuetext(value: number) {
+function valuetext(value) {
     return `${value}°C`;
   }
   
@@ -32,7 +32,7 @@ function valuetext(value: number) {
   
   export default function Sliders() {
     return (
-      <Stack sx={{ height: 500, marginTop:"-15%", marginLeft:"2%" }}  spacing={1} direction="row">
+      <Stack sx={{ height: 500, marginTop:"-18%", marginLeft:"2%" }}  spacing={1} direction="row">
         <Slider
         
           getAriaLabel={() => "Temperature"}

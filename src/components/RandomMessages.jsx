@@ -37,12 +37,13 @@ const getRandIndex = arr => Math.floor(Math.random() * arr.length);
 const RandomQuote = ({ data, interval = 3000 }) => {
   const [quotes, setQuotes] = useState(data);
   const [currentQuote, setCurrentQuote] = useState();
-
+  
   /**
    * Select a quote at random and remove from the current list of
    * selectable quotes, reducing the array length by 1
    */
   const getRandomQuote = useCallback(() => {
+    
     const randIndex = getRandIndex(quotes);
     setCurrentQuote(quotes[randIndex]);
     setQuotes(quotes => quotes.filter((_, i) => i !== randIndex));
@@ -64,11 +65,14 @@ const RandomQuote = ({ data, interval = 3000 }) => {
               <div className="quote-wrapper">
                 <h1 className="quote">"{currentQuote.quote}"</h1>
               </div>
+              
               {console.log(currentQuote.quote)}
               <div className="author-wrapper">
                 <span className="author">- {currentQuote.author}</span>
                 {console.log(".author",currentQuote.author)}
+                
               </div>
+              
             </Fragment>
           )}
         </div>
@@ -78,6 +82,7 @@ const RandomQuote = ({ data, interval = 3000 }) => {
 };
 
 export default function RandomMessage() {
+  
   return (
     <div className="App">
      
