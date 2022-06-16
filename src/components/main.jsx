@@ -11,7 +11,7 @@ import fog2 from "../Assets/fog2.gif";
 import astroid from "../Assets/astoid.gif";
 
 
-const images = [fog1, fog2,space,Sliders];
+const images = [ fog2,space,Sliders];
 function Main() {
   const csvData = [
     ["key","RandomCommand","userInput"],
@@ -40,8 +40,11 @@ function Main() {
 }, [])
   return (
     <div className="App">
+      {!end && <button className='end' onClick={() => setEnd(end => !end)}>End</button>}
+      {end && <div className='end'><CSVLink  data={csvData} onClick={() => setEnd(end => !end)}>Download me</CSVLink></div>}
       <Panel/>
       <Sliders />
+      
       {showElement ? (
           <img src={astroid} width="100%" height="100%" class="over" />
         ) : (
@@ -50,8 +53,7 @@ function Main() {
       <img src={sapceship} width="100%" height="100%" class="over" />
       
       <Buttons/>
-      {!end && <button className='end' onClick={() => setEnd(end => !end)}>End</button>}
-      {end && <div className='end'><CSVLink  data={csvData} onClick={() => setEnd(end => !end)}>Download me</CSVLink></div>}
+      
     </div>
   );
 }

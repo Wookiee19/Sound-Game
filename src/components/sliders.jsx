@@ -13,26 +13,34 @@ function valuetext(value) {
       label: "Charlie"
     },
     {
-      value: 25,
-      label: "Delta"
+      value: 12.5,
+      label: "Ringo"
+    }, 
+    {
+      value:25,
+      label: "Laker"
+    },
+    {
+      value: 37.5,
+      label: "Hopper"
     },
     {
       value: 50,
-      label: "Echo"
+      label: "Tiger"
     },
     {
-      value: 75,
-      label: "Juliett"
+      value: 67.5,
+      label: "Eagle"
     },
     {
-      value: 100,
-      label: "Juliett"
+      value: 80,
+      label: "Baron"
     }
   ];
   
   export default function Sliders() {
     return (
-      <Stack sx={{ height: 500, marginTop:"-18%", marginLeft:"2%" }}  spacing={1} direction="row">
+      <Stack sx={{ height: 250, marginTop:"-25%", marginLeft:"2%" }}  spacing={1} direction="row">
         <Slider
         
           getAriaLabel={() => "Temperature"}

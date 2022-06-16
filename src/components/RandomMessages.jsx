@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState, useCallback } from "react";
 import "./randomMessage.css"
+import appConfig from "../config";
 
 const data = [
   { id: 1, author: "Change TO  Charlie", quote: "Move TO 01" },
