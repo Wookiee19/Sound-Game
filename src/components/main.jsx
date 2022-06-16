@@ -14,10 +14,11 @@ import astroid from "../Assets/astoid.gif";
 const images = [fog1, fog2,space,Sliders];
 function Main() {
   const csvData = [
-    ["firstname", "lastname", "email"],
-    ["Ahmed", "Tomi", "ah@smthing.co.com"],
-    ["Raed", "Labes", "rl@smthing.co.com"],
-    ["Yezzi", "Min l3b", "ymin@cocococo.com"]
+    ["key","RandomCommand","userInput"],
+    ["a1111", "charli-11", "charli-11"],
+    ["a1111", "charli-11", "charli-11"],
+    ["a1111", "charli-11", "charli-11"],
+    ["a1111", "charli-11", "charli-11"],
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showElement, setShowElement] = React.useState(true);

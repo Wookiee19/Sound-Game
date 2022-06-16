@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./buttons .css";
-import audio from "../Audio/Talker0/000000.wav"
+import aaa from "../Audio/Talker1/000000.wav"
+import a1 from "../Audio/Talker2/000100.wav"
+import a2 from "../Audio/Talker1/000302.wav"
+import a3 from "../Audio/Talker1/020102.wav"
+import a4 from "../Audio/Talker1/070104.wav"
+function Buttons() {
+  const audioPlayer = [];
 
-function buttons() {
-  const audio = new Audio(
-    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-  );
-
-  const start = () => {
-    audio.play();
-  };
+  function playAudio() {
+    audioPlayer.current.play();
+    audioPlayer=[null]
+  }
 
   return (
     <div>
@@ -17,13 +19,21 @@ function buttons() {
   <table id="matrix">
     <tr>
       <td>
-        <button onClick={start} class="button-78" role="button"><span>01</span></button></td>
+        <button onClick={playAudio}  audioPlayer={a1} class="button-78" role="button"><span>01</span></button>
+        {/* <audio ref={audioPlayer} src={a2} /> */}
+        </td>
         <td>
-        <button class="button-78" role="button">02</button></td>
+        <button onClick={playAudio} audioPlayer={aaa} class="button-78" role="button"><span>02</span></button>
+        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        </td>
         <td>
-        <button class="button-78" role="button"><span>03</span></button></td>
+        <button onClick={playAudio} class="button-78" role="button"><span>03</span></button>
+        <audio ref={audioPlayer} src={a3} />
+        </td>
         <td>
-        <button class="button-78" role="button"><span>04</span></button></td>
+        <button onClick={playAudio} class="button-78" role="button"><span>04</span></button>
+        <audio ref={audioPlayer} src={a4} />
+        </td>
       <td><button class="button-78" role="button">05</button></td>
     </tr>
   
@@ -111,4 +121,4 @@ function buttons() {
   )
 }
 
-export default buttons
+export default Buttons
