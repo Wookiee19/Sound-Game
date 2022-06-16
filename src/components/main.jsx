@@ -50,8 +50,8 @@ function Main() {
       <img src={sapceship} width="100%" height="100%" class="over" />
       
       <Buttons/>
-      {!end && <button onClick={() => setEnd(end => !end)}>End</button>}
-      {end && <CSVLink data={csvData} onClick={() => setEnd(end => !end)}>Download me</CSVLink>}
+      {!end && <button className='end' onClick={() => setEnd(end => !end)}>End</button>}
+      {end && <div className='end'><CSVLink  data={csvData} onClick={() => setEnd(end => !end)}>Download me</CSVLink></div>}
     </div>
   );
 }
