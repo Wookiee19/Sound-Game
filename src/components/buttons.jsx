@@ -22,6 +22,7 @@ function Buttons() {
     
     const randomSong = songsCollections[randomSongIndex];
     new Audio(randomSong).play()
+    {console.log("randomSong",randomSong)}
   }
 
   return (
