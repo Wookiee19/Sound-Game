@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import uniqueRandom from 'unique-random';
 import "./buttons .css";
 import aaa from "../Audio/Talker1/070307.wav"
 import a1 from "../Audio/Talker6/050001.wav"
@@ -13,14 +14,18 @@ function Buttons() {
 
   function playAudio() {
     const getRandomFromRange = (min, max) => {
+      
       return Math.floor(Math.random() * (max - min) + min);
+      
     };
     
-    const randomSongIndex = getRandomFromRange(0, songsCollections.length);
     
-   
     
-    const randomSong = songsCollections[randomSongIndex];
+    var file="0"+getRandomFromRange(0,7)+"0"+getRandomFromRange(0,3)+"0"+getRandomFromRange(0,8);
+   console.log(file);
+    
+    const randomSong = require(`../Audio/Talker1/${file}.wav`);
+    
     new Audio(randomSong).play()
     {console.log("randomSong",randomSong)}
   }
