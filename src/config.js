@@ -1,17 +1,26 @@
 const appConfig={
-    path:"../Audio/Talker01",
-    durationBetweenRound : '1000', //Duration Between Round
-    roundSpeedIncrease:'2',
-    videoUrl : '', //instruction video
-    adaptive: 'false', //curently work in progress dont change
-    totalTrials:'7', //total rounds
-    allowRepetition:"true",
-    opts : {           //video options
+    ButtonDisable:"true", 
+    //disable button after round Keypad only
+
+    durationBetweenRound : '1500', 
+    //Duration Between folder change for speed voice/instruction
+    
+    videoUrl : '', 
+    //instruction video Url currently hardcoded
+    
+    totalTrials:'7', 
+    //Total rounds user can play
+    
+    opts : {           
+    //video options
         height: '390',
+        //height of video player for instruction
         width: '640',
+        //width of video player for instruction
         playerVars: {
-          // https://developers.google.com/youtube/player_parameters
+        // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
+        //1- If you wnat video to auto play 0-If you want your video to click on play
         },
       }
       

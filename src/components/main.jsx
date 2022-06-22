@@ -9,17 +9,13 @@ import Sliders from './sliders';
 import fog1 from "../Assets/fog1.gif";
 import fog2 from "../Assets/fog2.gif";
 import astroid from "../Assets/astoid.gif";
+import Timer from './timer';
+import Score from './Score';
 
 
 const images = [ fog2,space,Sliders];
 function Main() {
-  const csvData = [
-    ["key","RandomCommand","userInput"],
-    ["a1111", "charli-11", "charli-11"],
-    ["a1111", "charli-11", "charli-11"],
-    ["a1111", "charli-11", "charli-11"],
-    ["a1111", "charli-11", "charli-11"],
-  ];
+ 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showElement, setShowElement] = React.useState(true);
   const [end, setEnd] = React.useState(false);
@@ -36,14 +32,15 @@ function Main() {
       setShowElement(false);
     }, 2200);
     
-    // return () => clearInterval(intervalId);
+ 
 }, [])
   return (
     <div className="App">
-      {!end && <button className='end' onClick={() => setEnd(end => !end)}>End</button>}
-      {end && <div className='end'><CSVLink  data={csvData} onClick={() => setEnd(end => !end)}>Download me</CSVLink></div>}
-      <Panel/>
+     <Timer/>
       <Sliders />
+      <Score/>
+      <Buttons/>
+     
       
       {showElement ? (
           <img src={astroid} width="100%" height="100%" class="over" />
@@ -52,7 +49,7 @@ function Main() {
         )}{" "}
       <img src={sapceship} width="100%" height="100%" class="over" />
       
-      <Buttons/>
+      
       
     </div>
   );
