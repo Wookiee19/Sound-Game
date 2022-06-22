@@ -18,7 +18,7 @@ function App() {
   }
   return (
     <div className='body'>
-      
+      {localStorage.removeItem("Scores")}
       {!show  && <div>
       
         <input type="text"  placeholder="Select an Username" size="20"   onChange={(e) => {assign(e.target.value)} }/>

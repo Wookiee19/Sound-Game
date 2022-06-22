@@ -36,17 +36,17 @@ function Main() {
 }, [])
   return (
     <div className="App">
-     <Timer/>
-      <Sliders />
+     {/* <Timer/> */}
+    
       <Score/>
       <Buttons/>
      
       
-      {showElement ? (
+      {/* {showElement ? (
           <img src={astroid} width="100%" height="100%" class="over" />
         ) : (
           <img src={images[currentIndex]} width="100%" height="100%" class="under" />
-        )}{" "}
+        )}{" "} */}
       <img src={sapceship} width="100%" height="100%" class="over" />
       
       

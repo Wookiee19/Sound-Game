@@ -1,9 +1,24 @@
-import React from 'react';
-import message1 from "../Assets/message2.svg"
+import React,{useEffect} from 'react';
+
 
 function Score() {
+  const[scores,SetScores]=("")
+  useEffect(() => {
+    function checkUserData() {
+      const item = localStorage.getItem("scores");
+  
+      if (item) {
+        SetScores(item)
+      }
+    }
+  
+    window.addEventListener('storage', scores)
+    
+    
+  }, [])
+  
   return (
-    <div><img src={message1} height="80px" weidth="300px" style={{marginLeft:"75%"}} /></div>
+    <div style={{marginLeft:"75%"}}><h1>{scores}</h1></div>
   )
 }
 
