@@ -19,12 +19,12 @@ function App() {
   return (
     <div className='body'>
       {localStorage.removeItem("Scores")}
-      {!show  && <div>
+      {!show  && <div style={{marginLeft:"5%"}}>
       
         <input type="text"  placeholder="Select an Username" size="20"   onChange={(e) => {assign(e.target.value)} }/>
      
     <button onClick={() => setShow(show => !show)} disabled={disable} class="button-29" role="button">Play</button>
-    {localStorage.setItem("Code", code)};
+    {localStorage.setItem("Code", code)}
     {console.log("yyyy",localStorage.getItem("Code"))}
     <button className="button-default" onClick={toggle}>Instruction</button>
       <Modal

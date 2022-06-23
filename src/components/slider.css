@@ -1,5 +1,5 @@
 .bar {
-    height: 2%;
+    height: 2em;
     display: flex;
     margin: 1em;
     border: 3px solid darkgrey;
