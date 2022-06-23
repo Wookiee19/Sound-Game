@@ -1,5 +1,5 @@
 .bar {
-    height: 2em;
+    height: 2%;
     display: flex;
     margin: 1em;
     border: 3px solid darkgrey;
@@ -7,6 +7,8 @@
     background-color: #484848;
     background-image: linear-gradient(to top, #535353, #919191);
     background-repeat: repeat-x;
+    font-weight: bold;
+    font-size: large    ;
   }
   
   .bar>div {
@@ -24,44 +26,38 @@
     
     height: 2em;
     flex: 0 050%;
-    background-color: #65ea4e;
-    
+    background: rgb(222,221,234);
+background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(34,121,9,1) 43%, rgba(0,212,255,1) 100%);
     background-repeat: repeat-x;
   }
   
-  .div2 {
-    height: 2em;
-    flex: 0 0 20%;
-    background-color: red;
-    
-    background-repeat: repeat-x;
-  }
+  
   .div7 {
     height: 2em;
     flex: 0 050%;
-    background-color: #371bb2;
-    
+    background: rgb(222,221,234);
+background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(9,59,121,1) 43%, rgba(0,212,255,1) 100%);
     background-repeat: repeat-x;
   }
   .div3 {
     height: 2em;
     flex: 0 050%;
-    background-color: #a01aa0;
-    
+    background: rgb(222,221,234);
+background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(119,121,9,1) 43%, rgba(0,212,255,1) 100%);
     background-repeat: repeat-x;
   }
   .div4 {
     height: 2em;
     flex: 0 050%;
-    background-color: #c0c526;
-    
+    background: rgb(222,221,234);
+background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(9,121,108,1) 43%, rgba(0,212,255,1) 100%);
     background-repeat: repeat-x;
   }
   .div5 {
     height: 2em;
     flex: 0 050%;
-    background-color: #4ee0ea;
-    
+    background: rgb(222,221,234);
+background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(159,77,214,1) 43%, rgba(0,212,255,1) 100%);
     background-repeat: repeat-x;
   }
   .div6 {

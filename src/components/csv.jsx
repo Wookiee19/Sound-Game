@@ -1,6 +1,6 @@
 import { CSVLink, CSVDownload } from "react-csv";
 import React from 'react';
-import Csv from './csv'
+import './csv.css'
 
 function csv() {
   var userInput,generatedData,userkey,slider;
@@ -11,19 +11,18 @@ function csv() {
    slider=[localStorage.getItem("slider")]
    
   ]
-//  var headers = [
-//     { label: "USER INPUT", key: "userInput" },
-//     { label: "GENRATED DATA", key: "generatedData" },
-//     { label: "USER KEY", key: "userkey" },
-//     { label: "Slider", key: "slider" }
-//   ];
+
 
 
   
   return (
     <div>
       {console.log("info",info)}
-       <CSVLink data={info} >Download me</CSVLink>
+       <CSVLink  data={info} ><button class="button-33" role="button"><span>Download CSV</span></button></CSVLink>
+       
+
+
+
     </div>
   )
 }
