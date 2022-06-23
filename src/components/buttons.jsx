@@ -162,7 +162,7 @@ function Buttons() {
       // valueRenderer	function (callback)	used by value label (to display a unit such as %)
 
       // trackLength	number	track's height or width (depending on the orientation)
-      trackLength={"100%"}
+      trackLength={max * 135}
       // trackColor	string
       trackColor={"green"}
       // trackThickness	number
