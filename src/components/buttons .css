@@ -7,59 +7,7 @@ div {
     display: flex;
     
 }
-.blinking {
-  -webkit-animation: 1s blink ease infinite;
-  -moz-animation: 1s blink ease infinite;
-  -ms-animation: 1s blink ease infinite;
-  -o-animation: 1s blink ease infinite;
-  animation: 1s blink ease infinite;
-  
-}
 
-@keyframes "blink" {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@-moz-keyframes blink {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes "blink" {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@-ms-keyframes "blink" {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes "blink" {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
 
 .flex-child {
   width: 50%;
@@ -181,7 +129,7 @@ div {
 
 .button-78:after {
   background-color: initial;
-  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  background-image: linear-gradient(#b53318 0, #0c0d0d 100%);
   bottom: 4px;
   content: "";
   display: block;
@@ -297,7 +245,7 @@ div {
 
 .button-68:after {
   background-color: initial;
-  background-image: linear-gradient(#033d11 0, #0c0d0d 100%);
+  background-image: linear-gradient(#0a9f2d 0, #0c0d0d 100%);
   bottom: 4px;
   content: "";
   display: block;
@@ -311,7 +259,7 @@ div {
 }
 
 .button-68:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+  background: linear-gradient(92.83deg, rgb(106, 196, 17) 0%, rgb(28, 77, 5) 100%);
 }
 
 .button-68:hover:not(:disabled):after {
@@ -332,7 +280,7 @@ div {
 }
 
 .button-68:active:not(:disabled):after {
-  background-image: linear-gradient(#541a0f 0, #0c0d0d 100%);
+  background-image: linear-gradient(#db3311 0, #0c0d0d 100%);
   bottom: 4px;
   left: 4px;
   right: 4px;
@@ -413,7 +361,7 @@ div {
 
 .button-58:after {
   background-color: initial;
-  background-image: linear-gradient(#13033d 0, #0c0d0d 100%);
+  background-image: linear-gradient(#220597 0, #0c0d0d 100%);
   bottom: 4px;
   content: "";
   display: block;
@@ -427,7 +375,7 @@ div {
 }
 
 .button-58:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 58, 19) 100%);
+  background: linear-gradient(92.83deg, rgb(45, 15, 218) 0%, rgb(66, 14, 4) 100%);
 }
 
 .button-58:hover:not(:disabled):after {
@@ -543,7 +491,7 @@ div {
 }
 
 .button-48:hover:not(:disabled):before {
-  background: linear-gradient(92.83deg, rgb(255, 116, 38) 0%, rgb(249, 48, 19) 100%);
+  background: linear-gradient(92.83deg, rgb(233, 206, 191) 0%, rgb(48, 46, 46) 100%);
 }
 
 .button-48:hover:not(:disabled):after {
@@ -698,3 +646,4 @@ div {
 .button-88:focus{
   background:olive;
 }
+

@@ -9,6 +9,7 @@
     background-repeat: repeat-x;
     font-weight: bold;
     font-size: large    ;
+    text-align: center;
   }
   
   .bar>div {
@@ -23,7 +24,7 @@
   }
   
   .div1 {
-    
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background: rgb(222,221,234);
@@ -33,6 +34,7 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(34,121,9,1) 43%,
   
   
   .div7 {
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background: rgb(222,221,234);
@@ -40,6 +42,7 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(9,59,121,1) 43%,
     background-repeat: repeat-x;
   }
   .div3 {
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background: rgb(222,221,234);
@@ -47,6 +50,7 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(119,121,9,1) 43%
     background-repeat: repeat-x;
   }
   .div4 {
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background: rgb(222,221,234);
@@ -54,6 +58,7 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(9,121,108,1) 43%
     background-repeat: repeat-x;
   }
   .div5 {
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background: rgb(222,221,234);
@@ -61,6 +66,7 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(159,77,214,1) 43
     background-repeat: repeat-x;
   }
   .div6 {
+    text-align: center;
     height: 2em;
     flex: 0 050%;
     background-color: #ebad29;
