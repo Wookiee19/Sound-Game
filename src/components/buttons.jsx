@@ -8,6 +8,8 @@ import Csv from './csv';
 import Slider from "react-custom-slider";
 import UserInputCheck from "./userInputCheck"
 import Names from "./names"
+import { fontSize } from '@mui/system';
+import Blink from 'react-blink-text';
 
 let max = 7;
 
@@ -23,6 +25,9 @@ function Buttons() {
   const [disabled, setDisabled] = useState(false);
   const [initial,setInitial]=useState(0);
   const [round,setRound]=useState(0);
+  const [answer,setAnswer]=useState("false");
+  const [input,setInput]=useState("");
+  var text;
   // const [text, setText] = useState('');
   var a=0;
    function timeout()  {
@@ -57,18 +62,22 @@ function Buttons() {
   function calc(slider,keypad,file)
   {
     var text=(`${"0"}${slider}${keypad}`);
+    setInput(text);
   //  console.log("first",keypad);
    console.log("user",text)
    console.log("random",generated[generated.length - 1])
+   
     if(text==generated[generated.length - 1])
     {
       console.log("Score11",10);
+      setAnswer("True");
       return 10;
       
     }
     else
     {
       console.log("Score66666");
+      setAnswer("False");
     return 0;
     }
     
@@ -127,11 +136,90 @@ function Buttons() {
     <div>
       
       { initial<8 &&
-     
+     <>
       <div>
-      <div style={{ margin: 10, marginLeft:50 }}>
+      <div style={{ margin: 10 }}>
       <Names/>
       <Slider
+        value={value}
+        // defaultValue	number (required)	initial value
+        defaultValue={1}
+        // showValue	true, false, 'active'	displays current value on a label
+        showValue={false}
+        // valueLabelColor	string
+        valueLabelColor={"red"}
+        // valueLabelActiveColor	string
+  
+        // valueLabelPadding	number
+  
+        // valueLabelStyle	object	user custom style for value label
+  
+        // min	number	min slider value
+        min={0}
+        // max	number	max slider value
+        max={7}
+        // stepSize	number	interval between 2 steps (default is 1)
+        stepSize={1}
+        // disabled	boolean
+  
+        // disabledColor	string	color used when the slider is disabled
+  
+        // onChange	function (callback)	called every time value changes ( value as argument)
+        onChange={(value) => setValue(value)}
+        // onRelease	function (callback)	called once slider is released ( value as argument)
+  
+        // valueRenderer	function (callback)	used by value label (to display a unit such as %)
+  
+        // trackLength	number	track's height or width (depending on the orientation)
+        trackLength={max * 138}
+        // trackColor	string
+        trackColor={"green"}
+        // trackThickness	number
+        trackThickness={15}
+        // trackShape	'squared', 'rounded'
+        trackShape="squared"
+        // trackStyle	object	user custom styling for track
+  
+        // fillTrack	boolean
+  
+        // fillColor	string
+        fillColor={"green"}
+        // handlerSize	number	sets handler diameter (both width and height)
+        handlerSize={33}
+        // handlerWidth	number
+  
+        // handlerHeight	number
+  
+        // handlerShape	'squared', 'rounded'
+        handlerShape={"squared"}
+        // handlerColor	string
+        handlerColor={"red"}
+        // handlerBorderColor
+        handlerBorderColor={"#333333"}
+        // handlerActiveColor	string	handler color when slider is being used
+        handlerActiveColor={"#4d4d4d"}
+        // handlerStyle	object	user custom styling for handler
+  
+        // fontSize	number	used by markers
+  
+        // fontColor	string	used by markers
+  
+        // markers	number	numbers of markers to display
+        markers={7}
+        // markersSize	number	markers container's height or width (depending on the orientation)
+        // markersSize={1}
+        // showMarkers	true, false, 'hidden', 'active', 'inactive'	'active' displays the markers only when slider is beeing used, 'inactive' the opposite
+        showMarkers={false}
+        // grabCursor	boolean	when true shows a grabbing cursor as slider is beeing used
+  
+        // vertical	boolean	slider's layout horizontal or vertical
+  
+        // invertMarkers	boolean	switch slider and markers positions
+        invertMarkers={false}
+        // style	object	user custom style for slider's root container
+      />
+    
+      {/* <Slider
       value={value}
       // defaultValue	number (required)	initial value
       defaultValue={1}
@@ -176,7 +264,7 @@ function Buttons() {
       // fillColor	string
       fillColor={"green"}
       // handlerSize	number	sets handler diameter (both width and height)
-      handlerSize={25}
+      handlerSize={63}
       // handlerWidth	number
 
       // handlerHeight	number
@@ -200,22 +288,38 @@ function Buttons() {
       // markersSize	number	markers container's height or width (depending on the orientation)
       // markersSize={1}
       // showMarkers	true, false, 'hidden', 'active', 'inactive'	'active' displays the markers only when slider is beeing used, 'inactive' the opposite
-      showMarkers={true}
+      showMarkers={false}
       // grabCursor	boolean	when true shows a grabbing cursor as slider is beeing used
 
       // vertical	boolean	slider's layout horizontal or vertical
 
       // invertMarkers	boolean	switch slider and markers positions
-      invertMarkers={true}
+      invertMarkers={false}
       // style	object	user custom style for slider's root container
 
-      />
+      /> */}
     </div> 
+    </div>
         
-      
+    <div class="flex-container">
+
+<div class="flex-child magenta">
+  <h2>Console</h2>
+  <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
+  <h3>User Input: {input}</h3>
+  <h3>Answer Matched: {answer}</h3>
+  <h3>Your Score: {Score}</h3>
+  <Blink color='green' text='_____' fontSize='90'>
+          _
+        </Blink> 
+</div>
+
+<div class="">
+ 
+
   <table id="matrix">
     
-    <h3>Score:{Score}</h3>
+    <h3 style={{color:"Red" ,fontWeight:"bold"}}>Score:{"  "}{Score}</h3>
     <tr>
       <td>
         <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}  class="button-78" disabled={disabled} role="button"><span>01</span></button>
@@ -387,9 +491,11 @@ function Buttons() {
    
     </table>
 
+    </div>
 
-</div>
-}
+</div></>  }
+
+
 {initial==8 &&
 <Csv/>
 }

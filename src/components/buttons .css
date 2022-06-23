@@ -1,13 +1,79 @@
 div {
  
-    text-align: center;
+    text-align: left;
   }
   
+  .flex-container {
+    display: flex;
+    
+}
+.blinking {
+  -webkit-animation: 1s blink ease infinite;
+  -moz-animation: 1s blink ease infinite;
+  -ms-animation: 1s blink ease infinite;
+  -o-animation: 1s blink ease infinite;
+  animation: 1s blink ease infinite;
+  
+}
+
+@keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.flex-child {
+  width: 50%;
+  color: #1fae41;
+    background-color: #0c0d0d;  
+    border: 2px solid rgb(255, 17, 0);
+}  
+
+
   #matrix {
    
     margin: 0 auto;
     padding: 0.5px;
-    margin: 0% 50%;
+    margin: -5% 50%;
   }
   
   #matrix tr, td {
