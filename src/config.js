@@ -1,7 +1,12 @@
 const appConfig={
     ButtonDisable:"true", 
     //disable button after round Keypad only
-
+    feedbackTextRight:'Corect Answer',
+    //Text shown to user for correct answer
+    feedbackTextWrong:'Wrong Answer',
+    //Text shown to user for incorrect answer
+    showAnswer:true,
+    //Show answer to user for incorrect answer
     durationBetweenRound : '1500', 
     //Duration Between folder change for speed voice/instruction
     

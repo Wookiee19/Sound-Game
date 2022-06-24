@@ -11,9 +11,13 @@ import Names from "./names"
 import { fontSize } from '@mui/system';
 import Blink from 'react-blink-text';
 import "./slider.css"
+import appConfig from "../config"
 
 let max = 7;
-
+var file="00";
+const AA=["Charlie","Ringo", "Laker", "Hopper", "Arrow", "Tiger","Eagle","Baron"];
+const BB=["Blue","Red","White","Green"];
+const CC=["1","2", "3", "4", "5", "6", "7","8"];
 
 function Buttons() {
 
@@ -26,8 +30,11 @@ function Buttons() {
   const [disabled, setDisabled] = useState(false);
   const [initial,setInitial]=useState(0);
   const [round,setRound]=useState(0);
-  const [answer,setAnswer]=useState("false");
+  const [answer,setAnswer]=useState("true");
   const [input,setInput]=useState("");
+  const [aaShow,setaaShow]=useState("");
+  const [bbShow,setbbShow]=useState("");
+  const [ccShow,setccshow]=useState("");
   var text;
   // const [text, setText] = useState('');
   var a=0;
@@ -35,7 +42,7 @@ function Buttons() {
 
      if(round%2==0 && initial<=7){
       setInitial(initial+1)
-      console.log("first",initial)
+      // console.log("first",initial)
    }
     
 }
@@ -65,20 +72,20 @@ function Buttons() {
     var text=(`${"0"}${slider}${keypad}`);
     setInput(text);
   //  console.log("first",keypad);
-   console.log("user",text)
-   console.log("random",generated[generated.length - 1])
+  //  console.log("user",text)
+  //  console.log("random",generated[generated.length - 1])
    
     if(text==generated[generated.length - 1])
     {
-      console.log("Score11",10);
-      setAnswer("True");
+      // console.log("Score11",10);
+      setAnswer("true");
       return 10;
       
     }
     else
     {
-      console.log("Score66666");
-      setAnswer("False");
+      // console.log("Score66666");
+      setAnswer("false");
     return 0;
     }
     
@@ -91,6 +98,18 @@ function Buttons() {
     localStorage.setItem("generated",generated);
   }
 
+
+  function output(){
+    const chars = file.split('');
+    console.log("bb",chars[4])
+    setaaShow(AA[chars[1]]);
+    setbbShow(BB[chars[3]]);
+    setccshow(CC[chars[5]]);
+    console.log("first",aaShow);
+    console.log("first",bbShow);
+    console.log("first",ccShow);
+  }
+
   function playAudio() {
     
     
@@ -98,12 +117,12 @@ function Buttons() {
     return Math.floor(Math.random() * (max - min) + min);
       
     };
-     var  file="0"+getRandomFromRange(0,7)+"0"+getRandomFromRange(0,3)+"0"+getRandomFromRange(0,8);
-  //  console.log(file);
+       file="0"+getRandomFromRange(0,7)+"0"+getRandomFromRange(0,3)+"0"+getRandomFromRange(0,8);
+   console.log(file);
   //  var fileNo=initial+file;
    setScore(parseInt(Score)+parseInt(calc(value,key,file)));
    localStorage.setItem("scores",Score);
-    console.log("Score",Score);
+    // console.log("Score",Score);
    assigmentRandom(file);
    if(initial<8){
     const randomSong = require(`../Audio/Talker${initial}/${file}.wav`);
@@ -118,6 +137,7 @@ function Buttons() {
   }
   useEffect(() => {
     timeout();
+    output();
     if(initial<8){
     disable();
     playAudio(); 
@@ -270,10 +290,13 @@ function Buttons() {
 
 <div class="flex-child magenta">
   <h2>Console</h2>
+  
   <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
   <h3>User Input: {input}</h3>
-  <h3>Answer Matched: {answer}</h3>
+  <h3>Answer : {answer}</h3>
   <h3>Your Score: {Score}</h3>
+  {answer=="true" && <h3>{appConfig.feedbackTextRight} </h3>}
+  {answer=="false" && <h3>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
   <Blink color='green' text='Updating...' fontSize='90'>
           _
         </Blink> 
