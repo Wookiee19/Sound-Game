@@ -1,19 +1,19 @@
 import React, { useState,useEffect } from 'react';
 import { CSVLink, CSVDownload } from "react-csv";
 import './main.css';
-import sapceship from "../Assets/spaceship.png";
-import space from "../Assets/spaces.gif";
+import sapceship from "../Assets/Background.png";
+// import space from "../Assets/spaces.gif";
 import Buttons from './buttons';
 import Panel from './panel';
 import Sliders from './sliders';
-import fog1 from "../Assets/fog1.gif";
-import fog2 from "../Assets/fog2.gif";
-import astroid from "../Assets/astoid.gif";
+// import fog1 from "../Assets/fog1.gif";
+// import fog2 from "../Assets/fog2.gif";
+// import astroid from "../Assets/astoid.gif";
 import Timer from './timer';
 import Score from './Score';
 
 
-const images = [ fog2,space,Sliders];
+const images = [ ];
 function Main() {
  
   const [currentIndex, setCurrentIndex] = useState(0);

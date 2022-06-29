@@ -2,13 +2,20 @@ import { CSVLink, CSVDownload } from "react-csv";
 import React from 'react';
 import './csv.css'
 
-function csv() {
-  var userInput,generatedData,userkey,slider;
+function csv(generated) {
+ 
+  var userInput=[],generatedData=[],userkey,answer=[];
+
+{console.log("csvgenetared",generated.value1)}
+{console.log("csvuser",generated.value2)}
+{console.log("csvresult",generated.value3)}
+console.log("uuu",userInput)
   var info=[
-    userInput=[localStorage.getItem("generated")],
-   generatedData=[localStorage.getItem("user")],
+    userInput=generated.value1,
+   generatedData=generated.value2,
+   answer=generated.value3,
    userkey=[localStorage.getItem("Code")],
-   slider=[localStorage.getItem("slider")]
+
    
   ]
 

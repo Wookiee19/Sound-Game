@@ -9,11 +9,11 @@ import "./style.css"
 
 function App() {
   const [show, setShow] = useState(false);
-  const [code, setCode] = useState(["UserName"]);
+  const [code, setCode] = useState();
   const[disable,setDisable]=useState(true);
   const {isShowing, toggle} = useModal();
   function assign(a){
-    setCode( code => [...code, a]);
+    setCode( code );
     setDisable(false);
   }
   return (

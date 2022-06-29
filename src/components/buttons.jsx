@@ -11,21 +11,25 @@ import Names from "./names"
 import { fontSize } from '@mui/system';
 import Blink from 'react-blink-text';
 import "./slider.css"
-import appConfig from "../config"
+import appConfig from "../config";
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+
 
 let max = 7;
 var file="00";
 const AA=["Charlie","Ringo", "Laker", "Hopper", "Arrow", "Tiger","Eagle","Baron"];
 const BB=["Blue","Red","White","Green"];
 const CC=["1","2", "3", "4", "5", "6", "7","8"];
+var i=0;
 
 function Buttons() {
 
   const [key,setKey]=useState();
-  const [userInput,setuserInput]=useState(["UserKeypad"]);
+  const [userInput,setuserInput]=useState([""]);
   const [generated,setGenerated]=useState(["Generated"]);
-  const [sliderInput,setSliderInput]=useState(["UserSlider"]);
-  const [ value, setValue ] = React.useState(0);
+  const [sliderInput,setSliderInput]=useState([""]);
+  const [ value, setValue ] = useState(0);
   const [Score,setScore]=useState("0")
   const [disabled, setDisabled] = useState(false);
   const [initial,setInitial]=useState(0);
@@ -35,12 +39,21 @@ function Buttons() {
   const [aaShow,setaaShow]=useState("");
   const [bbShow,setbbShow]=useState("");
   const [ccShow,setccshow]=useState("");
+  const [csvUser,setCsvUser]=useState(["USER"]);
+  const [csvGenerated,setcsvGenerated]=useState(["Generated"]);
+  const [csvResult,setCsvResult]=useState(["Result"]);
+  var counter;
+  var userToPost ;
+  var startTime=[];
+
   var text;
   // const [text, setText] = useState('');
   var a=0;
    function timeout()  {
-
-     if(round%2==0 && initial<=7){
+   
+    console.log("time",counter)
+    console.log("xx1")
+     if(round%appConfig.Trials==0 && initial<=7){
       setInitial(initial+1)
       // console.log("first",initial)
    }
@@ -52,7 +65,7 @@ function Buttons() {
    
     setuserInput( userInput => [...userInput, a]);
     // console.log("user",userInput)
-    localStorage.setItem("user",userInput);
+  
     
   }
   function disable(){
@@ -67,10 +80,18 @@ function Buttons() {
 
     
   }
+  
+
+
   function calc(slider,keypad,file)
   {
+    
+    var precision = 100;
     var text=(`${"0"}${slider}${keypad}`);
     setInput(text);
+    if(i%2==0)
+    setCsvUser(csvUser => [...csvUser, text])
+    i++;
   //  console.log("first",keypad);
   //  console.log("user",text)
   //  console.log("random",generated[generated.length - 1])
@@ -79,23 +100,48 @@ function Buttons() {
     {
       // console.log("Score11",10);
       setAnswer("true");
-      return 10;
+      if(i%2==0)
+      setCsvResult(csvResult => [...csvResult, "true"])
+      return Math.round(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1*precision);
       
     }
     else
-    {
-      // console.log("Score66666");
+    {if(i%2==0)
+      
+      setCsvResult(csvResult => [...csvResult, "false"])
       setAnswer("false");
     return 0;
     }
     
     
+   
+    
   }
+  function data(slider,keypad,file){
+   userToPost = {
+    key: uuidv4(),
+name: localStorage.getItem("Code"),
+gameName: `${"0"}${slider}${keypad}`,
+gameMatrix: "null",
+userSelectedName: generated[generated.length - 1],
+userSelectedMatrix: "null",
+time: "null"
+};
+  }
+  const send = async () => {
+    const response = await axios
+        .post(appConfig+'/capture-activity', userToPost)
+        .catch((error) => console.log('Error: ', error));
+    if (response && response.data) {
+        console.log(response);
+        console.log(response.data);
+    }
+};
   function assigmentRandom(a){
     
     setGenerated( generated => [...generated, a]);
     // console.log("gen",generated);
-    localStorage.setItem("generated",generated);
+    
   }
 
 
@@ -121,7 +167,8 @@ function Buttons() {
    console.log(file);
   //  var fileNo=initial+file;
    setScore(parseInt(Score)+parseInt(calc(value,key,file)));
-   localStorage.setItem("scores",Score);
+   data(parseInt(Score)+parseInt(calc(value,key,file)));
+   send();
     // console.log("Score",Score);
    assigmentRandom(file);
    if(initial<8){
@@ -136,12 +183,15 @@ function Buttons() {
   
   }
   useEffect(() => {
+   
+   
     timeout();
     output();
     if(initial<8){
     disable();
     playAudio(); 
     }
+    
     
   
    
@@ -163,39 +213,16 @@ function Buttons() {
       <div>
       
       <div class="bar">
-  <div class="div1" >
-  Charlie
-    <span class="value"></span>
-  </div>
+      <button  onClick={() => {setValue(0)}} class="div1"  role="button"> Charlie <span class="value"></span></button>
 
-  <div class="div6 ">
-  Ringo
-    <span class="value"></span>
-  </div>
-  <div class="div3">
-  Laker
-    <span class="value"></span>
-  </div>
-  <div class="div4">
-  Hopper
-    <span class="value"></span>
-  </div>
-  <div class="div5">
-  Arrow
-    <span class="value"></span>
-  </div>
-  <div class="div6">
-  Tiger
-    <span class="value"></span>
-  </div>
-  <div class="div7">
-  Eagle
-    <span class="value"></span>
-  </div>
-  <div class="div1">
-  Baron
-    <span class="value"></span>
-  </div>
+      <button  onClick={() => {setValue(1)}} class="div6"  role="button"> Ringo <span class="value"></span></button>
+      <button  onClick={() => {setValue(2)}} class="div3"  role="button"> Laker <span class="value"></span></button>
+      <button  onClick={() => {setValue(3)}} class="div7"  role="button"> Hopper <span class="value"></span></button>
+      <button  onClick={() => {setValue(4)}} class="div5"  role="button"> Arrow <span class="value"></span></button>
+      <button  onClick={() => {setValue(5)}} class="div7"  role="button"> Tiger <span class="value"></span></button>
+      <button  onClick={() => {setValue(6)}} class="div4"  role="button"> Eagle <span class="value"></span></button>
+      <button  onClick={() => {setValue(7)}} class="div1"  role="button"> Baron <span class="value"></span></button>
+      
 </div>
 
 
@@ -300,6 +327,7 @@ function Buttons() {
   <Blink color='green' text='Updating...' fontSize='90'>
           _
         </Blink> 
+        
 </div>
 
 <div class="">
@@ -501,7 +529,13 @@ function Buttons() {
 
 
 {initial==8 &&
-<Csv/>
+<>
+
+{console.log("generated",generated)}
+{console.log("csvUser",csvUser)}
+{console.log("csvResult",csvResult)}
+<Csv value1={generated} value2={csvUser} value3={csvResult}/>
+ </>
 }
 
     </div>

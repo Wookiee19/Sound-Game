@@ -13,9 +13,9 @@ const appConfig={
     videoUrl : '', 
     //instruction video Url currently hardcoded
     
-    totalTrials:'7', 
-    //Total rounds user can play
-    
+    Trials:'2', 
+    //Total rounds in same speed
+    url:'https://omc0dwxiy7.execute-api.ap-south-1.amazonaws.com',
     opts : {           
     //video options
         height: '390',
