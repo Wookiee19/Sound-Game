@@ -25,6 +25,18 @@ console.log("uuu",userInput)
   return (
     <div>
       {console.log("info",info)}
+      
+
+<div id="tudo">
+
+	<div class="gameover">
+	<p> GAME </p>
+	<p> OVER </p>
+	</div>
+
+
+</div>
+
        <CSVLink  data={info} ><button class="button-33" role="button"><span>Download CSV</span></button></CSVLink>
        
 

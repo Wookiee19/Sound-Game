@@ -144,7 +144,9 @@ time: "null"
     // console.log("gen",generated);
     
   }
-
+function sliderval(def){
+  setValue(def)
+}
 
   function output(){
     const chars = file.split('');
@@ -211,10 +213,10 @@ time: "null"
      <>
       
         
-    <div class="flex-container">
+    <div class="flex-container clearfix">
     <div class="flex-child1 magenta">
   
-    <div style={{ marginLeft: "7%" }}>
+    <div >
       
       <Slider
         value={value}
@@ -247,7 +249,7 @@ time: "null"
         // valueRenderer	function (callback)	used by value label (to display a unit such as %)
   
         // trackLength	number	track's height or width (depending on the orientation)
-        trackLength={max * 58}
+        trackLength={max * 60}
         // trackColor	string
         trackColor={"green"}
         // trackThickness	number
@@ -294,19 +296,8 @@ time: "null"
         invertMarkers={false}
         // style	object	user custom style for slider's root container
       />
-      {/* <div class="bar">
-      <button  onClick={() => {setValue(0)}} class="div1"  role="button"> Charlie <span class="value"></span></button>
-
-      <button  onClick={() => {setValue(1)}} class="div6"  role="button"> Ringo <span class="value"></span></button>
-      <button  onClick={() => {setValue(2)}} class="div3"  role="button"> Laker <span class="value"></span></button>
-      <button  onClick={() => {setValue(3)}} class="div7"  role="button"> Hopper <span class="value"></span></button>
-      <button  onClick={() => {setValue(4)}} class="div5"  role="button"> Arrow <span class="value"></span></button>
-      <button  onClick={() => {setValue(5)}} class="div7"  role="button"> Tiger <span class="value"></span></button>
-      <button  onClick={() => {setValue(6)}} class="div4"  role="button"> Eagle <span class="value"></span></button>
-      <button  onClick={() => {setValue(7)}} class="div1"  role="button"> Baron <span class="value"></span></button>
-      
-</div> */}
-<div className="frame">
+     
+<div className="frame" style={{ marginTop: "-8%" ,marginRight:"2%" }}>
   
 <img className="frame1" onClick={() => {setValue(8)}} src={require('../Assets/Slider/Baron.png')} height="25" />
    <img className="frame1"  onClick={() => {setValue(7)}} src={require('../Assets/Slider/Eagle.png')} height="25" />
@@ -332,16 +323,16 @@ time: "null"
    </div>   
 </div>
 
-<div class="flex-child magenta">
-  <h2>Console</h2>
+<div class="flex-child magenta ">
+  <h2 className='name'>Game Name</h2>
   
   {/* <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
   <h3>User Input: {input}</h3> */}
-   <h3>Your Score: {Score}</h3>
-  <h3>Answer : {answer}</h3>
+   <h3 className='sub'>Your Score: {Score}</h3>
+  <h3 className='sub'>Answer : {answer}</h3>
  
-  {answer=="true" && <h3>{appConfig.feedbackTextRight} </h3>}
-  {answer=="false" && <h3>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
+  {answer=="true" && <h3 className='sub'>{appConfig.feedbackTextRight} </h3>}
+  {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
   {/* <Blink color='green' text='Updating...' fontSize='90'>
           _
         </Blink>  */}
@@ -357,22 +348,22 @@ time: "null"
    
     <tr>
     <td>
-        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/02_Blue.png')}  width="50" height="45"/></button>
+        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="50" height="45"/></button>
         
         </td>
       <td>
-      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="50" height="45" /></button>
+      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="50" height="45" /></button>
         
         
         </td>
        
        
         <td>
-        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="50" height="45" /></button>
+        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="50" height="45" /></button>
+        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="50" height="45" /></button>
        
         </td>
       
