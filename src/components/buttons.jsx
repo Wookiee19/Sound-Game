@@ -14,6 +14,7 @@ import "./slider.css"
 import appConfig from "../config";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import ff from "../Assets/Button/02_Blue.png"
 
 
 let max = 7;
@@ -29,7 +30,7 @@ function Buttons() {
   const [userInput,setuserInput]=useState([""]);
   const [generated,setGenerated]=useState(["Generated"]);
   const [sliderInput,setSliderInput]=useState([""]);
-  const [ value, setValue ] = useState(0);
+  const [ value, setValue ] = useState(1);
   const [Score,setScore]=useState("0")
   const [disabled, setDisabled] = useState(false);
   const [initial,setInitial]=useState(0);
@@ -208,28 +209,13 @@ time: "null"
       
       { initial<8 &&
      <>
-      <div>
-      <div style={{ margin: 10 }}>
-      <div>
       
-      <div class="bar">
-      <button  onClick={() => {setValue(0)}} class="div1"  role="button"> Charlie <span class="value"></span></button>
-
-      <button  onClick={() => {setValue(1)}} class="div6"  role="button"> Ringo <span class="value"></span></button>
-      <button  onClick={() => {setValue(2)}} class="div3"  role="button"> Laker <span class="value"></span></button>
-      <button  onClick={() => {setValue(3)}} class="div7"  role="button"> Hopper <span class="value"></span></button>
-      <button  onClick={() => {setValue(4)}} class="div5"  role="button"> Arrow <span class="value"></span></button>
-      <button  onClick={() => {setValue(5)}} class="div7"  role="button"> Tiger <span class="value"></span></button>
-      <button  onClick={() => {setValue(6)}} class="div4"  role="button"> Eagle <span class="value"></span></button>
-      <button  onClick={() => {setValue(7)}} class="div1"  role="button"> Baron <span class="value"></span></button>
+        
+    <div class="flex-container">
+    <div class="flex-child1 magenta">
+  
+    <div style={{ marginLeft: "7%" }}>
       
-</div>
-
-
-
-
-    </div>
-<div style={{ marginLeft: "7%" }}>
       <Slider
         value={value}
         // defaultValue	number (required)	initial value
@@ -245,9 +231,9 @@ time: "null"
         // valueLabelStyle	object	user custom style for value label
   
         // min	number	min slider value
-        min={0}
+        min={1}
         // max	number	max slider value
-        max={7}
+        max={8}
         // stepSize	number	interval between 2 steps (default is 1)
         stepSize={1}
         // disabled	boolean
@@ -261,7 +247,7 @@ time: "null"
         // valueRenderer	function (callback)	used by value label (to display a unit such as %)
   
         // trackLength	number	track's height or width (depending on the orientation)
-        trackLength={max * 118}
+        trackLength={max * 58}
         // trackColor	string
         trackColor={"green"}
         // trackThickness	number
@@ -308,52 +294,85 @@ time: "null"
         invertMarkers={false}
         // style	object	user custom style for slider's root container
       />
-   </div> 
-     
-    </div> 
-    </div>
-        
-    <div class="flex-container">
+      {/* <div class="bar">
+      <button  onClick={() => {setValue(0)}} class="div1"  role="button"> Charlie <span class="value"></span></button>
+
+      <button  onClick={() => {setValue(1)}} class="div6"  role="button"> Ringo <span class="value"></span></button>
+      <button  onClick={() => {setValue(2)}} class="div3"  role="button"> Laker <span class="value"></span></button>
+      <button  onClick={() => {setValue(3)}} class="div7"  role="button"> Hopper <span class="value"></span></button>
+      <button  onClick={() => {setValue(4)}} class="div5"  role="button"> Arrow <span class="value"></span></button>
+      <button  onClick={() => {setValue(5)}} class="div7"  role="button"> Tiger <span class="value"></span></button>
+      <button  onClick={() => {setValue(6)}} class="div4"  role="button"> Eagle <span class="value"></span></button>
+      <button  onClick={() => {setValue(7)}} class="div1"  role="button"> Baron <span class="value"></span></button>
+      
+</div> */}
+<div className="frame">
+  
+<img className="frame1" onClick={() => {setValue(8)}} src={require('../Assets/Slider/Baron.png')} height="25" />
+   <img className="frame1"  onClick={() => {setValue(7)}} src={require('../Assets/Slider/Eagle.png')} height="25" />
+
+
+   <img className="frame1" onClick={() => {setValue(6)}}  src={require('../Assets/Slider/Tiger.png')} height="25" />
+
+
+   <img className="frame1" onClick={() => {setValue(5)}} src={require('../Assets/Slider/Eagle.png')} height="25" />
+
+
+   <img className="frame1" onClick={() => {setValue(4)}} src={require('../Assets/Slider/Hopper.png')} height="25" />
+
+
+   <img className="frame1" onClick={() => {setValue(3)}} src={require('../Assets/Slider/Laker.png')} height="25" />
+
+
+   <img className="frame1" onClick={() => {setValue(2)}}src={require('../Assets/Slider/Ringgo.png')} height="25" />
+
+   <img className="frame1" onClick={() => {setValue(1)}} src={require('../Assets/Slider/Charlie.png')} height="25" />
+</div>
+
+   </div>   
+</div>
 
 <div class="flex-child magenta">
   <h2>Console</h2>
   
-  <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
-  <h3>User Input: {input}</h3>
+  {/* <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
+  <h3>User Input: {input}</h3> */}
+   <h3>Your Score: {Score}</h3>
   <h3>Answer : {answer}</h3>
-  <h3>Your Score: {Score}</h3>
+ 
   {answer=="true" && <h3>{appConfig.feedbackTextRight} </h3>}
   {answer=="false" && <h3>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
-  <Blink color='green' text='Updating...' fontSize='90'>
+  {/* <Blink color='green' text='Updating...' fontSize='90'>
           _
-        </Blink> 
+        </Blink>  */}
         
 </div>
 
-<div class="">
+
+<div class="flex-child2">
  
 
   <table id="matrix">
     
-    <h3 style={{color:"Red" ,fontWeight:"bold"}}>Score:{"  "}{Score}</h3>
+   
     <tr>
     <td>
-        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>01</span></button>
-       
+        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/02_Blue.png')}  width="50" height="45"/></button>
+        
         </td>
       <td>
-      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}  class="button-78" disabled={disabled} role="button"><span>01</span></button>
+      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="50" height="45" /></button>
         
         
         </td>
        
        
         <td>
-        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>01</span></button>
+        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}  class="button-68" disabled={disabled} role="button"><span>01</span></button>
+        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="50" height="45" /></button>
        
         </td>
       
@@ -361,20 +380,20 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0001");assigment("0001");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>02</span></button>
+        <button onClick={() => {assigment("0001");assigment("0001");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="50" height="45"/></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0101");setKey("0101");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>02</span></button>
+        <button onClick={() => {assigment("0101");setKey("0101");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="50" height="45" /></button>
        
         
         </td>
         <td>
-        <button onClick={() => {setKey("0201");assigment("0201");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>02</span></button>
+        <button onClick={() => {setKey("0201");assigment("0201");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0301");setKey("0301");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>02</span></button>
+        <button onClick={() => {assigment("0301");setKey("0301");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
         
@@ -384,22 +403,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0002");setKey("0002");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>03</span></button>
+        <button onClick={() => {assigment("0002");setKey("0002");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {setKey("0102");assigment("0102");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>03</span></button>
+        <button onClick={() => {setKey("0102");assigment("0102");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="50" height="45" /></button>
        
         
         </td>
         
        
         <td>
-        <button onClick={() => {assigment("0202");setKey("0202");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>03</span></button>
+        <button onClick={() => {assigment("0202");setKey("0202");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0302");setKey("0302");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>03</span></button>
+        <button onClick={() => {assigment("0302");setKey("0302");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -407,22 +426,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0003");setKey("0003");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>04</span></button>
+        <button onClick={() => {assigment("0003");setKey("0003");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0103");setKey("0103");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>04</span></button>
+        <button onClick={() => {assigment("0103");setKey("0103");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="50" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0203");setKey("0203");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>04</span></button>
+        <button onClick={() => {assigment("0203");setKey("0203");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0303");setKey("0303");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>04</span></button>
+        <button onClick={() => {assigment("0303");setKey("0303");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -430,22 +449,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0004");setKey("0004");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>05</span></button>
+        <button onClick={() => {assigment("0004");setKey("0004");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0104");setKey("0104");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>05</span></button>
+        <button onClick={() => {assigment("0104");setKey("0104");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="50" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0204");setKey("0204");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>05</span></button>
+        <button onClick={() => {assigment("0204");setKey("0204");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0304");setKey("0304");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>05</span></button>
+        <button onClick={() => {assigment("0304");setKey("0304");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -453,22 +472,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0005");setKey("0005");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>06</span></button>
+        <button onClick={() => {assigment("0005");setKey("0005");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0105");setKey("0105");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>06</span></button>
+        <button onClick={() => {assigment("0105");setKey("0105");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="50" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0205");setKey("0205");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>06</span></button>
+        <button onClick={() => {assigment("0205");setKey("0205");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0305");setKey("0305");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>06</span></button>
+        <button onClick={() => {assigment("0305");setKey("0305");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -476,22 +495,22 @@ time: "null"
     </tr>
     <tr>
       <td>
-        <button onClick={() => {assigment("0006");setKey("0006");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>07</span></button>
+        <button onClick={() => {assigment("0006");setKey("0006");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0106");setKey("0106");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>07</span></button>
+        <button onClick={() => {assigment("0106");setKey("0106");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="50" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0206");setKey("0206");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>07</span></button>
+        <button onClick={() => {assigment("0206");setKey("0206");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0306");setKey("0306");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>07</span></button>
+        <button onClick={() => {assigment("0306");setKey("0306");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -499,22 +518,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0007");setKey("0007");disable();setRound(round+1);}} class="button-58" disabled={disabled} role="button"><span>08</span></button>
+        <button onClick={() => {assigment("0007");setKey("0007");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="50" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0107");setKey("0107");disable();setRound(round+1);}}   class="button-78" disabled={disabled} role="button"><span>08</span></button>
+        <button onClick={() => {assigment("0107");setKey("0107");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="50" height="45" /></button>
        
         
         </td>
        
        
         <td>
-        <button onClick={() => {assigment("0207");setKey("0207");disable();setRound(round+1);}} class="button-48" disabled={disabled} role="button"><span>08</span></button>
+        <button onClick={() => {assigment("0207");setKey("0207");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="50" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}  class="button-68" disabled={disabled} role="button"><span>08</span></button>
+        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="50" height="45" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
    

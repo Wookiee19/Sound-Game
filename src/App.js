@@ -36,11 +36,6 @@ function App() {
             }
 
 
-
-
-
-        
-        
       {show && <Main/>}
     
 

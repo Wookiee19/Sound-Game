@@ -1,17 +1,26 @@
-.bar {
-    height: 2em;
+
+  .frame{
+    -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
     display: flex;
-    margin: 1em;
-    /* border: 3px solid darkgrey;
-    border-radius: 1px;
-    background-color: #484848;
-    background-image: linear-gradient(to top, #535353, #919191); */
-    background-repeat: repeat-x;
-    font-weight: bold;
-    font-size: large    ;
-    text-align: center;
+    flex-direction: column;
+    margin-right: -2%;
+    margin-bottom: -30%;
+    margin-left: 30%;
+    padding: 6px;
+ 
   }
-  
+  .frame .frame1 {
+    padding: 2%;
+    width: 80px;
+    height: 45px;
+   
+     
+  }
+/*   
   .bar>button {
     position: relative;
   }
@@ -72,4 +81,4 @@ background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(159,77,214,1) 43
     background-color: #ebad29;
     
     background-repeat: repeat-x;
-  }
+  } */
