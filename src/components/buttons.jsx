@@ -30,7 +30,7 @@ function Buttons() {
   const [userInput,setuserInput]=useState([""]);
   const [generated,setGenerated]=useState(["Generated"]);
   const [sliderInput,setSliderInput]=useState([""]);
-  const [ value, setValue ] = useState(1);
+  const [ value, setValue ] = useState();
   const [Score,setScore]=useState("0")
   const [disabled, setDisabled] = useState(false);
   const [initial,setInitial]=useState(0);
@@ -88,14 +88,14 @@ function Buttons() {
   {
     
     var precision = 100;
-    var text=(`${"0"}${slider}${keypad}`);
+    var text=(`${"0"}${slider-1}${keypad}`);
     setInput(text);
     if(i%2==0)
     setCsvUser(csvUser => [...csvUser, text])
     i++;
-  //  console.log("first",keypad);
-  //  console.log("user",text)
-  //  console.log("random",generated[generated.length - 1])
+   console.log("first",keypad);
+   console.log("user",text)
+   console.log("random",generated[generated.length - 1])
    
     if(text==generated[generated.length - 1])
     {
@@ -221,7 +221,7 @@ function sliderval(def){
       <Slider
         value={value}
         // defaultValue	number (required)	initial value
-        defaultValue={1}
+        defaultValue={0}
         // showValue	true, false, 'active'	displays current value on a label
         showValue={false}
         // valueLabelColor	string
