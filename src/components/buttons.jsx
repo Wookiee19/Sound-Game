@@ -49,7 +49,7 @@ function Buttons() {
   var counter;
   var userToPost ;
   var startTime=[];
-
+  var dead; 
   var text;
   // const [text, setText] = useState('');
   var a=0;
@@ -59,6 +59,10 @@ function Buttons() {
     console.log("xx1")
      if(round%appConfig.Trials==0 && initial<=7){
       setInitial(initial+1)
+        if(initial==7)
+        {
+            dead=1;
+        }
       // console.log("first",initial)
    }
     
@@ -195,7 +199,8 @@ time: "null"
    
     timeout();
     output();
-    if(initial<8){
+    if(initial<8 && dead!=1){
+
     disable();
     playAudio(); 
     }
