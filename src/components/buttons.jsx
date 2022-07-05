@@ -244,14 +244,14 @@ time: "null"
 </div> */}
 <div className="frame">
   
-   <img className="frame1" onClick={() => {setValue(1)}} src={require('../Assets/Slider/Charlie.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(2)}}src={require('../Assets/Slider/Ringgo.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(3)}} src={require('../Assets/Slider/Laker.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(4)}} src={require('../Assets/Slider/Hopper.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(5)}} src={require('../Assets/Slider/Arrow.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(6)}}  src={require('../Assets/Slider/Tiger.png')} height="40" />
-   <img className="frame1"  onClick={() => {setValue(7)}} src={require('../Assets/Slider/Eagle.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(8)}} src={require('../Assets/Slider/Baron.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(0)}} src={require('../Assets/Slider/Charlie.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(1)}}src={require('../Assets/Slider/Ringgo.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(2)}} src={require('../Assets/Slider/Laker.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(3)}} src={require('../Assets/Slider/Hopper.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(4)}} src={require('../Assets/Slider/Arrow.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(5)}}  src={require('../Assets/Slider/Tiger.png')} height="40" />
+   <img className="frame1"  onClick={() => {setValue(6)}} src={require('../Assets/Slider/Eagle.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(7)}} src={require('../Assets/Slider/Baron.png')} height="40" />
 </div>
 
    </div>   
