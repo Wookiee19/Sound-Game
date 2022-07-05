@@ -56,10 +56,18 @@ function buttons() {
         <td>
         <button id="b3"><span>22</span></button></td>
         <td>
+<<<<<<< Updated upstream
         <button id="b3"><span>23</span></button></td>
         
       <td><button id="b3">24</button></td>
       <td><button id="b3">25</button></td>
+=======
+        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Green.png') } width="40" height="40" /></button>
+        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        </td>
+   
+      
+>>>>>>> Stashed changes
     </tr>
   </table>
 </div>

@@ -5,6 +5,7 @@ div {
   
   #matrix {
    
+<<<<<<< Updated upstream
     margin: 0 auto;
     padding: 0.5px;
     margin: 0% 50%;
@@ -44,6 +45,77 @@ div {
   
   #b4 {
     background-color: rgba(189, 15, 15, 0.6);
+=======
+    
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+
+.flex-child1 {
+  width: 34%;
+ margin-top: 35%;
+margin-left:11%;
+
+
+}  
+
+.flex-child {
+  
+  margin-top: 37%;
+  margin-left: -10%;
+  width: 32%;
+ 
+}  
+.flex-child2 {
+  width: 34%;
+  margin-top: 22%;
+  margin-left: -19%;
+} 
+.font{
+  color: rgb(185, 24, 24);
+                                                
+}
+.name{
+
+  
+  font-size:3vw;
+  text-align: center;
+  color: rgb(29, 13, 179);
+
+}
+.sub{
+ 
+  
+  font-weight: bolder;
+color: rgb(11, 56, 170);
+text-align: center;
+font-size: x-large;
+}
+
+
+  #matrix { 
+    position: static;
+  
+    /* padding: 15px; */
+    margin: 10% 66%;
+    margin-top: 11%;
+  }
+  
+  #matrix tr, td {
+    padding: 0px;
+   
+    
+  }
+  
+  #matrix button {
+    background-color:transparent;
+    height: "*";
+    
+    
+>>>>>>> Stashed changes
   }
   
   #b4:hover {

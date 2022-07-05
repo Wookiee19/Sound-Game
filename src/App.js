@@ -32,6 +32,7 @@ function App() {
     // return () => clearInterval(intervalId);
 }, [])
   return (
+<<<<<<< Updated upstream
     <div className="App">
       <Panel/>
       <Sliders />
@@ -43,6 +44,14 @@ function App() {
       <img src={sapceship} width="100%" height="100%" class="over" />
       
       <Buttons/>
+=======
+    <div >
+      
+      {localStorage.removeItem("Scores")}
+      {!show  && <div className=' background-image1' style={{marginLeft:"5%"}}>
+      
+        <input type="text"  placeholder="Select an Username" size="20"   onChange={(e) => {assign(e.target.value)} }/>
+>>>>>>> Stashed changes
      
     </div>
   );
