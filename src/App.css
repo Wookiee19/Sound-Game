@@ -1,6 +1,7 @@
 body {
-  background: rgb(222,221,234);
-  background: linear-gradient(90deg, rgba(222,221,234,1) 0%, rgba(77,200,214,1) 0%, rgba(171,200,227,1) 15%, rgba(113,172,225,1) 58%, rgba(0,212,255,1) 100%);
+  background-image: url("./Assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 120%
  }
 .input{
   margin: 18%;
