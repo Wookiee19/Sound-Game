@@ -77,8 +77,8 @@ font-size: x-large;
   
   #matrix button {
     background-color:transparent;
-    height: 0px;
-    width: 57px;
+    height: 20px;
+    width: 20px;
     border: none;
     font-family: helvetica;
     font-weight: bold;

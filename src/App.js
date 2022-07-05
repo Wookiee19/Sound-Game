@@ -4,6 +4,7 @@ import "./App.css";
 import Modal from "./components/modal";
 import useModal from './components/useModal';
 import "./style.css"
+import backgr from "./Assets/background.jpg"
 
 
 
@@ -18,6 +19,7 @@ function App() {
   }
   return (
     <div className='body'>
+      
       {localStorage.removeItem("Scores")}
       {!show  && <div style={{marginLeft:"5%"}}>
       
