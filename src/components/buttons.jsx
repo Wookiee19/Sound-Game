@@ -282,22 +282,22 @@ time: "null"
    
     <tr>
     <td>
-        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="20" height="20"/></button>
+        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="40" height="40"/></button>
         
         </td>
       <td>
-      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="20" height="20" /></button>
+      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="40" height="40" /></button>
         
         
         </td>
        
        
         <td>
-        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="20" height="20" /></button>
+        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="20" height="20" /></button>
+        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="40" height="40" /></button>
        
         </td>
       
@@ -305,20 +305,20 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0001");assigment("0001");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="20" height="20"/></button>
+        <button onClick={() => {assigment("0001");assigment("0001");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="40" height="40"/></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0101");setKey("0101");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0101");setKey("0101");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="40" height="40" /></button>
        
         
         </td>
         <td>
-        <button onClick={() => {setKey("0201");assigment("0201");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {setKey("0201");assigment("0201");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0301");setKey("0301");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0301");setKey("0301");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
         
@@ -328,22 +328,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0002");setKey("0002");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0002");setKey("0002");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {setKey("0102");assigment("0102");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {setKey("0102");assigment("0102");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="40" height="40" /></button>
        
         
         </td>
         
        
         <td>
-        <button onClick={() => {assigment("0202");setKey("0202");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0202");setKey("0202");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0302");setKey("0302");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0302");setKey("0302");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -351,22 +351,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0003");setKey("0003");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0003");setKey("0003");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0103");setKey("0103");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0103");setKey("0103");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0203");setKey("0203");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0203");setKey("0203");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0303");setKey("0303");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0303");setKey("0303");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -374,22 +374,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0004");setKey("0004");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0004");setKey("0004");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0104");setKey("0104");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0104");setKey("0104");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0204");setKey("0204");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0204");setKey("0204");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0304");setKey("0304");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0304");setKey("0304");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -397,22 +397,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0005");setKey("0005");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0005");setKey("0005");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0105");setKey("0105");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0105");setKey("0105");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0205");setKey("0205");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0205");setKey("0205");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0305");setKey("0305");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0305");setKey("0305");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -420,22 +420,22 @@ time: "null"
     </tr>
     <tr>
       <td>
-        <button onClick={() => {assigment("0006");setKey("0006");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0006");setKey("0006");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0106");setKey("0106");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0106");setKey("0106");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0206");setKey("0206");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0206");setKey("0206");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0306");setKey("0306");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0306");setKey("0306");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
       
@@ -443,22 +443,22 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0007");setKey("0007");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0007");setKey("0007");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0107");setKey("0107");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0107");setKey("0107");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
        
         <td>
-        <button onClick={() => {assigment("0207");setKey("0207");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0207");setKey("0207");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="20" height="20" /></button>
+        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="40" height="40" /></button>
         {/* <audio ref={audioPlayer} src={aaa} /> */}
         </td>
    
