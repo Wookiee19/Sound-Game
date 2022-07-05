@@ -1,7 +1,7 @@
 body {
   background-image: url("./Assets/background.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 120%
+    background-size: 100% 200%;
  }
 .input{
   margin: 18%;
