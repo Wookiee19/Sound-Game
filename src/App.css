@@ -1,8 +1,9 @@
 body {
   background-image: url("./Assets/background.jpg");
-  background-repeat: no-repeat;
-    background-size: 100% 200%;
- }
+  width: 100%;
+  max-height: 100vh;
+  background-size: 100% 300%;
+  }
 .input{
   margin: 18%;
 }
