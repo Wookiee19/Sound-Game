@@ -572,6 +572,9 @@ console.log("rfile",rfile)
 </div>
 
 <div class="flex-child magenta ">
+  {round==0 && <h3 className='sub'>Please pay attention to the instructions </h3>}
+  {round>0 &&<>
+    
   {!show1 && <><h2 className='name'>Game Name</h2>
   <h3 className='sub'>Answer : {answer}</h3>
   <h3 className='sub'>Audio Speed : {audioSpeed} dB</h3>
@@ -580,7 +583,7 @@ console.log("rfile",rfile)
   {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}</>}
   {show1 && <><h3 className='sub'> Round End</h3><h3 className='sub'>Your Score : {Score} </h3>
   <button class="button-33" role="button" onClick={()=>{afterBlock()}} >Click for  New Round</button></>}
-        
+  </>}   
 </div>
 
 
