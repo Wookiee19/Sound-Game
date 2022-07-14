@@ -46,19 +46,307 @@ function Buttons() {
   const [csvUser,setCsvUser]=useState(["USER"]);
   const [csvGenerated,setcsvGenerated]=useState(["Generated"]);
   const [csvResult,setCsvResult]=useState(["Result"]);
+  const [startTime,setStartTime]=useState();
+  const [diffrence,setDiffrence]=useState();
+  const [show1,setShow1]=useState(false);
   var counter;
   var userToPost ;
-  var startTime=[];
-  var dead; 
-  var text;
+  const speed7=["talker2_060105_spd_24.wav",
+  "talker2_050107_spd_24.wav",
+  "talker2_040307_spd_24.wav",
+  "talker2_040301_spd_24.wav",
+  "talker2_030305_spd_24.wav",
+  "talker2_030102_spd_24.wav",
+  "talker2_020007_spd_24.wav",
+  "talker2_020001_spd_24.wav",
+  "talker2_020000_spd_24.wav",
+  "talker2_010201_spd_24.wav",
+  "talker2_010102_spd_24.wav",
+  "talker2_000306_spd_24.wav",
+  "talker2_000105_spd_24.wav",
+  "talker0_070200_spd_24.wav",
+  "talker0_070105_spd_24.wav",
+  "talker0_070100_spd_24.wav",
+  "talker0_060007_spd_24.wav",
+  "talker0_050100_spd_24.wav",
+  "talker0_040307_spd_24.wav",
+  "talker0_040105_spd_24.wav",
+  "talker0_040101_spd_24.wav",
+  "talker0_040100_spd_24.wav",
+  "talker0_040000_spd_24.wav",
+  "talker0_030306_spd_24.wav",
+  "talker0_030305_spd_24.wav",
+  "talker0_030100_spd_24.wav",
+  "talker0_020101_spd_24.wav",
+  "talker0_010207_spd_24.wav",
+  "talker0_010002_spd_24.wav",
+  "talker0_000307_spd_24.wav",
+  "talker2_070105_spd_24.wav",
+  "talker2_070005_spd_24.wav",
+  "talker2_060200_spd_24.wav",
+  "talker2_060106_spd_24.wav",];
+const speed6=[
+  "talker2_070203_spd_30.wav",
+"talker2_070201_spd_30.wav",
+"talker2_070101_spd_30.wav",
+"talker2_060303_spd_30.wav",
+"talker2_060300_spd_30.wav",
+"talker2_060206_spd_30.wav",
+"talker2_060203_spd_30.wav",
+"talker2_060200_spd_30.wav",
+"talker2_060106_spd_30.wav",
+"talker2_050302_spd_30.wav",
+"talker2_050104_spd_30.wav",
+"talker2_050101_spd_30.wav",
+"talker2_050004_spd_30.wav",
+"talker2_040205_spd_30.wav",
+"talker2_030303_spd_30.wav",
+"talker2_030102_spd_30.wav",
+"talker2_010207_spd_30.wav",
+"talker0_070206_spd_30.wav",
+"talker0_070005_spd_30.wav",
+"talker0_060106_spd_30.wav",
+"talker0_060105_spd_30.wav",
+"talker0_060001_spd_30.wav",
+"talker0_050303_spd_30.wav",
+"talker0_050102_spd_30.wav",
+"talker0_050006_spd_30.wav",
+"talker0_040307_spd_30.wav",
+"talker0_040200_spd_30.wav",
+"talker0_030304_spd_30.wav",
+"talker0_030001_spd_30.wav",
+"talker0_020302_spd_30.wav",
+"talker0_020200_spd_30.wav",
+"talker0_020106_spd_30.wav",
+"talker0_010201_spd_30.wav",
+"talker0_010100_spd_30.wav",
+"talker0_000202_spd_30.wav",
+];
+const speed5=["talker2_060307_spd_36.wav",
+  "talker2_060107_spd_36.wav",
+  "talker2_060104_spd_36.wav",
+  "talker2_060103_spd_36.wav",
+  "talker2_060000_spd_36.wav",
+  "talker2_050204_spd_36.wav",
+  "talker2_050200_spd_36.wav",
+  "talker2_040200_spd_36.wav",
+  "talker2_030104_spd_36.wav",
+  "talker2_030101_spd_36.wav",
+  "talker2_030003_spd_36.wav",
+  "talker2_020304_spd_36.wav",
+  "talker2_020000_spd_36.wav",
+  "talker2_010301_spd_36.wav",
+  "talker2_010007_spd_36.wav",
+  "talker2_010003_spd_36.wav",
+  "talker2_000306_spd_36.wav",
+  "talker0_070100_spd_36.wav",
+  "talker0_060306_spd_36.wav",
+  "talker0_060201_spd_36.wav",
+  "talker0_050100_spd_36.wav",
+  "talker0_040307_spd_36.wav",
+  "talker0_040204_spd_36.wav",
+  "talker0_040003_spd_36.wav",
+  "talker0_030303_spd_36.wav",
+  "talker0_020207_spd_36.wav",
+  "talker0_020107_spd_36.wav",
+  "talker0_020005_spd_36.wav",
+  "talker0_020003_spd_36.wav",
+  "talker0_020001_spd_36.wav",
+  "talker0_010301_spd_36.wav",
+  "talker0_010204_spd_36.wav",
+  "talker0_010100_spd_36.wav",
+  "talker0_000107_spd_36.wav",
+  "talker0_000004_spd_36.wav",
+  "talker2_070100_spd_36.wav",];
+const speed4=[
+  "talker2_070104_spd_42.wav",
+"talker2_060303_spd_42.wav",
+"talker2_060205_spd_42.wav",
+"talker2_060105_spd_42.wav",
+"talker2_060005_spd_42.wav",
+"talker2_060004_spd_42.wav",
+"talker2_050205_spd_42.wav",
+"talker2_040305_spd_42.wav",
+"talker2_040100_spd_42.wav",
+"talker2_030103_spd_42.wav",
+"talker2_020204_spd_42.wav",
+"talker2_020102_spd_42.wav",
+"talker2_020007_spd_42.wav",
+"talker2_020001_spd_42.wav",
+"talker2_010304_spd_42.wav",
+"talker2_000306_spd_42.wav",
+"talker2_000302_spd_42.wav",
+"talker0_070307_spd_42.wav",
+"talker0_060205_spd_42.wav",
+"talker0_060201_spd_42.wav",
+"talker0_060106_spd_42.wav",
+"talker0_050300_spd_42.wav",
+"talker0_050200_spd_42.wav",
+"talker0_050106_spd_42.wav",
+"talker0_040003_spd_42.wav",
+"talker0_040001_spd_42.wav",
+"talker0_030305_spd_42.wav",
+"talker0_030300_spd_42.wav",
+"talker0_030203_spd_42.wav",
+"talker0_030201_spd_42.wav",
+"talker0_030103_spd_42.wav",
+"talker0_020302_spd_42.wav",
+"talker0_020002_spd_42.wav",
+"talker0_010100_spd_42.wav",
+"talker0_000007_spd_42.wav",
+"talker2_070200_spd_42.wav",
+];
+const speed3=["talker2_070006_spd_48.wav",
+"talker2_050302_spd_48.wav",
+  "talker2_050204_spd_48.wav",
+  "talker2_050103_spd_48.wav",
+  "talker2_050006_spd_48.wav",
+  "talker2_050005_spd_48.wav",
+  "talker2_040301_spd_48.wav",
+  "talker2_040101_spd_48.wav",
+  "talker2_030202_spd_48.wav",
+  "talker2_030103_spd_48.wav",
+  "talker2_020103_spd_48.wav",
+  "talker2_020002_spd_48.wav",
+  "talker2_010101_spd_48.wav",
+  "talker2_000207_spd_48.wav",
+  "talker0_070107_spd_48.wav",
+  "talker0_060305_spd_48.wav",
+  "talker0_060007_spd_48.wav",
+  "talker0_050204_spd_48.wav",
+  "talker0_040204_spd_48.wav",
+  "talker0_040100_spd_48.wav",
+  "talker0_030201_spd_48.wav",
+  "talker0_020307_spd_48.wav",
+  "talker0_020301_spd_48.wav",
+  "talker0_020106_spd_48.wav",
+  "talker0_020103_spd_48.wav",
+  "talker0_020100_spd_48.wav",
+  "talker0_020003_spd_48.wav",
+  "talker0_010006_spd_48.wav",
+  "talker0_000201_spd_48.wav",
+  "talker0_000200_spd_48.wav",
+  "talker2_070301_spd_48.wav",
+  "talker2_070206_spd_48.wav",
+  "talker2_070107_spd_48.wav"];
+
+const speed2=["talker2_030304_spd_54.wav",
+  "talker2_030301_spd_54.wav",
+  "talker2_030207_spd_54.wav",
+  "talker2_020107_spd_54.wav",
+  "talker2_010304_spd_54.wav",
+  "talker2_010203_spd_54.wav",
+  "talker2_010102_spd_54.wav",
+  "talker2_010100_spd_54.wav",
+  "talker2_000006_spd_54.wav",
+  "talker0_070003_spd_54.wav",
+  "talker0_070001_spd_54.wav",
+  "talker0_060106_spd_54.wav",
+  "talker0_060104_spd_54.wav",
+  "talker0_050105_spd_54.wav",
+  "talker0_050006_spd_54.wav",
+  "talker0_040101_spd_54.wav",
+  "talker0_030003_spd_54.wav",
+  "talker0_020305_spd_54.wav",
+  "talker0_020304_spd_54.wav",
+  "talker0_020202_spd_54.wav",
+  "talker0_020200_spd_54.wav",
+  "talker0_020003_spd_54.wav",
+  "talker0_000307_spd_54.wav",
+  "talker0_000300_spd_54.wav",
+  "talker0_000202_spd_54.wav",
+  "talker0_000102_spd_54.wav",
+  "talker0_000101_spd_54.wav",
+  "talker2_070307_spd_54.wav",
+  "talker2_070007_spd_54.wav",
+  "talker2_070003_spd_54.wav",
+  "talker2_060300_spd_54.wav",
+  "talker2_060004_spd_54.wav",
+  "talker2_040301_spd_54.wav",
+  "talker2_040202_spd_54.wav",];
+const speed1=["talker2_070002_spd_60.wav",
+  "talker2_060304_spd_60.wav",
+  "talker2_060205_spd_60.wav",
+  "talker2_050302_spd_60.wav",
+  "talker2_050205_spd_60.wav",
+  "talker2_050100_spd_60.wav",
+  "talker2_050007_spd_60.wav",
+  "talker2_040303_spd_60.wav",
+  "talker2_030207_spd_60.wav",
+  "talker2_030101_spd_60.wav",
+  "talker2_020306_spd_60.wav",
+  "talker2_020207_spd_60.wav",
+  "talker2_020104_spd_60.wav",
+  "talker2_020005_spd_60.wav",
+  "talker2_020002_spd_60.wav",
+  "talker2_020000_spd_60.wav",
+  "talker2_010104_spd_60.wav",
+  "talker0_070304_spd_60.wav",
+  "talker0_070207_spd_60.wav",
+  "talker0_070200_spd_60.wav",
+  "talker0_050300_spd_60.wav",
+  "talker0_050004_spd_60.wav",
+  "talker0_050002_spd_60.wav",
+  "talker0_040205_spd_60.wav",
+  "talker0_040106_spd_60.wav",
+  "talker0_030204_spd_60.wav",
+  "talker0_030003_spd_60.wav",
+  "talker0_020305_spd_60.wav",
+  "talker0_020302_spd_60.wav",
+  "talker0_020300_spd_60.wav",
+  "talker0_010105_spd_60.wav",
+  "talker0_010005_spd_60.wav",
+  "talker0_000003_spd_60.wav",
+  "talker0_000000_spd_60.wav",
+  "talker2_070003_spd_60.wav",];
+const speed0=["talker2_070101_spd_66.wav",
+  "talker2_070007_spd_66.wav",
+  "talker2_070003_spd_66.wav",
+  "talker2_060302_spd_66.wav",
+  "talker2_060203_spd_66.wav",
+  "talker2_050306_spd_66.wav",
+  "talker2_050104_spd_66.wav",
+  "talker2_040105_spd_66.wav",
+  "talker2_040104_spd_66.wav",
+  "talker2_040007_spd_66.wav",
+  "talker2_030100_spd_66.wav",
+  "talker2_020304_spd_66.wav",
+  "talker2_020004_spd_66.wav",
+  "talker2_010206_spd_66.wav",
+  "talker2_010203_spd_66.wav",
+  "talker2_010202_spd_66.wav",
+  "talker2_000004_spd_66.wav",
+  "talker0_070107_spd_66.wav",
+  "talker0_060301_spd_66.wav",
+  "talker0_060006_spd_66.wav",
+  "talker0_060003_spd_66.wav",
+  "talker0_050207_spd_66.wav",
+  "talker0_050105_spd_66.wav",
+  "talker0_050005_spd_66.wav",
+  "talker0_040205_spd_66.wav",
+  "talker0_040101_spd_66.wav",
+  "talker0_030304_spd_66.wav",
+  "talker0_030300_spd_66.wav",
+  "talker0_020204_spd_66.wav",
+  "talker0_020203_spd_66.wav",
+  "talker0_020201_spd_66.wav",
+  "talker0_020000_spd_66.wav",
+  "talker0_010103_spd_66.wav",
+  "talker0_000001_spd_66.wav",
+  "talker0_000000_spd_66.wav",
+  "talker2_070305_spd_66.wav",];
+var dead; 
+const [audioSpeed,setaudioSpeed]=useState("18");
+  // var startTime;
   // const [text, setText] = useState('');
-  var a=0;
+
    function timeout()  {
    
     console.log("time",counter)
     console.log("xx1")
      if(round%appConfig.Trials==0 && initial<=7){
       setInitial(initial+1)
+      setaudioSpeed(parseInt(audioSpeed)+initial+(6-initial))
         if(initial==7)
         {
             dead=1;
@@ -92,13 +380,44 @@ const _handleIndexChange = (index) => {
 
     
   }
+
+  function roundUpdate(check){
+    console.log("round",round);
+    console.log("tra]ial",)
+    if(check=="button" && round%appConfig.Trials==0)
+    {
+      setRound(round+1);
+      
+    }
+    else
+    {
+      setShow1(true);
+      setDisabled(true);
+    }
+
+  }
+  function afterBlock(){
+    setRound(round+1);
+    setShow1(false);
+  }
+  function startButton() {
+    setStartTime(Date.now());
+    console.log("rrrr",startTime);
+}
+function stopButton() {
+  
+      var endTime = Date.now();
+      setDiffrence(endTime - startTime);
+      console.log("yy",diffrence)
+      // startTime = null;
+  
+}
   
 
 
   function calc(slider,keypad,file)
   {
     
-    var precision = 100;
     var text=(`${"0"}${slider}${keypad}`);
     setInput(text);
     if(i%2==0)
@@ -114,7 +433,11 @@ const _handleIndexChange = (index) => {
       setAnswer("true");
       if(i%2==0)
       setCsvResult(csvResult => [...csvResult, "true"])
-      return Math.round(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1*precision);
+      var res=10-(diffrence/1000);
+      if(res<0)
+      return (1);
+      else
+      return(res);
       
     }
     else
@@ -149,6 +472,7 @@ time: "null"
         console.log(response.data);
     }
 };
+
   function assigmentRandom(a){
     
     setGenerated( generated => [...generated, a]);
@@ -170,13 +494,10 @@ time: "null"
 
   function playAudio() {
     
-    
-    const getRandomFromRange = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-      
-    };
-       file="0"+getRandomFromRange(0,7)+"0"+getRandomFromRange(0,3)+"0"+getRandomFromRange(0,8);
-   console.log(file);
+   
+    var rfile= eval(`speed${initial}`)[Math.floor(Math.random()*speed1.length)];
+       file=rfile.slice(8,14);
+
   //  var fileNo=initial+file;
    setScore(parseInt(Score)+parseInt(calc(value,key,file)));
    data(parseInt(Score)+parseInt(calc(value,key,file)));
@@ -184,12 +505,12 @@ time: "null"
     // console.log("Score",Score);
    assigmentRandom(file);
    if(initial<8){
-    const randomSong = require(`../Audio/Talker${initial}/${file}.wav`);
+    const randomSong = require(`../Audio/${rfile}`);
     // console.log("file",file)
     new Audio(randomSong).play()
     // {console.log("randomSong",randomSong)}
  
-   
+    startButton()
     
    }
   
@@ -200,7 +521,7 @@ time: "null"
     timeout();
     output();
     if(initial<8 && dead!=1){
-
+      
     disable();
     playAudio(); 
     }
@@ -208,7 +529,10 @@ time: "null"
     
   
    
-  },[round])
+  },[round]);
+
+ 
+
   useEffect(() => {
     console.log("value",value);
     
@@ -230,18 +554,7 @@ time: "null"
       <div style={{ marginLeft: "-17%", marginTop:"-25%" }}>
     <Slider onChange={_handleIndexChange} currentIndex={value} />
     </div>
-      {/* <div class="bar">
-      <button  onClick={() => {setValue(0)}} class="div1"  role="button"> Charlie <span class="value"></span></button>
-
-      <button  onClick={() => {setValue(1)}} class="div6"  role="button"> Ringo <span class="value"></span></button>
-      <button  onClick={() => {setValue(2)}} class="div3"  role="button"> Laker <span class="value"></span></button>
-      <button  onClick={() => {setValue(3)}} class="div7"  role="button"> Hopper <span class="value"></span></button>
-      <button  onClick={() => {setValue(4)}} class="div5"  role="button"> Arrow <span class="value"></span></button>
-      <button  onClick={() => {setValue(5)}} class="div7"  role="button"> Tiger <span class="value"></span></button>
-      <button  onClick={() => {setValue(6)}} class="div4"  role="button"> Eagle <span class="value"></span></button>
-      <button  onClick={() => {setValue(7)}} class="div1"  role="button"> Baron <span class="value"></span></button>
       
-</div> */}
 <div className="frame">
   
    <img className="frame1" onClick={() => {setValue(0)}} src={require('../Assets/Slider/Charlie.png')} height="40" />
@@ -258,18 +571,14 @@ time: "null"
 </div>
 
 <div class="flex-child magenta ">
-  <h2 className='name'>Game Name</h2>
-  
-  {/* <h3>Generated File Number:{" "}{generated[generated.length - 1]}</h3>
-  <h3>User Input: {input}</h3> */}
-   <h3 className='sub'>Your Score: {Score}</h3>
+  {!show1 && <><h2 className='name'>Game Name</h2>
   <h3 className='sub'>Answer : {answer}</h3>
- 
+  <h3 className='sub'>Audio Speed : {audioSpeed} dB</h3>
+  <h3 className='sub'>Time : {diffrence} ms</h3>
   {answer=="true" && <h3 className='sub'>{appConfig.feedbackTextRight} </h3>}
-  {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
-  {/* <Blink color='green' text='Updating...' fontSize='90'>
-          _
-        </Blink>  */}
+  {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}</>}
+  {show1 && <><h3 className='sub'> Round End</h3><h3 className='sub'>Your Score : {Score} </h3>
+  <button class="button-33" role="button" onClick={()=>{afterBlock()}} >Click for  New Round</button></>}
         
 </div>
 
@@ -282,22 +591,22 @@ time: "null"
    
     <tr>
     <td>
-        <button  onClick={() => {assigment("0000");setKey("0000");disable();setRound(round+1);}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="40" height="40"/></button>
+        <button  onClick={() => {assigment("0000");setKey("0000");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="40" height="40"/></button>
         
         </td>
       <td>
-      <button   onClick={() => {assigment("0100");setKey("0100");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="40" height="40" /></button>
+      <button   onClick={() => {assigment("0100");setKey("0100");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="40" height="40" /></button>
         
         
         </td>
        
        
         <td>
-        <button  onClick={() => {assigment("0200");setKey("0200");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="40" height="40" /></button>
+        <button  onClick={() => {assigment("0200");setKey("0200");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button  onClick={() => {assigment("0300");setKey("0300");disable();setRound(round+1);setKey("0100")}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="40" height="40" /></button>
+        <button  onClick={() => {assigment("0300");setKey("0300");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="40" height="40" /></button>
        
         </td>
       
@@ -305,21 +614,21 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0001");assigment("0001");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="40" height="40"/></button>
+        <button onClick={() => {assigment("0001");assigment("0001");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="40" height="40"/></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0101");setKey("0101");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0101");setKey("0101");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="40" height="40" /></button>
        
         
         </td>
         <td>
-        <button onClick={() => {setKey("0201");assigment("0201");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {setKey("0201");assigment("0201");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0301");setKey("0301");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0301");setKey("0301");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="40" height="40" /></button>
+        
         </td>
         
         
@@ -328,138 +637,138 @@ time: "null"
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0002");setKey("0002");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0002");setKey("0002");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {setKey("0102");assigment("0102");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {setKey("0102");assigment("0102");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="40" height="40" /></button>
        
         
         </td>
         
        
         <td>
-        <button onClick={() => {assigment("0202");setKey("0202");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0202");setKey("0202");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0302");setKey("0302");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0302");setKey("0302");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="40" height="40" /></button>
+        
         </td>
       
       
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0003");setKey("0003");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0003");setKey("0003");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0103");setKey("0103");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0103");setKey("0103");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0203");setKey("0203");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0203");setKey("0203");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0303");setKey("0303");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0303");setKey("0303");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="40" height="40" /></button>
+        
         </td>
       
       
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0004");setKey("0004");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0004");setKey("0004");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0104");setKey("0104");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0104");setKey("0104");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0204");setKey("0204");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0204");setKey("0204");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0304");setKey("0304");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0304");setKey("0304");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="40" height="40" /></button>
+        
         </td>
       
       
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0005");setKey("0005");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0005");setKey("0005");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0105");setKey("0105");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0105");setKey("0105");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0205");setKey("0205");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0205");setKey("0205");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0305");setKey("0305");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0305");setKey("0305");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="40" height="40" /></button>
+        
         </td>
       
       
     </tr>
     <tr>
       <td>
-        <button onClick={() => {assigment("0006");setKey("0006");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0006");setKey("0006");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0106");setKey("0106");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0106");setKey("0106");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0206");setKey("0206");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0206");setKey("0206");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0306");setKey("0306");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0306");setKey("0306");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="40" height="40" /></button>
+        
         </td>
       
       
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0007");setKey("0007");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0007");setKey("0007");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="40" height="40" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0107");setKey("0107");disable();setRound(round+1);}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0107");setKey("0107");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="40" height="40" /></button>
        
         
         </td>
        
        
         <td>
-        <button onClick={() => {assigment("0207");setKey("0207");disable();setRound(round+1);}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="40" height="40" /></button>
+        <button onClick={() => {assigment("0207");setKey("0207");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="40" height="40" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0307");setKey("0307");disable();setRound(round+1);}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="40" height="40" /></button>
-        {/* <audio ref={audioPlayer} src={aaa} /> */}
+        <button onClick={() => {assigment("0307");setKey("0307");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Green.png') } width="40" height="40" /></button>
+        
         </td>
    
       

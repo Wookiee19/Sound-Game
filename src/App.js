@@ -15,6 +15,7 @@ function App() {
   const {isShowing, toggle} = useModal();
   function assign(a){
     setCode( code );
+    localStorage.setItem("code",a)
     setDisable(false);
   }
   return (
@@ -23,11 +24,11 @@ function App() {
       {localStorage.removeItem("Scores")}
       {!show  && <div style={{marginLeft:"5%"}}>
       
-        <input type="text"  placeholder="Select an Username" size="20"   onChange={(e) => {assign(e.target.value)} }/>
+    <input type="text"  placeholder="Select an Username" size="20"   onChange={(e) => {assign(e.target.value)} }/>
      
     <button onClick={() => setShow(show => !show)} disabled={disable} class="button-29" role="button">Play</button>
-    {localStorage.setItem("Code", code)}
-    {console.log("yyyy",localStorage.getItem("Code"))}
+    
+    {console.log("yyyy",localStorage.getItem("code"))}
     <button className="button-default" onClick={toggle}>Instruction</button>
       <Modal
         isShowing={isShowing}
