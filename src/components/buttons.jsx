@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import config from "../config";
 import Csv from './csv';
-
+import background from '../Assets/background.jpg'
 import Slider from "./Slider";
 
 import "./styles.css";
@@ -18,7 +18,14 @@ import appConfig from "../config";
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import ff from "../Assets/Button/02_Blue.png"
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
+  
 
 let max = 7;
 var file="00";
@@ -29,6 +36,7 @@ var i=0;
 
 function Buttons() {
 
+  const [open, setOpen] = React.useState(false);
   const [key,setKey]=useState();
   const [userInput,setuserInput]=useState([""]);
   const [generated,setGenerated]=useState(["Generated"]);
@@ -49,6 +57,7 @@ function Buttons() {
   const [startTime,setStartTime]=useState();
   const [diffrence,setDiffrence]=useState();
   const [show1,setShow1]=useState(false);
+  
   var counter;
   var userToPost ;
   const speed7=["talker2_060105_spd_24.wav",
@@ -360,6 +369,15 @@ const _handleIndexChange = (index) => {
 };
 
 
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   function assigment(a){
    
     setuserInput( userInput => [...userInput, a]);
@@ -390,14 +408,14 @@ const _handleIndexChange = (index) => {
     else
     {
       
-      setShow1(true);
+      handleClickOpen()
       setDisabled(true);
     }
 
   }
   function afterBlock(){
     setRound(round+1);
-    setShow1(false);
+    handleClose();
   }
   function startButton() {
     setStartTime(Date.now());
@@ -522,10 +540,19 @@ console.log("rfile",rfile)
     timeout();
     output();
     if(initial<8 && dead!=1){
-      
+      if(round==0){
+        setTimeout(function() {
+          disable();
+          playAudio();
+        }, appConfig.audioPlayAfter);}
+        else{
+          setTimeout(function() {
     disable();
     playAudio(); 
-    }
+  }, appConfig.audioPlayAfter);}
+      }
+      
+    
     
     
   
@@ -544,10 +571,53 @@ console.log("rfile",rfile)
   return (
     <div>
       
-      { initial<8 &&
+    
      <>
       
-        
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        PaperProps={{
+          style: {
+            backgroundImage:  "url(https://img.freepik.com/free-photo/pink-elegant-geometrical-texture_23-2149168864.jpg?t=st=1657805499~exp=1657806099~hmac=fac946b6a685a789edb447cf83c0d11e6fb2025dab316016bdfed9c6c8e3c10b)",
+            boxShadow: 'none',
+          },
+        }}
+      >
+        <DialogTitle id="alert-dialog-title">
+          <h2 >{"A multisensory experience"}</h2>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <h2 className='sub'>Your Score:{Score}</h2>
+            {initial==8 &&
+<>
+<h2 className='sub'>Game Over</h2>
+<Csv value1={generated} value2={csvUser} value3={csvResult}/>
+ </>
+}
+          </DialogContentText>
+        </DialogContent>
+        {initial!=8 &&
+        <DialogActions>
+          
+          <Button onClick={afterBlock} autoFocus>
+           <h4 className='sub' > Next Round</h4>
+          </Button>
+        </DialogActions>
+}
+{initial==8 &&
+
+        <DialogActions>
+          
+          <Button  autoFocus>
+           <h4 className='sub' > Play Again!</h4>
+          </Button>
+        </DialogActions>
+}
+      </Dialog>
     <div class="flex-container">
     <div class="flex-child1 magenta">
   
@@ -558,14 +628,14 @@ console.log("rfile",rfile)
       
 <div className="frame">
   
-   <img className="frame1" onClick={() => {setValue(0)}} src={require('../Assets/Slider/Charlie.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(1)}}src={require('../Assets/Slider/Ringgo.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(2)}} src={require('../Assets/Slider/Laker.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(3)}} src={require('../Assets/Slider/Hopper.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(4)}} src={require('../Assets/Slider/Arrow.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(5)}}  src={require('../Assets/Slider/Tiger.png')} height="40" />
-   <img className="frame1"  onClick={() => {setValue(6)}} src={require('../Assets/Slider/Eagle.png')} height="40" />
-   <img className="frame1" onClick={() => {setValue(7)}} src={require('../Assets/Slider/Baron.png')} height="40" />
+   <img className="frame1" onClick={() => {setValue(0)}} src={require('../Assets/Slider/Charlie.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(1)}}src={require('../Assets/Slider/Ringgo.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(2)}} src={require('../Assets/Slider/Laker.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(3)}} src={require('../Assets/Slider/Hopper.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(4)}} src={require('../Assets/Slider/Arrow.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(5)}}  src={require('../Assets/Slider/Tiger.png')} height="38" />
+   <img className="frame1"  onClick={() => {setValue(6)}} src={require('../Assets/Slider/Eagle.png')} height="38" />
+   <img className="frame1" onClick={() => {setValue(7)}} src={require('../Assets/Slider/Baron.png')} height="38" />
 </div>
 
    </div>   
@@ -575,14 +645,13 @@ console.log("rfile",rfile)
   {round==0 && <h3 className='sub'>Please pay attention to the instructions </h3>}
   {round>0 &&<>
     
-  {!show1 && <><h2 className='name'>Game Name</h2>
+  <h2 className='name'>Game Name</h2>
   <h3 className='sub'>Answer : {answer}</h3>
   <h3 className='sub'>Audio Speed : {audioSpeed} dB</h3>
   <h3 className='sub'>Time : {diffrence} ms</h3>
   {answer=="true" && <h3 className='sub'>{appConfig.feedbackTextRight} </h3>}
-  {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}</>}
-  {show1 && <><h3 className='sub'> Round End</h3><h3 className='sub'>Your Score : {Score} </h3>
-  <button class="button-33" role="button" onClick={()=>{afterBlock()}} >Click for  New Round</button></>}
+  {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>Ready {aaShow} goto {bbShow} {ccShow} now</div>}</h3>}
+  
   </>}   
 </div>
 
@@ -782,18 +851,10 @@ console.log("rfile",rfile)
 
     </div>
 
-</div></>  }
+</div></>  
 
 
-{initial==8 &&
-<>
 
-{console.log("generated",generated)}
-{console.log("csvUser",csvUser)}
-{console.log("csvResult",csvResult)}
-<Csv value1={generated} value2={csvUser} value3={csvResult}/>
- </>
-}
 
     </div>
   )

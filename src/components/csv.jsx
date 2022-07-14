@@ -34,7 +34,7 @@ console.log("uuu",userInput)
     <div>
       {console.log("info",info)}
       
-
+{/* 
 <div id="tudo">
 
 	<div class="gameover">
@@ -43,9 +43,9 @@ console.log("uuu",userInput)
 	</div>
 
 
-</div>
+</div> */}
 
-       <CSVLink  data={info} filename={name+".csv"}><button class="button-33" role="button"><span>Download CSV</span>{console.log("dddd",name)}</button></CSVLink>
+       <CSVLink  data={info} filename={name+".csv"}><button class="button-33" role="button"><span>Download CSV</span></button></CSVLink>
        
 
 

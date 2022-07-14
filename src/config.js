@@ -10,6 +10,8 @@ const appConfig={
     durationBetweenRound : '1500', 
     //Duration Between folder change for speed voice/instruction
     
+    audioPlayAfter: '5000',
+    //audio will play after x sec when game starts
     videoUrl : '', 
     //instruction video Url currently hardcoded
     

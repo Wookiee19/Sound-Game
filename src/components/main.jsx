@@ -5,7 +5,7 @@ import sapceship from "../Assets/Background.png";
 // import space from "../Assets/spaces.gif";
 import Buttons from './buttons';
 import Panel from './panel';
-import Sliders from './sliders';
+
 // import fog1 from "../Assets/fog1.gif";
 // import fog2 from "../Assets/fog2.gif";
 // import astroid from "../Assets/astoid.gif";
