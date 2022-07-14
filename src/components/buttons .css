@@ -37,7 +37,7 @@ margin-left:11%;
 .flex-child2 {
   width: 34%;
   margin-top: 22%;
-  margin-left: -19%;
+  margin-left: -17%;
 } 
 .font{
   color: rgb(185, 24, 24);
@@ -53,7 +53,6 @@ margin-left:11%;
 }
 .sub{
  
-  
   font-weight: bolder;
 color: rgb(11, 56, 170);
 text-align: center;
@@ -64,7 +63,6 @@ font-size: x-large;
   #matrix { 
     position: static;
     margin: 0 auto;
-    /* padding: 15px; */
     margin: 10% 66%;
     margin-top: 11%;
   }

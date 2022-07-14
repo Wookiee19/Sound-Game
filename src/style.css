@@ -55,8 +55,8 @@
     font-size: .9rem;
     font-weight: 700;
     border: none;
-    border-radius: 3px;
-    padding: .3rem 1rem;
+    /* border-radius: 3px; */
+    padding: .2rem .2rem;
     margin-left: .5rem;
   }
   

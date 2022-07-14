@@ -9,9 +9,11 @@ function csv(generated) {
   let val1=generated.value1;
   let val2=generated.value2;
   let val3=generated.value3;
-  let rem1=val1.splice(1,1);
-  let rem2=val2.splice(1,1);
-  let rem3=val3.splice(1,1);
+  // let rem1=val1.splice(1,1);
+  // let rem2=val2.splice(1,1);
+  // let rem3=val3.splice(1,1);
+  {console.log("csvgenetared",generated.value1)}
+{console.log("csvuser",generated.value2)}
 {console.log("csvgenetared",generated.value1)}
 {console.log("csvuser",generated.value2)}
 {console.log("csvresult",localStorage.getItem("code"))}
