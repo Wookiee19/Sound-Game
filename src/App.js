@@ -5,6 +5,7 @@ import Modal from "./components/modal";
 import useModal from './components/useModal';
 import "./style.css"
 import backgr from "./Assets/background.jpg"
+import appConfig from "./config";
 
 
 

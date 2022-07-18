@@ -12,23 +12,22 @@ const appConfig={
     
     audioPlayAfter: '5000',
     //audio will play after x sec when game starts
-    videoUrl : '', 
+    videoUrl : 'https://www.youtube.com/embed/GjtrBwrX2ZA?controls=0?autoplay=1', 
     //instruction video Url currently hardcoded
+    mute: "&mute=1",
+    //mute video 1=Yes 0=No
     
     Trials:'2', 
     //Total rounds in same speed
     url:'https://omc0dwxiy7.execute-api.ap-south-1.amazonaws.com',
+   
     opts : {           
     //video options
-        height: '390',
+        height: '490',
         //height of video player for instruction
-        width: '640',
+        width: '490',
         //width of video player for instruction
-        playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        autoplay: 1,
-        //1- If you wnat video to auto play 0-If you want your video to click on play
-        },
+       
       }
       
 };
