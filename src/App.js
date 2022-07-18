@@ -13,9 +13,13 @@ function App() {
   const [code, setCode] = useState();
   const[disable,setDisable]=useState(true);
   const {isShowing, toggle} = useModal();
+  var date;
   function assign(a){
     setCode( code );
-    localStorage.setItem("code",a)
+    date=new Date();
+    let result = a.concat("_", date);
+    localStorage.setItem("code",result)
+    console.log("code",localStorage.getItem("code"))
     setDisable(false);
   }
   return (

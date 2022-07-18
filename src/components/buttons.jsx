@@ -57,7 +57,7 @@ function Buttons() {
   const [startTime,setStartTime]=useState();
   const [diffrence,setDiffrence]=useState();
   const [show1,setShow1]=useState(false);
-  
+  const [time,setTime]=useState(["Time Taken "])
   var counter;
   var userToPost ;
   const speed7=["talker2_060105_spd_24.wav",
@@ -374,7 +374,9 @@ const _handleIndexChange = (index) => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (event, reason) => {
+    if (reason && reason == "backdropClick") 
+        return;
     setOpen(false);
   };
 
@@ -437,8 +439,10 @@ function stopButton() {
     
     var text=(`${"0"}${slider}${keypad}`);
     setInput(text);
-    if(i%2==0)
+    if(i%2==0){
     setCsvUser(csvUser => [...csvUser, text])
+    setTime(time=>[...time,diffrence])
+    }
     i++;
    console.log("first",keypad);
    console.log("user",text)
@@ -581,7 +585,7 @@ console.log("rfile",rfile)
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            backgroundImage:  "url(https://img.freepik.com/free-photo/pink-elegant-geometrical-texture_23-2149168864.jpg?t=st=1657805499~exp=1657806099~hmac=fac946b6a685a789edb447cf83c0d11e6fb2025dab316016bdfed9c6c8e3c10b)",
+            backgroundImage:  "url(https://img.freepik.com/free-photo/empty-light-white-studio-room-futuristic-sci-fi-big-hall-room-with-lights-white3d-rendering_41470-4517.jpg?t=st=1658123979~exp=1658124579~hmac=216ef18ca53d1cdd205e3ca5bbe6b76a3d74968560ab08d3b9baa64447efa178)",
             boxShadow: 'none',
           },
         }}
@@ -595,7 +599,7 @@ console.log("rfile",rfile)
             {initial==8 &&
 <>
 <h2 className='sub'>Game Over</h2>
-<Csv value1={generated} value2={csvUser} value3={csvResult}/>
+<Csv value1={generated} value2={csvUser} value3={csvResult} value4={time}/>
  </>
 }
           </DialogContentText>
@@ -613,7 +617,7 @@ console.log("rfile",rfile)
         <DialogActions>
           
           <Button  autoFocus>
-           <h4 className='sub' > Play Again!</h4>
+           <h4 className='sub' > Good Game Well Played!</h4>
           </Button>
         </DialogActions>
 }
