@@ -524,12 +524,12 @@ console.log("rfile",rfile)
   //  var fileNo=initial+file;
    setScore(parseInt(Score)+parseInt(calc(value,key,file)));
    data(parseInt(Score)+parseInt(calc(value,key,file)));
-   send();
+  //  send();
     // console.log("Score",Score);
    assigmentRandom(file);
    if(initial<8){
     const randomSong = require(`../Audio/${rfile}`);
-    // console.log("file",file)
+   
     var audio1 = new Audio(randomSong);
 audio1.play();
     
@@ -541,10 +541,10 @@ audio1.play();
   
   }
   useEffect(() => {
-   
-   
+     
     timeout();
     output();
+    
     if(initial<8 && dead!=1){
       if(round==0){
         setTimeout(function() {
@@ -557,12 +557,7 @@ audio1.play();
     playAudio(); 
   }, appConfig.audioPlayAfter);}
       }
-      
     
-    
-    
-  
-   
   },[round]);
 
  
@@ -674,18 +669,18 @@ audio1.play();
         
         </td>
       <td>
-      <button   onClick={() => {assigment("0100");setKey("0100");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="45" height="45" /></button>
+      <button   onClickCapture={() => {assigment("0100");setKey("0100");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Red.png') } width="45" height="45" /></button>
         
         
         </td>
        
        
         <td>
-        <button  onClick={() => {assigment("0200");setKey("0200");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="45" height="45" /></button>
+        <button  onClickCapture={() => {assigment("0200");setKey("0200");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/01_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button  onClick={() => {assigment("0300");setKey("0300");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="45" height="45" /></button>
+        <button  onClickCapture={() => {assigment("0300");setKey("0300");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/01_Green.png') } width="45" height="45" /></button>
        
         </td>
       
@@ -693,20 +688,20 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0001");assigment("0001");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="45" height="45"/></button>
+        <button onClickCapture={() => {assigment("0001");assigment("0001");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={require('../Assets/Button/02_Blue.png')}  width="45" height="45"/></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0101");setKey("0101");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0101");setKey("0101");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Red.png') } width="45" height="45" /></button>
        
         
         </td>
         <td>
-        <button onClick={() => {setKey("0201");assigment("0201");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {setKey("0201");assigment("0201");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/02_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0301");setKey("0301");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0301");setKey("0301");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/02_Green.png') } width="45" height="45" /></button>
         
         </td>
         
@@ -716,22 +711,22 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0002");setKey("0002");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0002");setKey("0002");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {setKey("0102");assigment("0102");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {setKey("0102");assigment("0102");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Red.png') } width="45" height="45" /></button>
        
         
         </td>
         
        
         <td>
-        <button onClick={() => {assigment("0202");setKey("0202");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0202");setKey("0202");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/03_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0302");setKey("0302");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0302");setKey("0302");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/03_Green.png') } width="45" height="45" /></button>
         
         </td>
       
@@ -739,22 +734,22 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0003");setKey("0003");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0003");setKey("0003");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0103");setKey("0103");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0103");setKey("0103");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Red.png') } width="45" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0203");setKey("0203");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0203");setKey("0203");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/04_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0303");setKey("0303");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0303");setKey("0303");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/04_Green.png') } width="45" height="45" /></button>
         
         </td>
       
@@ -762,22 +757,22 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0004");setKey("0004");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0004");setKey("0004");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0104");setKey("0104");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0104");setKey("0104");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Red.png') } width="45" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0204");setKey("0204");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0204");setKey("0204");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/05_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0304");setKey("0304");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0304");setKey("0304");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/05_Green.png') } width="45" height="45" /></button>
         
         </td>
       
@@ -785,22 +780,22 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0005");setKey("0005");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0005");setKey("0005");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0105");setKey("0105");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0105");setKey("0105");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Red.png') } width="45" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0205");setKey("0205");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0205");setKey("0205");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/06_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0305");setKey("0305");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0305");setKey("0305");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/06_Green.png') } width="45" height="45" /></button>
         
         </td>
       
@@ -808,22 +803,22 @@ audio1.play();
     </tr>
     <tr>
       <td>
-        <button onClick={() => {assigment("0006");setKey("0006");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0006");setKey("0006");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0106");setKey("0106");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0106");setKey("0106");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Red.png') } width="45" height="45" /></button>
        
         
         </td>
        
         
         <td>
-        <button onClick={() => {assigment("0206");setKey("0206");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0206");setKey("0206");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/07_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0306");setKey("0306");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0306");setKey("0306");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/07_Green.png') } width="45" height="45" /></button>
         
         </td>
       
@@ -831,22 +826,22 @@ audio1.play();
     </tr>
     <tr>
     <td>
-        <button onClick={() => {assigment("0007");setKey("0007");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0007");setKey("0007");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Blue.png') } width="45" height="45" /></button>
       
         </td>
       <td>
-        <button onClick={() => {assigment("0107");setKey("0107");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0107");setKey("0107");stopButton();disable();startButton();roundUpdate("button");}}    disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Red.png') } width="45" height="45" /></button>
        
         
         </td>
        
        
         <td>
-        <button onClick={() => {assigment("0207");setKey("0207");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0207");setKey("0207");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} role="button"><img src={ require('../Assets/Button/08_White.png') } width="45" height="45" /></button>
         
         </td>
         <td>
-        <button onClick={() => {assigment("0307");setKey("0307");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Green.png') } width="45" height="45" /></button>
+        <button onClickCapture={() => {assigment("0307");setKey("0307");stopButton();disable();startButton();roundUpdate("button");}}   disabled={disabled} role="button"><img src={ require('../Assets/Button/08_Green.png') } width="45" height="45" /></button>
         
         </td>
    
