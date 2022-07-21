@@ -344,7 +344,7 @@ const speed0=["talker2_070101_spd_66.wav",
   "talker0_000001_spd_66.wav",
   "talker0_000000_spd_66.wav",
   "talker2_070305_spd_66.wav",];
-var dead; 
+var dead=0; 
 const [audioSpeed,setaudioSpeed]=useState("18");
   // var startTime;
   // const [text, setText] = useState('');
@@ -530,8 +530,10 @@ console.log("rfile",rfile)
    if(initial<8){
     const randomSong = require(`../Audio/${rfile}`);
     // console.log("file",file)
-    new Audio(randomSong).play()
-    // {console.log("randomSong",randomSong)}
+    var audio1 = new Audio(randomSong);
+audio1.play();
+    
+    {console.log("rrrrrrrrandomSong",randomSong)}
  
     startButton()
     
