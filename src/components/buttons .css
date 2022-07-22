@@ -36,7 +36,7 @@ margin-left:11%;
 }  
 .flex-child2 {
   width: 34%;
-  margin-top: 23.5%;
+  margin-top: 21.5%;
   margin-left: -17%;
 } 
 .font{
@@ -63,8 +63,8 @@ font-size: x-large;
   #matrix { 
     position: static;
     margin: 0 auto;
-    margin: 10% 66%;
-    margin-top: 11%;
+    margin: 0% 66%;
+    margin-top: 1%;
   }
   
   #matrix tr, td {

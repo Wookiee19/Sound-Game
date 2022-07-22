@@ -550,6 +550,7 @@ audio1.play();
         setTimeout(function() {
           disable();
           playAudio();
+          
         }, appConfig.audioPlayAfter);}
         else{
           setTimeout(function() {
@@ -623,7 +624,7 @@ audio1.play();
     <div class="flex-child1 magenta">
   
     <div style={{ marginLeft: "7%" }}>
-      <div style={{ marginLeft: "-17%", marginTop:"-25%" }}>
+      <div style={{ marginLeft: "-17%", marginTop:"-38%" }}>
     <Slider onChange={_handleIndexChange} currentIndex={value} />
     </div>
       
