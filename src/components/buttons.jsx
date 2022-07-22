@@ -531,6 +531,7 @@ console.log("rfile",rfile)
     const randomSong = require(`../Audio/${rfile}`);
    
     var audio1 = new Audio(randomSong);
+    audio1.load();
 audio1.play();
     
     {console.log("randomSong",randomSong)}
