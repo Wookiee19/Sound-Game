@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { CSVLink, CSVDownload } from "react-csv";
 import './main.css';
-import sapceship from "../Assets/Background.jfif";
+import sapceship from "../Assets/background2.jpg";
 // import space from "../Assets/spaces.gif";
 import Buttons from './buttons';
 import Panel from './panel';
