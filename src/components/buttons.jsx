@@ -364,6 +364,7 @@ const [audioSpeed,setaudioSpeed]=useState("18");
     
 }
 
+
 const _handleIndexChange = (index) => {
   setValue(index);
 };
@@ -541,6 +542,9 @@ audio1.play();
    }
   
   }
+  const playAudioFiles = () => { 
+    playAudio();
+  };
   useLayoutEffect(() => {
      
     timeout();
@@ -550,7 +554,7 @@ audio1.play();
       if(round==0){
         setTimeout(function() {
           disable();
-          playAudio();
+          playAudioFiles();
           
         }, appConfig.audioPlayAfter);}
         else{
