@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import uniqueRandom from 'unique-random';
 import "./buttons .css";
 import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect,useLayoutEffect } from 'react';
 import config from "../config";
 import Csv from './csv';
 import background from '../Assets/background.jpg'
@@ -541,7 +541,7 @@ audio1.play();
    }
   
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
      
     timeout();
     output();
