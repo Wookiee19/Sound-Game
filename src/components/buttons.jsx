@@ -554,10 +554,10 @@ audio1.play();
           
        }
         else{
-          setTimeout(function() {
+          
     disable();
     playAudio(); 
-  }, appConfig.audioPlayAfter);}
+  }
       }
     
   },[round]);
