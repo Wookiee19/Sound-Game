@@ -515,7 +515,9 @@ time: "null"
 
   function playAudio() {
     
-   
+  
+     
+
     var rfile= eval(`speed${initial}`)[Math.floor(Math.random()*speed1.length)];
     if(rfile)
        file=rfile.slice(8,14);
@@ -531,9 +533,10 @@ console.log("rfile",rfile)
     const randomSong = require(`../Audio/${rfile}`);
    
     var audio1 = new Audio(randomSong);
+    setTimeout(() => {
     audio1.load();
 audio1.play();
-    
+}, config.audioPlayAfter);
     {console.log("randomSong",randomSong)}
  
     startButton()

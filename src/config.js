@@ -7,7 +7,7 @@ const appConfig={
     //Text shown to user for incorrect answer
     showAnswer:true,
     //Show answer to user for incorrect answer
-    durationBetweenRound : '1500', 
+    durationBetweenRound : '2500', 
     //Duration Between folder change for speed voice/instruction
     
     audioPlayAfter: '2000',
