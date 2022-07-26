@@ -8,7 +8,7 @@ import Csv from './csv';
 import background from '../Assets/background.jpg'
 import Slider from "./Slider";
 import wrong from "../Assets/cancel.jpg"
-import tick from "../Assets/check.PNG"
+import tick from "../Assets/check.jpg"
 import "./styles.css";
 import UserInputCheck from "./userInputCheck"
 import Names from "./names"
