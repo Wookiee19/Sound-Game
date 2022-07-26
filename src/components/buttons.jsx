@@ -654,14 +654,14 @@ audio1.play();
     
   <h2 className='name'>Game Name</h2>
   {/* <h3 className='sub'>Answer : {answer}</h3> */}
-  {answer=="true" && <img src={tick} style={{ marginLeft: "37%" }} width="80" height="80"></img>}
-  {answer=="false" && <img src={wrong} style={{ marginLeft: "37%" }} width="60" height="60"></img>}
+  {answer=="true" && <img src={tick} style={{ marginLeft: "41%" }} width="80" height="80"></img>}
+  {answer=="false" && <img src={wrong} style={{ marginLeft: "41%" }} width="60" height="60"></img>}
   {/* <h3 className='sub'>Audio Speed : {audioSpeed} dB</h3>
   <h3 className='sub'>Time : {diffrence} ms</h3> */}
   {/* {answer=="true" && <h3 className='sub'>{appConfig.feedbackTextRight} </h3>} */}
   {bbShow && <div>
   {answer=="false" && <h3 className='sub'>{appConfig.feedbackTextWrong}{appConfig.showAnswer && <div className='sub'>{aaShow} </div>}</h3>} 
-  {answer=="false" && <h3 className='sub'>{appConfig.showAnswer && <div className='sub'> <img src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}  style={{ marginTop: "7%" }} height="50" width="50"></img></div>}</h3>} 
+  {answer=="false" && <h3 className='sub'>{appConfig.showAnswer && <div className='sub'> <img src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}  height="50" width="50"></img></div>}</h3>} 
   </div>
 }
   </>}   
