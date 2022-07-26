@@ -10,6 +10,8 @@ const appConfig={
     durationBetweenRound : '2500', 
     //Duration Between folder change for speed voice/instruction
     
+    durationBeforegame:'3000',
+    //Duration Between landing page and main game panel
     audioPlayAfter: '2000',
     //audio will play after defined sec when game starts
     videoUrl : 'https://www.youtube.com/embed/GjtrBwrX2ZA?controls=0?autoplay=1', 

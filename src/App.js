@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState,useEffect} from 'react'
 import Main from './components/main';
 import "./App.css";
 import Modal from "./components/modal";
@@ -15,6 +15,11 @@ function App() {
   const[disable,setDisable]=useState(true);
   const {isShowing, toggle} = useModal();
   var date;
+  function click(){
+      var audio = new Audio(require(`./Audio/click/mixkit-spaceship-landing-2735.wav`));
+    audio.play();
+  
+  }
   function assign(a){
     setCode( code );
     date=new Date();
@@ -23,6 +28,12 @@ function App() {
     console.log("code",localStorage.getItem("code"))
     setDisable(false);
   }
+  useEffect(() => {
+  
+    click();
+  
+   
+  },[])
   return (
     <div className='body'>
       
