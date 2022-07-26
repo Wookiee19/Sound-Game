@@ -7,7 +7,7 @@ import config from "../config";
 import Csv from './csv';
 import background from '../Assets/background.jpg'
 import Slider from "./Slider";
-import wrong from "../Assets/cancel.PNG"
+import wrong from "../Assets/cancel.jpg"
 import tick from "../Assets/check.PNG"
 import "./styles.css";
 import UserInputCheck from "./userInputCheck"
