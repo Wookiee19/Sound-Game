@@ -3,7 +3,7 @@ const appConfig={
     //disable button after round Keypad only
     feedbackTextRight:'Corect Answer',
     //Text shown to user for correct answer
-    feedbackTextWrong:'Wrong Answer',
+    feedbackTextWrong:'The correct answer was',
     //Text shown to user for incorrect answer
     showAnswer:true,
     //Show answer to user for incorrect answer
