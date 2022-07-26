@@ -33,7 +33,7 @@ function App() {
     click();
   
    
-  },[])
+  },)
   return (
     <div className='body'>
       
