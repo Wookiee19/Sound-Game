@@ -25,8 +25,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
-
-  
+import audioCorrect from '../Audio/add/correct.wav';
+import audioWrong from '../Audio/add/wrong.wav';
+import buttonAudio from '../Audio/add/click.wav'; 
 
 let max = 7;
 var file="00";
@@ -354,6 +355,7 @@ const [audioSpeed,setaudioSpeed]=useState("18");
    
   
      if(round%appConfig.Trials==0 && initial<=7){
+      
       setInitial(initial+1)
       setaudioSpeed(parseInt(audioSpeed)+initial+(6-initial))
         if(initial==7)
@@ -389,16 +391,20 @@ const _handleIndexChange = (index) => {
     
   }
   function disable(){
-    if(config.ButtonDisable){
+   
     setDisabled(true);
     setTimeout(() => {
         setDisabled(false);
-    }, config.durationBetweenRound);}
-    else 
-    setDisabled(false);
-
-
+        console.log("first",disabled)
+    }, config.durationBetweenRound);
     
+  }
+  function clickSound()
+  {
+      
+    var audio = new Audio(buttonAudio);
+    audio.play();
+    console.log("button",audio)
   }
 
   function roundUpdate(check){
@@ -412,7 +418,7 @@ const _handleIndexChange = (index) => {
     {
       
       handleClickOpen()
-      setDisabled(true);
+     
     }
 
   }
@@ -422,13 +428,13 @@ const _handleIndexChange = (index) => {
   }
   function startButton() {
     setStartTime(Date.now());
-    console.log("rrrr",startTime);
+    // console.log("rrrr",startTime);
 }
 function stopButton() {
   
       var endTime = Date.now();
       setDiffrence(endTime - startTime);
-      console.log("yy",diffrence)
+      // console.log("yy",diffrence)
       // startTime = null;
   
 }
@@ -445,13 +451,14 @@ function stopButton() {
     setTime(time=>[...time,diffrence])
     }
     i++;
-   console.log("first",keypad);
-   console.log("user",text)
-   console.log("random",generated[generated.length - 1])
+  //  console.log("first",keypad);
+  //  console.log("user",text)
+  //  console.log("random",generated[generated.length - 1])
    
     if(text==generated[generated.length - 1])
     {
       // console.log("Score11",10);
+      
       setAnswer("true");
       if(i%2==0)
       setCsvResult(csvResult => [...csvResult, "true"])
@@ -490,8 +497,8 @@ time: "null"
         .post(appConfig+'/capture-activity', userToPost)
         .catch((error) => console.log('Error: ', error));
     if (response && response.data) {
-        console.log(response);
-        console.log(response.data);
+        // console.log(response);
+        // console.log(response.data);
     }
 };
 
@@ -505,13 +512,13 @@ time: "null"
 
   function output(){
     const chars = file.split('');
-    console.log("bb",chars[4])
+    // console.log("bb",chars[4])
     setaaShow(AA[chars[1]]);
     setbbShow(BB[chars[3]]);
     setccshow(CC[chars[5]]);
-    console.log("first",aaShow);
-    console.log("first",bbShow);
-    console.log("first",ccShow);
+    // console.log("first",aaShow);
+    // console.log("first",bbShow);
+    // console.log("first",ccShow);
   }
 
   function playAudio() {
@@ -522,7 +529,7 @@ time: "null"
     var rfile= eval(`speed${initial}`)[Math.floor(Math.random()*speed1.length)];
     if(rfile)
        file=rfile.slice(8,14);
-console.log("rfile",rfile)
+// console.log("rfile",rfile)
 
   //  var fileNo=initial+file;
    setScore(parseInt(Score)+parseInt(calc(value,key,file)));
@@ -530,9 +537,10 @@ console.log("rfile",rfile)
   //  send();
     // console.log("Score",Score);
    assigmentRandom(file);
+  
    if(initial<8){
     const randomSong = require(`../Audio/${rfile}`);
-   
+    // console.log("IMP_file",audio1.duration)
     var audio1 = new Audio(randomSong);
     setTimeout(() => {
     audio1.load();
@@ -545,35 +553,42 @@ audio1.play();
    }
   
   }
+  function responceAudio(){
+    if(answer=="false"){
+    const randomSong = audioWrong;
+      console.log("respoce",randomSong)
+      var audio1 = new Audio(randomSong);
+      audio1.play();
+    }
+    if(answer=="true"){
+      const randomSong = audioCorrect;
+      console.log("respoce",randomSong)
+        var audio1 = new Audio(randomSong);
+        audio1.play();
+      }
+  }
   useEffect(() => {
      
     timeout();
     output();
     
     if(initial<8 && dead!=1){
-      if(round==0){
-       
-          disable();
-          playAudio();
-          
-       }
-        else{
-          
+      if(initial>0)
+      responceAudio();
     disable();
     playAudio(); 
-  }
-      }
+        }
     
   },[round]);
 
  
 
-  useEffect(() => {
-    console.log("value",value);
+  // useEffect(() => {
+  //   console.log("value",value);
     
   
    
-  },[value])
+  // },[value])
 
   return (
     <div>
@@ -588,7 +603,7 @@ audio1.play();
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            backgroundImage:  "url(https://img.freepik.com/free-photo/empty-light-white-studio-room-futuristic-sci-fi-big-hall-room-with-lights-white3d-rendering_41470-4517.jpg?t=st=1658123979~exp=1658124579~hmac=216ef18ca53d1cdd205e3ca5bbe6b76a3d74968560ab08d3b9baa64447efa178)",
+            backgroundImage:  "url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-87854.jpg?w=740&t=st=1659332876~exp=1659333476~hmac=ecb85be2b178efeacc1af797871746470e17d254fb1a1d60d68b899876831969)",
             boxShadow: 'none',
           },
         }}
@@ -653,9 +668,11 @@ audio1.play();
   {round>0 &&<>
     
   <h2 className='name'>Game Name</h2>
+  {appConfig.showScoreInConsole=="true" && <h2 className='sub'>Your Score: {Score}</h2>}
   {/* <h3 className='sub'>Answer : {answer}</h3> */}
   {answer=="true" && <img src={tick} style={{ marginLeft: "41%" }} width="80" height="80"></img>}
   {answer=="false" && <img src={wrong} style={{ marginLeft: "41%" }} width="60" height="60"></img>}
+ 
   {/* <h3 className='sub'>Audio Speed : {audioSpeed} dB</h3>
   <h3 className='sub'>Time : {diffrence} ms</h3> */}
   {/* {answer=="true" && <h3 className='sub'>{appConfig.feedbackTextRight} </h3>} */}
@@ -676,7 +693,7 @@ audio1.play();
    
     <tr>
     <td>
-        <button  onClick={() => {assigment("0000");setKey("0000");stopButton();disable();startButton();roundUpdate("button");}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="45" height="45"/></button>
+        <button  onClick={() => {assigment("0000");setKey("0000");stopButton();clickSound();disable();startButton();roundUpdate("button");}}  disabled={disabled} ><img src={require('../Assets/Button/01_Blue.png')}  width="45" height="45"/></button>
         
         </td>
       <td>

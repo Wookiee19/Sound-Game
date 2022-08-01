@@ -7,9 +7,9 @@ const appConfig={
     //Text shown to user for incorrect answer
     showAnswer:true,
     //Show answer to user for incorrect answer
-    durationBetweenRound : '2500', 
+    durationBetweenRound : '5500', 
     //Duration Between folder change for speed voice/instruction
-    
+    showScoreInConsole:"true",
     audioPlayAfter: '2000',
     //audio will play after defined sec when game starts
     videoUrl : 'https://www.youtube.com/embed/GjtrBwrX2ZA?controls=0?autoplay=1', 

@@ -6,7 +6,7 @@ function UserInputCheck(keypad,slider,generated) {
   setText(`${keypad}${slider}`);
   if(text==generated)
   {
-    console.log("Score11",true);
+    // console.log("Score11",true);
     return 10;
     
   }

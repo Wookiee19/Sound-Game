@@ -14,12 +14,12 @@ function csv(generated) {
   let rem2=val2.splice(1,1);
   let rem3=val3.splice(1,1);
   let rem4=val4.splice(1,1)
-  {console.log("csvgenetared",rem1)}
-{console.log("csvuser",rem2)}
-{console.log("csvgenetared",rem3)}
-{console.log("csvuser",rem4)}
-{console.log("csvresult",localStorage.getItem("code"))}
-console.log("uuu",userInput)
+//   {console.log("csvgenetared",rem1)}
+// {console.log("csvuser",rem2)}
+// {console.log("csvgenetared",rem3)}
+// {console.log("csvuser",rem4)}
+// {console.log("csvresult",localStorage.getItem("code"))}
+// console.log("uuu",userInput)
   var info=[
     userInput=val1,
    generatedData=val2,

@@ -25,7 +25,7 @@ class Sliders extends React.Component {
       () => {
         
         generated= [...generated, this.state.value];
-        console.log("generated",generated);
+        // console.log("generated",generated);
         localStorage.setItem("slider",generated)
       }
     );
