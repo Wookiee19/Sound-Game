@@ -1,4 +1,4 @@
-import { CSVLink, CSVDownload } from "react-csv";
+import CsvDownloader from 'react-csv-downloader';
 import React from 'react';
 import './csv.css'
 
@@ -14,6 +14,40 @@ function csv(generated) {
   let rem2=val2.splice(1,1);
   let rem3=val3.splice(1,1);
   let rem4=val4.splice(1,1)
+  
+
+  const columns = [{
+    id: 'first',
+    displayName: 'Generated'
+  },
+  {
+    id: 'second',
+    displayName: 'User Input'
+  },
+  {
+    id: 'third',
+    displayName: 'Answer'
+  }, {
+    id: 'forth',
+    displayName: 'Time taken'
+  },
+  {
+    id: 'fifth',
+    displayName: 'User Name'
+  }];
+  const datas = [{
+    val2
+  }, {
+    val1
+  },{
+    val3
+  },
+{
+  val4
+},
+{
+  userkey
+}];
 //   {console.log("csvgenetared",rem1)}
 // {console.log("csvuser",rem2)}
 // {console.log("csvgenetared",rem3)}
@@ -38,8 +72,14 @@ function csv(generated) {
       {console.log("info",info)}
       
 
-
-       <CSVLink  data={info} filename={name+".csv"}><button class="button-33" role="button"><span>Download CSV</span></button></CSVLink>
+      <CsvDownloader
+        filename="myfile"
+        extension=".csv"
+        separator=";"
+        wrapColumnChar="'"
+        columns={columns}
+        datas={datas}
+        text="DOWNLOAD" />
        
 
 

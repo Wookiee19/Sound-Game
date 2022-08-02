@@ -29,6 +29,7 @@
     "react-blink-text": "^1.0.5",
     "react-compound-timer": "^1.2.0",
     "react-csv": "^2.2.2",
+    "react-csv-downloader": "^2.8.0",
     "react-custom-slider": "^1.0.9",
     "react-dom": "^18.1.0",
     "react-h5-audio-player": "^3.8.4",
