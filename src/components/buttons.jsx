@@ -525,9 +525,9 @@ time: "null"
     setaaShow(AA[chars[1]]);
     setbbShow(BB[chars[3]]);
     setccshow(CC[chars[5]]);
-    // console.log("first",aaShow);
-    // console.log("first",bbShow);
-    // console.log("first",ccShow);
+    console.log("first",aaShow);
+    console.log("first",bbShow);
+    console.log("first",ccShow);
   }
 function set(){
   if(rfile)
