@@ -49,7 +49,7 @@ function csv(generated) {
           <ExportReactCSV
             csvHeaders={headers}
             csvData={customersData()}
-            fileName="Customers_Infomations_csv.csv"
+            fileName={name}
           />
        
      
