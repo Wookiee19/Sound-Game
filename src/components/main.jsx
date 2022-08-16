@@ -24,7 +24,7 @@ function Main() {
   return (
     <div className="App">
       <Score />
-      <div class="makebottom ml-5 mr-1" style={{ overflowX: "hidden" }}>
+      <div class="makebottom ml-5 mr-1" style={{ overflow: "hidden" }}>
         <Buttons />
       </div>
       <img

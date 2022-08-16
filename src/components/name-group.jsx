@@ -1,16 +1,80 @@
+import { Typography } from "@mui/material";
+
 export const ImageGroup = ({ setValue }) => {
   return (
     <div class="">
-      <img
+      {/* <img
         className="frame1"
-        onClick={() => {
-          setValue(0);
-        }}
         src={require("../Assets/Slider/Charlie.png")}
         height="38"
         alt="img"
-      />
-      <img
+      /> */}
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(0);
+        }}
+      >
+        CHARLIE
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(1);
+        }}
+      >
+        RIGGO
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(2);
+        }}
+      >
+        LAKER
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(3);
+        }}
+      >
+        HOPPER
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(4);
+        }}
+      >
+        ARROW
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(5);
+        }}
+      >
+        TIGER
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(6);
+        }}
+      >
+        EGALE
+      </Typography>
+      <Typography
+        className="frame1 text-left-slider"
+        onClick={() => {
+          setValue(7);
+        }}
+      >
+        BARON
+      </Typography>
+
+      {/* <img
         className="frame1"
         onClick={() => {
           setValue(1);
@@ -72,7 +136,7 @@ export const ImageGroup = ({ setValue }) => {
         src={require("../Assets/Slider/Baron.png")}
         height="38"
         alt="img"
-      />
+      /> */}
     </div>
   );
 };

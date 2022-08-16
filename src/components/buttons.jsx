@@ -403,10 +403,10 @@ function Buttons() {
       console.log("first", disabled);
     }, config.durationBetweenRound);
   }
-  function clickSound() {
-    var audio = new Audio(buttonAudio);
-    audio.play();
-  }
+  // function clickSound() {
+  //   var audio = new Audio(buttonAudio);
+  //   // audio.play();
+  // }
 
   function roundUpdate(check) {
     if (check === "button" && round % appConfig.Trials === 0) {
@@ -516,7 +516,7 @@ function Buttons() {
       // console.log("IMP_file",audio1.duration)
       var audio1 = new Audio(randomSong);
       audio1.load();
-      audio1.play();
+      // audio1.play();
 
       {
         console.log("randomSong", randomSong);
@@ -526,39 +526,32 @@ function Buttons() {
     }
   }
   function responceAudio() {
-    if (answer == "false") {
+    if (answer === "false") {
       const randomSong = audioWrong;
-      console.log("respoce", randomSong);
       var audio1 = new Audio(randomSong);
       audio1.play();
     }
-    if (answer == "true") {
+    if (answer === "true") {
       const randomSong = audioCorrect;
-      console.log("respoce", randomSong);
       var audio1 = new Audio(randomSong);
-      audio1.play();
+      // audio1.play();
     }
   }
   useEffect(() => {
     timeout();
     // output();
 
+    responceAudio();
     if (initial < 8 && dead !== 1) {
-      if (initial > 0) responceAudio();
+      if (initial > 0);
       disable();
       playAudio();
     }
   }, [round]);
+
   useEffect(() => {
     setVa(key);
   }, [key]);
-
-  useEffect(() => {
-    console.log("useSore", Score);
-  }, [Score]);
-  useEffect(() => {
-    // Add your code here
-  }, [reload]);
 
   // useEffect(() => {
   //   console.log("value",value);
@@ -616,14 +609,14 @@ function Buttons() {
       </Dialog>
 
       <div class="col-4 row ">
-        <div class="col-2 p-2">
+        <div class="col-2 p-3">
           <Slider onChange={_handleIndexChange} currentIndex={value} />
         </div>
         <div class="col-3">
           <ImageGroup setValue={setValue} />
         </div>
       </div>
-      <div class="col-4 bg-light">
+      <div class="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
         <div class="magenta mt-5">
           {round === 0 && (
             <h3 className="sub">Please pay attention to the instructions </h3>
@@ -684,7 +677,7 @@ function Buttons() {
           )}
         </div>
       </div>
-      <div class="col-4 mx-5 px-5">
+      <div class="col-4 mx-5 px-5 mt-3">
         <table id="matrix">
           <tr>
             <td>
