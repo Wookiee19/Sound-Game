@@ -22,6 +22,7 @@ import audioCorrect from "../Audio/add/correct.wav";
 import audioWrong from "../Audio/add/wrong.wav";
 import buttonAudio from "../Audio/add/click.wav";
 import { ImageGroup } from "./name-group";
+import { CircularProgress } from "@mui/material";
 
 var file = "00";
 const AA = [
@@ -408,11 +409,19 @@ function Buttons() {
   //   // audio.play();
   // }
 
+  React.useEffect(() => {
+    if (open) {
+      var audio1 = new Audio(audioCorrect);
+      audio1.load();
+      audio1.play();
+    }
+  }, [open]);
   function roundUpdate(check) {
     if (check === "button" && round % appConfig.Trials === 0) {
       setRound(round + 1);
     } else {
       handleClickOpen();
+
       console.log("aa", aaShow);
       console.log("bb", bbShow);
       console.log("cc", ccShow);
@@ -516,11 +525,7 @@ function Buttons() {
       // console.log("IMP_file",audio1.duration)
       var audio1 = new Audio(randomSong);
       audio1.load();
-      // audio1.play();
-
-      {
-        console.log("randomSong", randomSong);
-      }
+      audio1.play();
 
       startButton();
     }
@@ -534,7 +539,7 @@ function Buttons() {
     if (answer === "true") {
       const randomSong = audioCorrect;
       var audio1 = new Audio(randomSong);
-      // audio1.play();
+      audio1.play();
     }
   }
   useEffect(() => {
@@ -552,11 +557,6 @@ function Buttons() {
   useEffect(() => {
     setVa(key);
   }, [key]);
-
-  // useEffect(() => {
-  //   console.log("value",value);
-
-  // },[value])
 
   return (
     <div class="container-fluid d-flex col-12">
@@ -579,7 +579,7 @@ function Buttons() {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <h2 className="sub">Your Score:{Score}</h2>
-            {initial == 8 && (
+            {initial === 8 && (
               <>
                 <h2 className="sub">Game Over</h2>
                 <Csv
@@ -592,14 +592,14 @@ function Buttons() {
             )}
           </DialogContentText>
         </DialogContent>
-        {initial != 8 && (
+        {initial !== 8 && (
           <DialogActions>
             <Button onClick={afterBlock} autoFocus>
               <h4 className="sub"> Next Round</h4>
             </Button>
           </DialogActions>
         )}
-        {initial == 8 && (
+        {initial === 8 && (
           <DialogActions>
             <Button autoFocus>
               <h4 className="sub"> Good Game Well Played!</h4>
@@ -617,68 +617,76 @@ function Buttons() {
         </div>
       </div>
       <div class="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
-        <div class="magenta mt-5">
-          {round === 0 && (
-            <h3 className="sub">Please pay attention to the instructions </h3>
-          )}
-          {round > 0 && (
-            <>
-              <h2 className="name">Game Name</h2>
-              {appConfig.showScoreInConsole == "true" && (
-                <h2 className="sub">Your Score: {Score}</h2>
-              )}
-              {answer === "true" && (
-                <img
-                  src={tick}
-                  style={{ marginLeft: "41%" }}
-                  width="80"
-                  height="80"
-                  alt="img"
-                ></img>
-              )}
-              {answer === "false" && (
-                <img
-                  src={wrong}
-                  style={{ marginLeft: "41%" }}
-                  width="60"
-                  height="60"
-                  alt="img"
-                ></img>
-              )}
+        <div class="w-100">
+          <div class="magenta mt-5">
+            {disabled ? (
+              <div class="overlay-loading">
+                <CircularProgress />
+              </div>
+            ) : null}
 
-              {bbShow && (
-                <div>
-                  {answer === "false" && (
-                    <h3 className="sub">
-                      {appConfig.feedbackTextWrong}
-                      {appConfig.showAnswer && (
-                        <div className="sub">{aaShow} </div>
-                      )}
-                    </h3>
-                  )}
-                  {answer === "false" && (
-                    <h3 className="sub">
-                      {appConfig.showAnswer && (
-                        <div className="sub">
-                          {" "}
-                          <img
-                            src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}
-                            height="50"
-                            width="50"
-                            alt="img"
-                          ></img>
-                        </div>
-                      )}
-                    </h3>
-                  )}
-                </div>
-              )}
-            </>
-          )}
+            {round === 0 && (
+              <h3 className="sub">Please pay attention to the instructions </h3>
+            )}
+            {round > 0 && (
+              <>
+                <h2 className="name">Game Name</h2>
+                {appConfig.showScoreInConsole == "true" && (
+                  <h2 className="sub">Your Score: {Score}</h2>
+                )}
+                {answer === "true" && (
+                  <img
+                    src={tick}
+                    style={{ marginLeft: "41%" }}
+                    width="80"
+                    height="80"
+                    alt="img"
+                  ></img>
+                )}
+                {answer === "false" && (
+                  <img
+                    src={wrong}
+                    style={{ marginLeft: "41%" }}
+                    width="60"
+                    height="60"
+                    alt="img"
+                  ></img>
+                )}
+
+                {bbShow && (
+                  <div>
+                    {answer === "false" && (
+                      <h3 className="sub">
+                        {appConfig.feedbackTextWrong}
+                        {appConfig.showAnswer && (
+                          <div className="sub">{aaShow} </div>
+                        )}
+                      </h3>
+                    )}
+                    {answer === "false" && (
+                      <h3 className="sub">
+                        {appConfig.showAnswer && (
+                          <div className="sub">
+                            {" "}
+                            <img
+                              src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}
+                              height="50"
+                              width="50"
+                              alt="img"
+                            ></img>
+                          </div>
+                        )}
+                      </h3>
+                    )}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-      <div class="col-4 mx-5 px-5 mt-3">
-        <table id="matrix">
+      <div class="col-4 mt-3">
+        <table id="matrix" style={{ opacity: disabled ? 0.5 : 1 }}>
           <tr>
             <td>
               <button
