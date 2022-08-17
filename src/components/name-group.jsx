@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 
 export const ImageGroup = ({ setValue }) => {
   return (
-    <div class="">
+    <div className="">
       {/* <img
         className="frame1"
         src={require("../Assets/Slider/Charlie.png")}

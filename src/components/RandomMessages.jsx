@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useCallback } from "react";
-import "./randomMessage.css"
+import "./randomMessage.css";
 import appConfig from "../config";
 
 const data = [
@@ -28,26 +28,22 @@ const data = [
   { id: 23, author: "Change TO Echo", quote: "Move TO 23" },
   { id: 25, author: "Change TO Foxtrot", quote: "Move TO 24" },
   { id: 22, author: "Change TO Juliett", quote: "Move TO 25" },
-
-  
-  
 ];
 
-const getRandIndex = arr => Math.floor(Math.random() * arr.length);
+const getRandIndex = (arr) => Math.floor(Math.random() * arr.length);
 
 const RandomQuote = ({ data, interval = 3000 }) => {
   const [quotes, setQuotes] = useState(data);
   const [currentQuote, setCurrentQuote] = useState();
-  
+
   /**
    * Select a quote at random and remove from the current list of
    * selectable quotes, reducing the array length by 1
    */
   const getRandomQuote = useCallback(() => {
-    
     const randIndex = getRandIndex(quotes);
     setCurrentQuote(quotes[randIndex]);
-    setQuotes(quotes => quotes.filter((_, i) => i !== randIndex));
+    setQuotes((quotes) => quotes.filter((_, i) => i !== randIndex));
   }, [quotes]);
 
   // Get initial random quote and setup interval and cleanup function
@@ -66,14 +62,12 @@ const RandomQuote = ({ data, interval = 3000 }) => {
               <div className="quote-wrapper">
                 <h1 className="quote">"{currentQuote.quote}"</h1>
               </div>
-              
-              {console.log(currentQuote.quote)}
+
+              {/* {console.log(currentQuote.quote)} */}
               <div className="author-wrapper">
                 <span className="author">- {currentQuote.author}</span>
-                {console.log(".author",currentQuote.author)}
-                
+                {/* {console.log(".author",currentQuote.author)} */}
               </div>
-              
             </Fragment>
           )}
         </div>
@@ -83,11 +77,8 @@ const RandomQuote = ({ data, interval = 3000 }) => {
 };
 
 export default function RandomMessage() {
-  
   return (
     <div className="App">
-     
-
       <RandomQuote data={data} />
     </div>
   );

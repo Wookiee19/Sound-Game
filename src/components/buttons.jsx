@@ -401,7 +401,7 @@ function Buttons() {
     setDisabled(true);
     setTimeout(() => {
       setDisabled(false);
-      console.log("first", disabled);
+      // console.log("first", disabled);
     }, config.durationBetweenRound);
   }
   // function clickSound() {
@@ -422,9 +422,9 @@ function Buttons() {
     } else {
       handleClickOpen();
 
-      console.log("aa", aaShow);
-      console.log("bb", bbShow);
-      console.log("cc", ccShow);
+      // console.log("aa", aaShow);
+      // console.log("bb", bbShow);
+      // console.log("cc", ccShow);
     }
   }
   function afterBlock() {
@@ -443,7 +443,7 @@ function Buttons() {
   }
 
   function calc(slider) {
-    console.log("key", key.current);
+    // console.log("key", key.current);
     var text = `${"0"}${slider}${key.current}`;
     setInput(text);
     if (i % 2 == 0) {
@@ -453,7 +453,7 @@ function Buttons() {
     i++;
 
     if (text === generated[generated.length - 1]) {
-      console.log("Score11", 10);
+      // console.log("Score11", 10);
 
       setAnswer("true");
       if (i % 2 === 0) setCsvResult((csvResult) => [...csvResult, "true"]);
@@ -495,7 +495,7 @@ function Buttons() {
 
   function output() {
     const chars = file.split("");
-    console.log("chars", chars);
+    // console.log("chars", chars);
     setaaShow(AA[chars[1]]);
     setbbShow(BB[chars[3]]);
     setccshow(CC[chars[5]]);
@@ -506,7 +506,7 @@ function Buttons() {
   function set() {
     if (rfile) file = rfile.slice(8, 14);
     // console.log("rfile",rfile)
-    console.log("hh", key);
+    // console.log("hh", key);
     setScore(parseInt(Score) + parseInt(calc(value, key, file)));
     data(parseInt(Score) + parseInt(calc(value, key, file)));
     //  var fileNo=initial+file;
@@ -559,7 +559,7 @@ function Buttons() {
   }, [key]);
 
   return (
-    <div class="container-fluid d-flex col-12">
+    <div className="container-fluid d-flex col-12">
       <Dialog
         open={open}
         onClose={handleClose}
@@ -608,19 +608,19 @@ function Buttons() {
         )}
       </Dialog>
 
-      <div class="col-4 row ">
-        <div class="col-2 p-3">
+      <div className="col-4 row ">
+        <div className="col-2 p-3">
           <Slider onChange={_handleIndexChange} currentIndex={value} />
         </div>
-        <div class="col-3">
+        <div className="col-3">
           <ImageGroup setValue={setValue} />
         </div>
       </div>
-      <div class="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
-        <div class="w-100">
-          <div class="magenta mt-5">
+      <div className="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
+        <div className="w-100">
+          <div className="magenta mt-5">
             {disabled ? (
-              <div class="overlay-loading">
+              <div className="overlay-loading">
                 <CircularProgress />
               </div>
             ) : null}
@@ -685,7 +685,7 @@ function Buttons() {
           </div>
         </div>
       </div>
-      <div class="col-4 mt-3">
+      <div className="col-4 mt-3">
         <table id="matrix" style={{ opacity: disabled ? 0.5 : 1 }}>
           <tr>
             <td>

@@ -24,14 +24,17 @@ function Main() {
   return (
     <div className="App">
       <Score />
-      <div class="makebottom w-100 ml-5 mr-1" style={{ overflow: "hidden" }}>
+      <div
+        className="makebottom w-100 ml-5 mr-1"
+        style={{ overflow: "hidden" }}
+      >
         <Buttons />
       </div>
       <img
         src={sapceship}
         width="100%"
         height="100%"
-        class="over"
+        className="over"
         alt="background"
       />
     </div>

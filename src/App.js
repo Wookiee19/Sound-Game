@@ -16,7 +16,6 @@ function App() {
     date = new Date();
     let result = a.concat("_", date);
     localStorage.setItem("code", result);
-    console.log("code", localStorage.getItem("code"));
     setDisable(false);
   }
   return (
@@ -27,7 +26,7 @@ function App() {
           style={{ marginLeft: "5%" }}
           className="row container-fluid col-12"
         >
-          <div class="text-center col-3">
+          <div className="text-center col-3">
             <input
               type="text"
               placeholder="Select an Username"
@@ -41,12 +40,11 @@ function App() {
             <button
               onClick={() => setShow((show) => !show)}
               disabled={disable}
-              class="button-29 my-5"
+              className="button-29 my-5"
             >
               Play
             </button>
 
-            {console.log("yyyy", localStorage.getItem("code"))}
             <button className="button-default" onClick={toggle}>
               Instruction
             </button>
