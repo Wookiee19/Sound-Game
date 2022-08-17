@@ -5,7 +5,7 @@ import "./panel.css"
 function panel() {
   return (
     <div>
-      <RandomMessage/>
+      {/* <RandomMessage/> */}
          {/* <img src={message} width="35%" height="15%" class="panel" /> */}
           
     </div>
