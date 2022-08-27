@@ -395,19 +395,13 @@ function Buttons() {
 
   function assigment(a) {
     setuserInput((userInput) => [...userInput, a]);
-    // console.log("user",userInput)
   }
   function disable() {
     setDisabled(true);
     setTimeout(() => {
       setDisabled(false);
-      // console.log("first", disabled);
     }, config.durationBetweenRound);
   }
-  // function clickSound() {
-  //   var audio = new Audio(buttonAudio);
-  //   // audio.play();
-  // }
 
   React.useEffect(() => {
     if (open) {
@@ -421,10 +415,6 @@ function Buttons() {
       setRound(round + 1);
     } else {
       handleClickOpen();
-
-      // console.log("aa", aaShow);
-      // console.log("bb", bbShow);
-      // console.log("cc", ccShow);
     }
   }
   function afterBlock() {
@@ -433,17 +423,13 @@ function Buttons() {
   }
   function startButton() {
     setStartTime(Date.now());
-    // console.log("rrrr",startTime);
   }
   function stopButton() {
     var endTime = Date.now();
     setDiffrence(endTime - startTime);
-    // console.log("yy",diffrence)
-    // startTime = null;
   }
 
   function calc(slider) {
-    // console.log("key", key.current);
     var text = `${"0"}${slider}${key.current}`;
     setInput(text);
     if (i % 2 == 0) {
@@ -453,8 +439,6 @@ function Buttons() {
     i++;
 
     if (text === generated[generated.length - 1]) {
-      // console.log("Score11", 10);
-
       setAnswer("true");
       if (i % 2 === 0) setCsvResult((csvResult) => [...csvResult, "true"]);
       var res = 10 - diffrence / 1000;
@@ -483,14 +467,12 @@ function Buttons() {
       .post(appConfig + "/capture-activity", userToPost)
       .catch((error) => console.log("Error: ", error));
     if (response && response.data) {
-      // console.log(response);
-      // console.log(response.data);
+
     }
   };
 
   function assigmentRandom(a) {
     setGenerated((generated) => [...generated, a]);
-    // console.log("gen",generated);
   }
 
   function output() {
