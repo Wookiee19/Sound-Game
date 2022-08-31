@@ -22,11 +22,11 @@ function App() {
     <div className="body">
       {localStorage.removeItem("Scores")}
       {!show && (
-        <div
-          style={{ marginLeft: "5%" }}
-          className="row container-fluid col-12"
-        >
-          <div className="text-center col-3">
+        <div className="row container-fluid col-12">
+          <div
+            className="row w-25 col-12 vertical-center"
+            style={{ flexDirection: "column" }}
+          >
             <input
               type="text"
               placeholder="Select an Username"
