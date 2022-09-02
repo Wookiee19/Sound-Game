@@ -63,7 +63,7 @@ function Buttons() {
   const [csvGenerated, setcsvGenerated] = useState([""]);
   const [csvResult, setCsvResult] = useState([""]);
   const [startTime, setStartTime] = useState();
-  const [diffrence, setDiffrence] = useState();
+  const [diffrence, setDiffrence] = useState(0);
   const [show1, setShow1] = useState(false);
   const [time, setTime] = useState([""]);
   var counter;
@@ -430,9 +430,11 @@ function Buttons() {
   }
 
   function calc(slider) {
-    var text = `${"0"}${slider}${key.current}`;
+    var text = `${"0"}${slider}${key.current ?? "00"}`;
+    console.log("text", text);
+    console.log("generated", generated[generated.length - 1]);
     setInput(text);
-    if (i % 2 == 0) {
+    if (i % 2 === 0) {
       setCsvUser((csvUser) => [...csvUser, text]);
       setTime((time) => [...time, diffrence]);
     }
@@ -467,7 +469,6 @@ function Buttons() {
       .post(appConfig + "/capture-activity", userToPost)
       .catch((error) => console.log("Error: ", error));
     if (response && response.data) {
-
     }
   };
 
@@ -487,8 +488,7 @@ function Buttons() {
   }
   function set() {
     if (rfile) file = rfile.slice(8, 14);
-    // console.log("rfile",rfile)
-    // console.log("hh", key);
+    console.log("score", parseInt(Score), parseInt(calc(value, key, file)));
     setScore(parseInt(Score) + parseInt(calc(value, key, file)));
     data(parseInt(Score) + parseInt(calc(value, key, file)));
     //  var fileNo=initial+file;
@@ -498,8 +498,10 @@ function Buttons() {
     assigmentRandom(file);
   }
   function playAudio() {
-    rfile = eval(`speed${initial}`)[Math.floor(Math.random() * speed1.length)];
-
+    rfile =
+      eval(`speed${initial}`)[Math.floor(Math.random() * speed1.length)] ??
+      "talker2_050204_spd_48.wav";
+    console.log("file==>", rfile);
     set();
 
     if (initial < 8) {
@@ -540,6 +542,10 @@ function Buttons() {
     setVa(key);
   }, [key]);
 
+  useEffect(() => {
+    console.log("bipund", generated);
+  }, [userInput, generated, csvUser, csvResult, time]);
+
   return (
     <div className="container-fluid d-flex col-12">
       <Dialog
@@ -560,7 +566,7 @@ function Buttons() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h2 className="sub">Your Score:{Score}</h2>
+            <h3 className="sub">Your Score:{Score}</h3>
             {initial === 8 && (
               <>
                 <h2 className="sub">Game Over</h2>
