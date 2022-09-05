@@ -63,7 +63,7 @@ export const ImageGroup = ({ setValue }) => {
           setValue(6);
         }}
       >
-        EGALE
+        EAGLE
       </Typography>
       <Typography
         className="frame1 text-left-slider"

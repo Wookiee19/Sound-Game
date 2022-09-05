@@ -410,6 +410,7 @@ function Buttons() {
       audio1.play();
     }
   }, [open]);
+
   function roundUpdate(check) {
     if (check === "button" && round % appConfig.Trials === 0) {
       setRound(round + 1);
@@ -515,15 +516,18 @@ function Buttons() {
     }
   }
   function responceAudio() {
-    if (answer === "false") {
-      const randomSong = audioWrong;
-      var audio1 = new Audio(randomSong);
-      audio1.play();
-    }
-    if (answer === "true") {
-      const randomSong = audioCorrect;
-      var audio1 = new Audio(randomSong);
-      audio1.play();
+    console.log(answer);
+    if (answer && initial !== 0) {
+      if (answer === "false") {
+        const randomSong = audioWrong;
+        var audio1 = new Audio(randomSong);
+        audio1.play();
+      }
+      if (answer === "true") {
+        const randomSong = audioCorrect;
+        var audio1 = new Audio(randomSong);
+        audio1.play();
+      }
     }
   }
   useEffect(() => {
@@ -534,17 +538,15 @@ function Buttons() {
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      playAudio();
+      if (initial !== 0) {
+        playAudio();
+      }
     }
   }, [round]);
 
   useEffect(() => {
     setVa(key);
   }, [key]);
-
-  useEffect(() => {
-    console.log("bipund", generated);
-  }, [userInput, generated, csvUser, csvResult, time]);
 
   return (
     <div className="container-fluid d-flex col-12">
@@ -555,18 +557,25 @@ function Buttons() {
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            backgroundImage:
-              "url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-87854.jpg?w=740&t=st=1659332876~exp=1659333476~hmac=ecb85be2b178efeacc1af797871746470e17d254fb1a1d60d68b899876831969)",
-            boxShadow: "none",
+            // backgroundColor: "#2EA0DE",
+            backgroundColor: "#fff",
+            borderRadius: 20,
+            // backgroundImage:
+            //   "url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-87854.jpg?w=740&t=st=1659332876~exp=1659333476~hmac=ecb85be2b178efeacc1af797871746470e17d254fb1a1d60d68b899876831969)",
+            // boxShadow: "none",
           },
         }}
       >
         <DialogTitle id="alert-dialog-title">
-          <h2>{"A multisensory experience"}</h2>
+          <h2 style={{ fontFamily: "Noto sans" }}>
+            {"A multisensory experience"}
+          </h2>
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h3 className="sub">Your Score:{Score}</h3>
+            <h3 className="sub" style={{ fontFamily: "Noto sans" }}>
+              Your Score: {Score}
+            </h3>
             {initial === 8 && (
               <>
                 <h2 className="sub">Game Over</h2>
@@ -580,20 +589,39 @@ function Buttons() {
             )}
           </DialogContentText>
         </DialogContent>
-        {initial !== 8 && (
-          <DialogActions>
-            <Button onClick={afterBlock} autoFocus>
-              <h4 className="sub"> Next Round</h4>
-            </Button>
-          </DialogActions>
-        )}
-        {initial === 8 && (
-          <DialogActions>
-            <Button autoFocus>
-              <h4 className="sub"> Good Game Well Played!</h4>
-            </Button>
-          </DialogActions>
-        )}
+        <div style={{ backgroundColor: "#2EA0DE" }}>
+          {initial !== 8 && (
+            <DialogActions>
+              <Button
+                onClick={afterBlock}
+                autoFocus
+                className="sub"
+                style={{
+                  color: "#fff",
+                  textAlign: "center",
+                  textDecoration: "underline",
+                }}
+              >
+                {" "}
+                <h5>Next Round</h5>
+              </Button>
+            </DialogActions>
+          )}
+          {initial === 8 && (
+            <DialogActions>
+              <Button
+                autoFocus
+                style={{
+                  color: "#fff",
+                  textAlign: "center",
+                  textDecoration: "underline",
+                }}
+              >
+                <h5> Good Game Well Played!</h5>
+              </Button>
+            </DialogActions>
+          )}
+        </div>
       </Dialog>
 
       <div className="col-4 row ">

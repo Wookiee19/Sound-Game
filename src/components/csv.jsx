@@ -37,7 +37,6 @@ function csv(generated) {
         Time: val4[i],
         Username: name.split("_")[0],
       };
-      console.log("index", i, custs);
     }
     return typeof custs === "string" ? {} : custs;
   }
@@ -47,7 +46,7 @@ function csv(generated) {
       <ExportReactCSV
         csvHeaders={headers}
         csvData={customersData()}
-        fileName="Customers_Infomations_csv.csv"
+        fileName={`${name}.csv`}
       />
     </div>
   );

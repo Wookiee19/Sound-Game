@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import Main from "./components/main";
 import "./App.css";
-import Modal from "./components/modal";
 import useModal from "./components/useModal";
 import "./style.css";
+import ModalInstruction from "./components/modal";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -48,7 +48,7 @@ function App() {
             <button className="button-default" onClick={toggle}>
               Instruction
             </button>
-            <Modal isShowing={isShowing} hide={toggle} />
+            <ModalInstruction isShowing={isShowing} hide={toggle} />
           </div>
         </div>
       )}
