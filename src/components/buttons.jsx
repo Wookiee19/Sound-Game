@@ -49,7 +49,7 @@ function Buttons() {
   const [generated, setGenerated] = useState([""]);
   const [sliderInput, setSliderInput] = useState([""]);
   const [value, setValue] = useState(0);
-  const [Score, setScore] = useState("0");
+  const [Score, setScore] = useState(0);
   const [disabled, setDisabled] = useState(false);
   const [initial, setInitial] = useState(0);
   const [round, setRound] = useState(0);
@@ -405,9 +405,9 @@ function Buttons() {
 
   React.useEffect(() => {
     if (open) {
-      var audio1 = new Audio(audioCorrect);
-      audio1.load();
-      audio1.play();
+      // var audio1 = new Audio(audioCorrect);
+      // audio1.load();
+      // audio1.play();
     }
   }, [open]);
 
@@ -490,6 +490,7 @@ function Buttons() {
   function set() {
     if (rfile) file = rfile.slice(8, 14);
     console.log("score", parseInt(Score), parseInt(calc(value, key, file)));
+    console.log("bipund", parseInt(calc(value, key, file)));
     setScore(parseInt(Score) + parseInt(calc(value, key, file)));
     data(parseInt(Score) + parseInt(calc(value, key, file)));
     //  var fileNo=initial+file;
@@ -517,7 +518,7 @@ function Buttons() {
   }
   function responceAudio() {
     console.log(answer);
-    if (answer && initial !== 0) {
+    if (answer && initial === 0) {
       if (answer === "false") {
         const randomSong = audioWrong;
         var audio1 = new Audio(randomSong);
@@ -534,11 +535,11 @@ function Buttons() {
     timeout();
     // output();
 
-    responceAudio();
+    // responceAudio();
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      if (initial !== 0) {
+      if (initial === 0) {
         playAudio();
       }
     }
@@ -574,7 +575,7 @@ function Buttons() {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <h3 className="sub" style={{ fontFamily: "Noto sans" }}>
-              Your Score: {Score}
+              Your Score: {parseInt(Score)??"0"}
             </h3>
             {initial === 8 && (
               <>
