@@ -23,7 +23,7 @@ export const ImageGroup = ({ setValue }) => {
           setValue(1);
         }}
       >
-        RIGGO
+        RINGO
       </Typography>
       <Typography
         className="frame1 text-left-slider"

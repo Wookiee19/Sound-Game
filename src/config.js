@@ -1,4 +1,9 @@
 const appConfig = {
+  // popup message
+  popUpHeading: "A multisensory experience",
+  popUpNextButton: "Next Round",
+  popUpEndButton: "Good Game Well Played!",
+
   ButtonDisable: "true",
   //disable button after round Keypad only
   feedbackTextRight: "Corect Answer",

@@ -23,6 +23,7 @@ import audioWrong from "../Audio/add/wrong.wav";
 import buttonAudio from "../Audio/add/click.wav";
 import { ImageGroup } from "./name-group";
 import { CircularProgress } from "@mui/material";
+import slideChange from "../Assets/slidechange.mp3";
 
 var file = "00";
 const AA = [
@@ -376,11 +377,12 @@ function Buttons() {
       if (initial === 7) {
         dead = 1;
       }
-      // console.log("first",initial)
     }
   }
 
   const _handleIndexChange = (index) => {
+    var audio11 = new Audio(slideChange);
+    audio11.play();
     setValue(index);
   };
 
@@ -389,7 +391,7 @@ function Buttons() {
   };
 
   const handleClose = (event, reason) => {
-    if (reason && reason == "backdropClick") return;
+    if (reason && reason === "backdropClick") return;
     setOpen(false);
   };
 
@@ -405,7 +407,7 @@ function Buttons() {
 
   React.useEffect(() => {
     if (open) {
-      // var audio1 = new Audio(audioCorrect);
+      var audio1 = new Audio("");
       // audio1.load();
       // audio1.play();
     }
@@ -431,9 +433,9 @@ function Buttons() {
   }
 
   function calc(slider) {
-    var text = `${"0"}${slider}${key.current ?? "00"}`;
-    console.log("text", text);
+    var text = `${"0"}${slider}${key.current}`;
     console.log("generated", generated[generated.length - 1]);
+    console.log("text", text);
     setInput(text);
     if (i % 2 === 0) {
       setCsvUser((csvUser) => [...csvUser, text]);
@@ -479,46 +481,36 @@ function Buttons() {
 
   function output() {
     const chars = file.split("");
-    // console.log("chars", chars);
     setaaShow(AA[chars[1]]);
     setbbShow(BB[chars[3]]);
     setccshow(CC[chars[5]]);
-    // console.log("first",aaShow);
-    // console.log("first",bbShow);
-    // console.log("first",ccShow);
   }
   function set() {
-    if (rfile) file = rfile.slice(8, 14);
-    console.log("score", parseInt(Score), parseInt(calc(value, key, file)));
-    console.log("bipund", parseInt(calc(value, key, file)));
-    setScore(parseInt(Score) + parseInt(calc(value, key, file)));
-    data(parseInt(Score) + parseInt(calc(value, key, file)));
-    //  var fileNo=initial+file;
-
-    //  send();
-    // console.log("Score",Score);
-    assigmentRandom(file);
+    if (key.current) {
+      if (rfile) file = rfile.slice(8, 14);
+      setScore(parseInt(Score) + parseInt(calc(value, key, file)));
+      data(parseInt(Score) + parseInt(calc(value, key, file)));
+      assigmentRandom(file);
+    }
   }
   function playAudio() {
     rfile =
-      eval(`speed${initial}`)[Math.floor(Math.random() * speed1.length)] ??
-      "talker2_050204_spd_48.wav";
-    console.log("file==>", rfile);
+      eval(`speed${initial}`)[
+        Math.floor(Math.random() * eval(`speed${initial}`).length)
+      ] ?? "talker2_010203_spd_66.wav";
+
     set();
 
     if (initial < 8) {
       const randomSong = require(`../Audio/${rfile}`);
-      // console.log("IMP_file",audio1.duration)
       var audio1 = new Audio(randomSong);
       audio1.load();
       audio1.play();
-
       startButton();
     }
   }
   function responceAudio() {
-    console.log(answer);
-    if (answer && initial === 0) {
+    if (answer) {
       if (answer === "false") {
         const randomSong = audioWrong;
         var audio1 = new Audio(randomSong);
@@ -526,22 +518,20 @@ function Buttons() {
       }
       if (answer === "true") {
         const randomSong = audioCorrect;
-        var audio1 = new Audio(randomSong);
-        audio1.play();
+        var audio11 = new Audio(randomSong);
+        audio11.play();
       }
     }
   }
   useEffect(() => {
     timeout();
-    // output();
+    output();
 
-    // responceAudio();
+    responceAudio();
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      if (initial === 0) {
-        playAudio();
-      }
+      playAudio();
     }
   }, [round]);
 
@@ -568,14 +558,12 @@ function Buttons() {
         }}
       >
         <DialogTitle id="alert-dialog-title">
-          <h2 style={{ fontFamily: "Noto sans" }}>
-            {"A multisensory experience"}
-          </h2>
+          <h2 style={{ fontFamily: "Noto sans" }}>{appConfig.popUpHeading}</h2>
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <h3 className="sub" style={{ fontFamily: "Noto sans" }}>
-              Your Score: {parseInt(Score)??"0"}
+              Your Score: {parseInt(Score) ?? "0"}
             </h3>
             {initial === 8 && (
               <>
@@ -604,7 +592,7 @@ function Buttons() {
                 }}
               >
                 {" "}
-                <h5>Next Round</h5>
+                <h5>{appConfig.popUpNextButton}</h5>
               </Button>
             </DialogActions>
           )}
@@ -618,7 +606,7 @@ function Buttons() {
                   textDecoration: "underline",
                 }}
               >
-                <h5> Good Game Well Played!</h5>
+                <h5>{appConfig.popUpEndButton}</h5>
               </Button>
             </DialogActions>
           )}
