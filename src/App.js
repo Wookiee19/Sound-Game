@@ -7,6 +7,7 @@ import ModalInstruction from "./components/modal";
 import Score from "./components/Score";
 import Buttons from "./components/buttons";
 import sapceship from "./Assets/background2.jpg";
+import audioCorrect from "./Audio/add/correct.wav";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -20,6 +21,13 @@ function App() {
     let result = a.concat("_", date);
     localStorage.setItem("code", result);
     setDisable(false);
+  }
+  function playSound() {
+    var audio11 = new Audio(audioCorrect);
+    audio11.play();
+    setTimeout(() => {
+      setShow((show) => !show);
+    }, 300);
   }
   return (
     <div className="body">
@@ -41,7 +49,9 @@ function App() {
             />
 
             <button
-              onClick={() => setShow((show) => !show)}
+              onClick={() => {
+                playSound();
+              }}
               disabled={disable}
               className="button-29 my-5"
             >

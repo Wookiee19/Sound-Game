@@ -407,9 +407,7 @@ function Buttons() {
 
   React.useEffect(() => {
     if (open) {
-      var audio1 = new Audio("");
-      // audio1.load();
-      // audio1.play();
+      responceAudio();
     }
   }, [open]);
 
@@ -510,7 +508,7 @@ function Buttons() {
     }
   }
   function responceAudio() {
-    if (answer) {
+    if (initial !== 0) {
       if (answer === "false") {
         const randomSong = audioWrong;
         var audio1 = new Audio(randomSong);
@@ -526,12 +524,15 @@ function Buttons() {
   useEffect(() => {
     timeout();
     output();
-
-    responceAudio();
+    if (!open) {
+      responceAudio();
+    }
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      playAudio();
+      setTimeout(() => {
+        playAudio();
+      }, 300);
     }
   }, [round]);
 
