@@ -8,6 +8,7 @@ import Score from "./components/Score";
 import Buttons from "./components/buttons";
 import sapceship from "./Assets/background2.jpg";
 import audioCorrect from "./Audio/add/correct.wav";
+const audio11 = new Audio(audioCorrect);
 
 function App() {
   const [show, setShow] = useState(false);
@@ -23,7 +24,6 @@ function App() {
     setDisable(false);
   }
   function playSound() {
-    var audio11 = new Audio(audioCorrect);
     audio11.play();
     setTimeout(() => {
       setShow((show) => !show);
@@ -55,7 +55,7 @@ function App() {
               disabled={disable}
               className="button-29 my-5"
             >
-              Play
+              Play Now
             </button>
 
             <button className="button-default" onClick={toggle}>

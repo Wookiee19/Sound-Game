@@ -24,8 +24,12 @@ import buttonAudio from "../Audio/add/click.wav";
 import { ImageGroup } from "./name-group";
 import { CircularProgress } from "@mui/material";
 import slideChange from "../Assets/slidechange.mp3";
+// const randomSong = audioWrong;
+// const randomSong = audioCorrect;
+var audio1 = new Audio(audioWrong);
+var audio11 = new Audio(audioCorrect);
+var slidechangeAudio = new Audio(slideChange);
 
-var file = "00";
 const AA = [
   "Charlie",
   "Ringo",
@@ -39,11 +43,11 @@ const AA = [
 const BB = ["Blue", "Red", "White", "Green"];
 const CC = ["1", "2", "3", "4", "5", "6", "7", "8"];
 var i = 0;
-var rfile;
 function Buttons() {
   const [open, setOpen] = React.useState(false);
   const key = useRef();
-
+  const [rfile, setRfile] = React.useState("");
+  const [file, setFile] = React.useState("00");
   const [va, setVa] = useState();
   const [reload, setReload] = useState();
   const [userInput, setuserInput] = useState([""]);
@@ -67,6 +71,7 @@ function Buttons() {
   const [diffrence, setDiffrence] = useState(0);
   const [show1, setShow1] = useState(false);
   const [time, setTime] = useState([""]);
+  const [dead, setDead] = React.useState(0);
   var counter;
   var userToPost;
   const speed7 = [
@@ -365,7 +370,7 @@ function Buttons() {
     "talker0_000000_spd_66.wav",
     "talker2_070305_spd_66.wav",
   ];
-  var dead = 0;
+
   const [audioSpeed, setaudioSpeed] = useState("18");
   // var startTime;
   // const [text, setText] = useState('');
@@ -375,14 +380,13 @@ function Buttons() {
       setInitial(initial + 1);
       setaudioSpeed(parseInt(audioSpeed) + initial + (6 - initial));
       if (initial === 7) {
-        dead = 1;
+        setDead(1);
       }
     }
   }
 
   const _handleIndexChange = (index) => {
-    var audio11 = new Audio(slideChange);
-    audio11.play();
+    slidechangeAudio.play();
     setValue(index);
   };
 
@@ -432,8 +436,6 @@ function Buttons() {
 
   function calc(slider) {
     var text = `${"0"}${slider}${key.current}`;
-    console.log("generated", generated[generated.length - 1]);
-    console.log("text", text);
     setInput(text);
     if (i % 2 === 0) {
       setCsvUser((csvUser) => [...csvUser, text]);
@@ -484,52 +486,52 @@ function Buttons() {
     setccshow(CC[chars[5]]);
   }
   function set() {
-    if (key.current) {
-      if (rfile) file = rfile.slice(8, 14);
-      setScore(parseInt(Score) + parseInt(calc(value, key, file)));
-      data(parseInt(Score) + parseInt(calc(value, key, file)));
-      assigmentRandom(file);
-    }
+    // if (key.current) {
+    if (rfile) setFile(rfile.slice(8, 14));
+    setScore(parseInt(Score) + parseInt(calc(value, key, file)));
+    data(parseInt(Score) + parseInt(calc(value, key, file)));
+    assigmentRandom(file);
+    // }
   }
   function playAudio() {
-    rfile =
+    setRfile(
       eval(`speed${initial}`)[
         Math.floor(Math.random() * eval(`speed${initial}`).length)
-      ] ?? "talker2_010203_spd_66.wav";
-
-    set();
-
-    if (initial < 8) {
+      ] ?? "talker2_010203_spd_66.wav"
+    );
+  }
+  React.useEffect(() => {
+    if (rfile) {
       const randomSong = require(`../Audio/${rfile}`);
       var audio1 = new Audio(randomSong);
-      audio1.load();
-      audio1.play();
-      startButton();
+      set();
+      if (initial < 8) {
+        audio1.load();
+        audio1.play();
+        startButton();
+      }
     }
-  }
+  }, [rfile]);
+
   function responceAudio() {
     if (initial !== 0) {
       if (answer === "false") {
-        const randomSong = audioWrong;
-        var audio1 = new Audio(randomSong);
         audio1.play();
       }
       if (answer === "true") {
-        const randomSong = audioCorrect;
-        var audio11 = new Audio(randomSong);
         audio11.play();
       }
     }
   }
+
   useEffect(() => {
     timeout();
     output();
-    if (!open) {
-      responceAudio();
-    }
+    responceAudio();
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
+      console.log("inside play sound", initial);
       setTimeout(() => {
         playAudio();
       }, 300);
@@ -619,7 +621,7 @@ function Buttons() {
           <Slider onChange={_handleIndexChange} currentIndex={value} />
         </div>
         <div className="col-3">
-          <ImageGroup setValue={setValue} />
+          <ImageGroup setValue={_handleIndexChange} />
         </div>
       </div>
       <div className="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
