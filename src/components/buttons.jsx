@@ -409,12 +409,6 @@ function Buttons() {
     }, config.durationBetweenRound);
   }
 
-  React.useEffect(() => {
-    if (open) {
-      responceAudio();
-    }
-  }, [open]);
-
   function roundUpdate(check) {
     if (check === "button" && round % appConfig.Trials === 0) {
       setRound(round + 1);
@@ -504,10 +498,12 @@ function Buttons() {
     if (rfile) {
       const randomSong = require(`../Audio/${rfile}`);
       var audio1 = new Audio(randomSong);
+      audio1.load();
       set();
       if (initial < 8) {
-        audio1.load();
-        audio1.play();
+        setTimeout(() => {
+          audio1.play();
+        }, 500);
         startButton();
       }
     }

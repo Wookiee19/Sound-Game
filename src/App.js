@@ -4,9 +4,6 @@ import "./App.css";
 import useModal from "./components/useModal";
 import "./style.css";
 import ModalInstruction from "./components/modal";
-import Score from "./components/Score";
-import Buttons from "./components/buttons";
-import sapceship from "./Assets/background2.jpg";
 import audioCorrect from "./Audio/add/correct.wav";
 const audio11 = new Audio(audioCorrect);
 
