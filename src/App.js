@@ -52,7 +52,7 @@ function App() {
               disabled={disable}
               className="button-29 my-5"
             >
-              Play Now
+              Play
             </button>
 
             <button className="button-default" onClick={toggle}>
