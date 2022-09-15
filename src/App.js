@@ -4,10 +4,9 @@ import "./App.css";
 import useModal from "./components/useModal";
 import "./style.css";
 import ModalInstruction from "./components/modal";
-const playfile = require("./Audio/add/click.wav");
 import audioCorrect from "./Audio/add/correct.wav";
+const playfile = require("./Audio/add/click.wav");
 const audio11 = new Audio(audioCorrect);
-
 
 function App() {
   const [show, setShow] = useState(false);
@@ -52,12 +51,11 @@ function App() {
             <button
               onClick={() => {
                 changeLayout();
-
               }}
               disabled={disable}
               className="button-29 my-5"
             >
-              Play
+              Play now
             </button>
 
             <button className="button-default" onClick={toggle}>
