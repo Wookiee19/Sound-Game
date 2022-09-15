@@ -5,6 +5,9 @@ import useModal from "./components/useModal";
 import "./style.css";
 import ModalInstruction from "./components/modal";
 const playfile = require("./Audio/add/click.wav");
+import audioCorrect from "./Audio/add/correct.wav";
+const audio11 = new Audio(audioCorrect);
+
 
 function App() {
   const [show, setShow] = useState(false);
@@ -26,6 +29,7 @@ function App() {
       setShow((show) => !show);
     }, 300);
   };
+
   return (
     <div className="body">
       {localStorage.removeItem("Scores")}
@@ -48,6 +52,7 @@ function App() {
             <button
               onClick={() => {
                 changeLayout();
+
               }}
               disabled={disable}
               className="button-29 my-5"
