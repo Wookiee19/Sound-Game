@@ -526,7 +526,6 @@ function Buttons() {
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      console.log("inside play sound", initial);
       setTimeout(() => {
         playAudio();
       }, 300);
