@@ -4,8 +4,10 @@ import "./App.css";
 import useModal from "./components/useModal";
 import "./style.css";
 import ModalInstruction from "./components/modal";
+const playfile = require("./Audio/add/click.wav");
 import audioCorrect from "./Audio/add/correct.wav";
 const audio11 = new Audio(audioCorrect);
+
 
 function App() {
   const [show, setShow] = useState(false);
@@ -20,12 +22,14 @@ function App() {
     localStorage.setItem("code", result);
     setDisable(false);
   }
-  function playSound() {
-    audio11.play();
+  const changeLayout = () => {
+    const plynow = new Audio(playfile);
+    plynow.play();
     setTimeout(() => {
       setShow((show) => !show);
     }, 300);
-  }
+  };
+
   return (
     <div className="body">
       {localStorage.removeItem("Scores")}
@@ -47,7 +51,8 @@ function App() {
 
             <button
               onClick={() => {
-                playSound();
+                changeLayout();
+
               }}
               disabled={disable}
               className="button-29 my-5"
