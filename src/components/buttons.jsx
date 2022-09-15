@@ -526,9 +526,10 @@ function Buttons() {
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      console.log("inside play sound", initial);
       setTimeout(() => {
-        playAudio();
+        if (initial !== 0) {
+          playAudio();
+        }
       }, 300);
     }
   }, [round]);
@@ -537,922 +538,941 @@ function Buttons() {
     setVa(key);
   }, [key]);
 
+  React.useEffect(() => {
+    document.getElementById("button007").click();
+  }, []);
+
   return (
-    <div className="container-fluid d-flex col-12">
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        PaperProps={{
-          style: {
-            // backgroundColor: "#2EA0DE",
-            backgroundColor: "#fff",
-            borderRadius: 20,
-            // backgroundImage:
-            //   "url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-87854.jpg?w=740&t=st=1659332876~exp=1659333476~hmac=ecb85be2b178efeacc1af797871746470e17d254fb1a1d60d68b899876831969)",
-            // boxShadow: "none",
-          },
+    <>
+      <button
+        onClick={() => {
+          playAudio();
         }}
+        style={{ position: "absolute", height: 1, width: 1, opacity: 0.1 }}
+        id={"button007"}
       >
-        <DialogTitle id="alert-dialog-title">
-          <h2 style={{ fontFamily: "Noto sans" }}>{appConfig.popUpHeading}</h2>
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <h3 className="sub" style={{ fontFamily: "Noto sans" }}>
-              Your Score: {parseInt(Score) ?? "0"}
-            </h3>
+        {"."}
+      </button>
+      <div className="container-fluid d-flex col-12">
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          PaperProps={{
+            style: {
+              // backgroundColor: "#2EA0DE",
+              backgroundColor: "#fff",
+              borderRadius: 20,
+              // backgroundImage:
+              //   "url(https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-87854.jpg?w=740&t=st=1659332876~exp=1659333476~hmac=ecb85be2b178efeacc1af797871746470e17d254fb1a1d60d68b899876831969)",
+              // boxShadow: "none",
+            },
+          }}
+        >
+          <DialogTitle id="alert-dialog-title">
+            <h2 style={{ fontFamily: "Noto sans" }}>
+              {appConfig.popUpHeading}
+            </h2>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <h3 className="sub" style={{ fontFamily: "Noto sans" }}>
+                Your Score: {parseInt(Score) ?? "0"}
+              </h3>
+              {initial === 8 && (
+                <>
+                  <h2 className="sub">Game Over</h2>
+                  <Csv
+                    value1={generated}
+                    value2={csvUser}
+                    value3={csvResult}
+                    value4={time}
+                  />
+                </>
+              )}
+            </DialogContentText>
+          </DialogContent>
+          <div style={{ backgroundColor: "#2EA0DE" }}>
+            {initial !== 8 && (
+              <DialogActions>
+                <Button
+                  onClick={afterBlock}
+                  autoFocus
+                  className="sub"
+                  style={{
+                    color: "#fff",
+                    textAlign: "center",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {" "}
+                  <h5>{appConfig.popUpNextButton}</h5>
+                </Button>
+              </DialogActions>
+            )}
             {initial === 8 && (
-              <>
-                <h2 className="sub">Game Over</h2>
-                <Csv
-                  value1={generated}
-                  value2={csvUser}
-                  value3={csvResult}
-                  value4={time}
-                />
-              </>
-            )}
-          </DialogContentText>
-        </DialogContent>
-        <div style={{ backgroundColor: "#2EA0DE" }}>
-          {initial !== 8 && (
-            <DialogActions>
-              <Button
-                onClick={afterBlock}
-                autoFocus
-                className="sub"
-                style={{
-                  color: "#fff",
-                  textAlign: "center",
-                  textDecoration: "underline",
-                }}
-              >
-                {" "}
-                <h5>{appConfig.popUpNextButton}</h5>
-              </Button>
-            </DialogActions>
-          )}
-          {initial === 8 && (
-            <DialogActions>
-              <Button
-                autoFocus
-                style={{
-                  color: "#fff",
-                  textAlign: "center",
-                  textDecoration: "underline",
-                }}
-              >
-                <h5>{appConfig.popUpEndButton}</h5>
-              </Button>
-            </DialogActions>
-          )}
-        </div>
-      </Dialog>
-
-      <div className="col-4 row ">
-        <div className="col-2 p-3">
-          <Slider onChange={_handleIndexChange} currentIndex={value} />
-        </div>
-        <div className="col-3">
-          <ImageGroup setValue={_handleIndexChange} />
-        </div>
-      </div>
-      <div className="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
-        <div className="w-100">
-          <div className="magenta mt-5">
-            {disabled ? (
-              <div className="overlay-loading">
-                <CircularProgress />
-              </div>
-            ) : null}
-
-            {round === 0 && (
-              <h3 className="sub">Please pay attention to the instructions </h3>
-            )}
-            {round > 0 && (
-              <>
-                <h2 className="name">Game Name</h2>
-                {appConfig.showScoreInConsole == "true" && (
-                  <h2 className="sub">Your Score: {Score}</h2>
-                )}
-                {answer === "true" && (
-                  <img
-                    src={tick}
-                    style={{ marginLeft: "41%" }}
-                    width="80"
-                    height="80"
-                    alt="img"
-                  ></img>
-                )}
-                {answer === "false" && (
-                  <img
-                    src={wrong}
-                    style={{ marginLeft: "41%" }}
-                    width="60"
-                    height="60"
-                    alt="img"
-                  ></img>
-                )}
-
-                {bbShow && (
-                  <div>
-                    {answer === "false" && (
-                      <h3 className="sub">
-                        {appConfig.feedbackTextWrong}
-                        {appConfig.showAnswer && (
-                          <div className="sub">{aaShow} </div>
-                        )}
-                      </h3>
-                    )}
-                    {answer === "false" && (
-                      <h3 className="sub">
-                        {appConfig.showAnswer && (
-                          <div className="sub">
-                            {" "}
-                            <img
-                              src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}
-                              height="50"
-                              width="50"
-                              alt="img"
-                            ></img>
-                          </div>
-                        )}
-                      </h3>
-                    )}
-                  </div>
-                )}
-              </>
+              <DialogActions>
+                <Button
+                  autoFocus
+                  style={{
+                    color: "#fff",
+                    textAlign: "center",
+                    textDecoration: "underline",
+                  }}
+                >
+                  <h5>{appConfig.popUpEndButton}</h5>
+                </Button>
+              </DialogActions>
             )}
           </div>
+        </Dialog>
+
+        <div className="col-4 row ">
+          <div className="col-2 p-3">
+            <Slider onChange={_handleIndexChange} currentIndex={value} />
+          </div>
+          <div className="col-3">
+            <ImageGroup setValue={_handleIndexChange} />
+          </div>
+        </div>
+        <div className="col-4 bg-light rounded" style={{ opacity: 0.8 }}>
+          <div className="w-100">
+            <div className="magenta mt-5">
+              {disabled ? (
+                <div className="overlay-loading">
+                  <CircularProgress />
+                </div>
+              ) : null}
+
+              {round === 0 && (
+                <h3 className="sub">
+                  Please pay attention to the instructions{" "}
+                </h3>
+              )}
+              {round > 0 && (
+                <>
+                  <h2 className="name">Game Name</h2>
+                  {appConfig.showScoreInConsole == "true" && (
+                    <h2 className="sub">Your Score: {Score}</h2>
+                  )}
+                  {answer === "true" && (
+                    <img
+                      src={tick}
+                      style={{ marginLeft: "41%" }}
+                      width="80"
+                      height="80"
+                      alt="img"
+                    ></img>
+                  )}
+                  {answer === "false" && (
+                    <img
+                      src={wrong}
+                      style={{ marginLeft: "41%" }}
+                      width="60"
+                      height="60"
+                      alt="img"
+                    ></img>
+                  )}
+
+                  {bbShow && (
+                    <div>
+                      {answer === "false" && (
+                        <h3 className="sub">
+                          {appConfig.feedbackTextWrong}
+                          {appConfig.showAnswer && (
+                            <div className="sub">{aaShow} </div>
+                          )}
+                        </h3>
+                      )}
+                      {answer === "false" && (
+                        <h3 className="sub">
+                          {appConfig.showAnswer && (
+                            <div className="sub">
+                              {" "}
+                              <img
+                                src={require(`../Assets/Button/0${ccShow}_${bbShow}.png`)}
+                                height="50"
+                                width="50"
+                                alt="img"
+                              ></img>
+                            </div>
+                          )}
+                        </h3>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="col-4 mt-3">
+          <table id="matrix" style={{ opacity: disabled ? 0.5 : 1 }}>
+            <tr>
+              <td>
+                <button
+                  onClick={() => {
+                    // clickSound();
+                    key.current = "0000";
+                    assigment("0000");
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/01_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0100");
+                    key.current = "0100";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/01_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0200");
+                    key.current = "0200";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/01_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0300");
+                    key.current = "0300";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/01_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0001");
+                    assigment("0001");
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/02_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0101");
+                    key.current = "0101";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/02_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    key.current = "0201";
+                    assigment("0201");
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/02_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0301");
+                    key.current = "0301";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/02_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0002");
+                    key.current = "0002";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/03_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    key.current = "0102";
+                    assigment("0102");
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/03_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0202");
+                    key.current = "0202";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/03_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0302");
+                    key.current = "0302";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/03_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0003");
+                    key.current = "0003";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/04_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0103");
+                    key.current = "0103";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/04_Red.png")}
+                    width="45"
+                    alt="img"
+                    height="45"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0203");
+                    key.current = "0203";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/04_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0303");
+                    key.current = "0303";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/04_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0004");
+                    key.current = "0004";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/05_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0104");
+                    key.current = "0104";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/05_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0204");
+                    key.current = "0204";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/05_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0304");
+                    key.current = "0304";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/05_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0005");
+                    key.current = "0005";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/06_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0105");
+                    key.current = "0105";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/06_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0205");
+                    key.current = "0205";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/06_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0305");
+                    key.current = "0305";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/06_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0006");
+                    key.current = "0006";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/07_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0106");
+                    key.current = "0106";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/07_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0206");
+                    key.current = "0206";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/07_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0306");
+                    key.current = "0306";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/07_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0007");
+                    key.current = "0007";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/08_Blue.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0107");
+                    key.current = "0107";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/08_Red.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0207");
+                    key.current = "0207";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/08_White.png")}
+                    width="45"
+                    height="45"
+                    alt="img"
+                  />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClickCapture={() => {
+                    assigment("0307");
+                    key.current = "0307";
+                    setReload(!reload);
+                    // output();
+                    set();
+                    stopButton();
+                    disable();
+                    startButton();
+                    roundUpdate("button");
+                  }}
+                  disabled={disabled}
+                >
+                  <img
+                    src={require("../Assets/Button/08_Green.png")}
+                    width="45"
+                    height="45"
+                    alt="greenpng"
+                  />
+                </button>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-      <div className="col-4 mt-3">
-        <table id="matrix" style={{ opacity: disabled ? 0.5 : 1 }}>
-          <tr>
-            <td>
-              <button
-                onClick={() => {
-                  // clickSound();
-                  key.current = "0000";
-                  assigment("0000");
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/01_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0100");
-                  key.current = "0100";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/01_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0200");
-                  key.current = "0200";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/01_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0300");
-                  key.current = "0300";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/01_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0001");
-                  assigment("0001");
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/02_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0101");
-                  key.current = "0101";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/02_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  key.current = "0201";
-                  assigment("0201");
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/02_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0301");
-                  key.current = "0301";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/02_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0002");
-                  key.current = "0002";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/03_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  key.current = "0102";
-                  assigment("0102");
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/03_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0202");
-                  key.current = "0202";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/03_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0302");
-                  key.current = "0302";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/03_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0003");
-                  key.current = "0003";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/04_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0103");
-                  key.current = "0103";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/04_Red.png")}
-                  width="45"
-                  alt="img"
-                  height="45"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0203");
-                  key.current = "0203";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/04_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0303");
-                  key.current = "0303";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/04_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0004");
-                  key.current = "0004";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/05_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0104");
-                  key.current = "0104";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/05_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0204");
-                  key.current = "0204";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/05_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0304");
-                  key.current = "0304";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/05_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0005");
-                  key.current = "0005";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/06_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0105");
-                  key.current = "0105";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/06_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0205");
-                  key.current = "0205";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/06_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0305");
-                  key.current = "0305";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/06_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0006");
-                  key.current = "0006";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/07_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0106");
-                  key.current = "0106";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/07_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0206");
-                  key.current = "0206";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/07_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0306");
-                  key.current = "0306";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/07_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0007");
-                  key.current = "0007";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/08_Blue.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0107");
-                  key.current = "0107";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/08_Red.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0207");
-                  key.current = "0207";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/08_White.png")}
-                  width="45"
-                  height="45"
-                  alt="img"
-                />
-              </button>
-            </td>
-            <td>
-              <button
-                onClickCapture={() => {
-                  assigment("0307");
-                  key.current = "0307";
-                  setReload(!reload);
-                  // output();
-                  set();
-                  stopButton();
-                  disable();
-                  startButton();
-                  roundUpdate("button");
-                }}
-                disabled={disabled}
-              >
-                <img
-                  src={require("../Assets/Button/08_Green.png")}
-                  width="45"
-                  height="45"
-                  alt="greenpng"
-                />
-              </button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    </>
   );
 }
 
