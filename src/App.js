@@ -4,9 +4,7 @@ import "./App.css";
 import useModal from "./components/useModal";
 import "./style.css";
 import ModalInstruction from "./components/modal";
-import Score from "./components/Score";
-import Buttons from "./components/buttons";
-import sapceship from "./Assets/background2.jpg";
+const playfile = require("./Audio/add/click.wav");
 
 function App() {
   const [show, setShow] = useState(false);
@@ -21,6 +19,13 @@ function App() {
     localStorage.setItem("code", result);
     setDisable(false);
   }
+  const changeLayout = () => {
+    const plynow = new Audio(playfile);
+    plynow.play();
+    setTimeout(() => {
+      setShow((show) => !show);
+    }, 300);
+  };
   return (
     <div className="body">
       {localStorage.removeItem("Scores")}
@@ -41,7 +46,9 @@ function App() {
             />
 
             <button
-              onClick={() => setShow((show) => !show)}
+              onClick={() => {
+                changeLayout();
+              }}
               disabled={disable}
               className="button-29 my-5"
             >

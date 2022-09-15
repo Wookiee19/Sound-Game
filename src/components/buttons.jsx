@@ -531,7 +531,9 @@ function Buttons() {
     if (initial < 8 && dead !== 1) {
       if (initial > 0);
       disable();
-      playAudio();
+      setTimeout(() => {
+        playAudio();
+      }, 300);
     }
   }, [round]);
 
