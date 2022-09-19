@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./main.css";
-import sapceship from "../Assets/background2.jpg";
+
 import Buttons from "./buttons";
 import Score from "./Score";
 
@@ -9,8 +9,9 @@ function Main() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showElement, setShowElement] = React.useState(true);
   const [end, setEnd] = React.useState(false);
+
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    setInterval(() => {
       if (currentIndex === images.length - 1) {
         setCurrentIndex(0);
       } else {
@@ -21,22 +22,12 @@ function Main() {
       setShowElement(false);
     }, 2200);
   }, []);
+
   return (
     <div className="App">
       <Score />
-      <div
-        className="makebottom w-100 ml-5 mr-1"
-        style={{ overflow: "hidden" }}
-      >
-        <Buttons />
-      </div>
-      <img
-        src={sapceship}
-        width="100%"
-        height="100%"
-        className="over"
-        alt="background"
-      />
+
+      <Buttons />
     </div>
   );
 }

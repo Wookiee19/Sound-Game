@@ -1,10 +1,6 @@
-import { Box } from "@mui/system";
 import React from "react";
 import ReactDOM from "react-dom";
-import YouTube from "react-youtube";
 import appConfig from "../config";
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
 
 const ModalInstruction = ({ isShowing, hide }) =>
   isShowing
@@ -32,14 +28,12 @@ const ModalInstruction = ({ isShowing, hide }) =>
                   </span>
                 </button>
               </div>
-              <p>
-                <iframe
-                  title="instruction"
-                  width={appConfig.opts.width}
-                  height={appConfig.opts.height}
-                  src={appConfig.videoUrl + appConfig.mute}
-                ></iframe>
-              </p>
+              <iframe
+                title="instruction"
+                width={appConfig.opts.width}
+                height={appConfig.opts.height}
+                src={appConfig.videoUrl + appConfig.mute}
+              ></iframe>
             </div>
           </div>
         </React.Fragment>,
