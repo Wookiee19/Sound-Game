@@ -421,7 +421,7 @@ function Buttons() {
   }
 
   function calc(slider) {
-    var text = `${"0"}${slider}${key.current}`;
+    var text = `${"0"}${slider}${key.current ?? "00"}`;
     if (i % 2 === 0) {
       setCsvUser((csvUser) => [...csvUser, text]);
       setTime((time) => [...time, diffrence]);
@@ -463,6 +463,7 @@ function Buttons() {
     setccshow(CC[chars[5]]);
   }
   function set() {
+    console.log({ SEC: calc(value, key, file) });
     if (rfile) file = rfile.slice(8, 14);
     setScore(parseInt(Score) + parseInt(calc(value, key, file)));
     data(parseInt(Score) + parseInt(calc(value, key, file)));
@@ -475,9 +476,11 @@ function Buttons() {
         Math.floor(Math.random() * eval(`speed${initial}`).length)
       ] ?? "talker2_010203_spd_66.wav";
     const randomSong = require(`../Audio/${rfile}`);
-    set();
+    var audio1 = new Audio(randomSong);
+    audio1.load();
+    if (rfile) file = rfile.slice(8, 14);
+    assigmentRandom(file);
     setTimeout(() => {
-      var audio1 = new Audio(randomSong);
       audio1.play();
     }, 500);
     startButton();
@@ -487,10 +490,12 @@ function Buttons() {
     if (initial !== 0) {
       if (answer === "false") {
         var audio1 = new Audio(audioWrong);
+        audio1.load();
         audio1.play();
       }
       if (answer === "true") {
         var audio11 = new Audio(audioCorrect);
+        audio11.load();
         audio11.play();
       }
     }
@@ -511,8 +516,13 @@ function Buttons() {
     }
   }, [round, show]);
 
+  useEffect(() => {
+    console.log({ Score });
+  }, [Score]);
+
   const playclick = () => {
     const plynow = new Audio(playfile);
+    plynow.load();
     plynow.play();
   };
 
@@ -557,12 +567,14 @@ function Buttons() {
             <button
               onClick={() => {
                 playclick();
-                setShow((show) => !show);
+                setTimeout(() => {
+                  setShow((show) => !show);
+                }, 300);
               }}
               disabled={disables}
               className="button-29 my-5"
             >
-              Play
+              Play Now
             </button>
 
             <button className="button-default" onClick={toggle}>
