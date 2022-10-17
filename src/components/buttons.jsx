@@ -21,6 +21,7 @@ import { DialogComponent } from "./diaglog";
 import { CenterSection } from "./center-section";
 import ModalInstruction from "./modal";
 import useModal from "./useModal";
+import { Button } from "@mui/material";
 const playfile = require("../Audio/add/click.wav");
 
 const AA = [
@@ -42,6 +43,11 @@ var i = 0;
 function Buttons() {
   const [open, setOpen] = React.useState(false);
   const key = useRef();
+  const answerValueRef = useRef();
+  const initialValueRef = useRef(0);
+  const triggerPlayCorrectAudio = createTriggerPlayAudio("btnCorrect");
+  const triggerPlayWrongAudio = createTriggerPlayAudio("btnWrong");
+
   const [reload, setReload] = useState();
   const [userInput, setuserInput] = useState([""]);
   const [generated, setGenerated] = useState([""]);
@@ -377,8 +383,7 @@ function Buttons() {
 
   const _handleIndexChange = (index) => {
     setValue(index);
-    var slidechangeAudio = new Audio(slideChange);
-    slidechangeAudio.play();
+    playAudioFunc(slideChange);
   };
 
   const handleClickOpen = () => {
@@ -402,6 +407,10 @@ function Buttons() {
   }
 
   function roundUpdate(check) {
+    responceAudio();
+    if(initialValueRef.current === 8) {
+      handleClickOpen();
+    }
     if (check === "button" && round % appConfig.Trials === 0) {
       setRound(round + 1);
     } else {
@@ -430,6 +439,7 @@ function Buttons() {
     console.log("===>", text, generated[generated.length - 1]);
     if (text === generated[generated.length - 1]) {
       setAnswer("true");
+      answerValueRef.current = "true";
       if (i % 2 === 0) setCsvResult((csvResult) => [...csvResult, "true"]);
       var res = 10 - diffrence / 1000;
       if (res < 0) return 1;
@@ -438,6 +448,7 @@ function Buttons() {
       if (i % 2 === 0);
       setCsvResult((csvResult) => [...csvResult, "false"]);
       setAnswer("false");
+      answerValueRef.current = "false";
       return 0;
     }
   }
@@ -470,49 +481,57 @@ function Buttons() {
     assigmentRandom(file);
   }
 
-  function playAudio() {
+  function playAudio(initial) {
     rfile =
       eval(`speed${initial}`)[
         Math.floor(Math.random() * eval(`speed${initial}`).length)
       ] ?? "talker2_010203_spd_66.wav";
     const randomSong = require(`../Audio/${rfile}`);
-    var audio1 = new Audio(randomSong);
-    audio1.load();
+    // var audio1 = new Audio(randomSong);
+    // audio1.load();
     if (rfile) file = rfile.slice(8, 14);
     assigmentRandom(file);
-    setTimeout(() => {
-      audio1.play();
-    }, 500);
+    playQuestionAudioFunc(randomSong)
+    // setTimeout(() => {
+    //   audio1.play();
+    // }, 500);
     startButton();
   }
 
   function responceAudio() {
     if (initial !== 0) {
-      if (answer === "false") {
-        var audio1 = new Audio(audioWrong);
-        audio1.load();
-        audio1.play();
+  
+      if (answerValueRef.current === "false") {
+        triggerPlayWrongAudio();
       }
-      if (answer === "true") {
-        var audio11 = new Audio(audioCorrect);
-        audio11.load();
-        audio11.play();
+      if (answerValueRef.current === "true") {
+        triggerPlayCorrectAudio();
       }
     }
   }
 
-  useEffect(() => {
-    if (show) {
-      timeout();
-      output();
-      responceAudio();
-      if (initial < 8 && dead !== 1) {
-        if (initial > 0);
-        disable();
-        setTimeout(() => {
-          playAudio();
+  const handleChangeRound = (isFirstTime) => {
+    timeout();
+    output();
+    if (initial < 8 && dead !== 1) {
+      if (initial > 0);
+      disable();
+      if(isFirstTime){
+        // initialValueRef.current = initial;
+        document.getElementById("btnQuestion").click();
+      } else {
+        if(questionTimeout) clearTimeout(questionTimeout);
+        // initialValueRef.current = initial;
+        questionTimeout = setTimeout(() => {
+          document.getElementById("btnQuestion").click();
         }, 300);
       }
+    }
+  };
+
+  useEffect(() => {
+    if (show && round) {
+      handleChangeRound();
     }
   }, [round, show]);
 
@@ -521,9 +540,11 @@ function Buttons() {
   }, [Score]);
 
   const playclick = () => {
-    const plynow = new Audio(playfile);
-    plynow.load();
-    plynow.play();
+    playAudioFunc(playfile);
+    setTimeout(() => {
+      setShow((preShow) => !preShow);
+      handleChangeRound(true);
+    }, 300);
   };
 
   // for first home screen
@@ -539,6 +560,14 @@ function Buttons() {
 
   return (
     <>
+      <div style={{display: "none"}}>
+        <Button id="btnCorrect" onClick={createPlayAudioFunc(audioCorrect)} />
+        <Button id="btnWrong" onClick={createPlayAudioFunc(audioWrong)}/>
+        <Button id="btnQuestion" onClick={() => playAudio(initialValueRef.current)}/>
+
+        <audio id="audioTagId" controls src="" />
+        <audio id="audioQuestionId" controls src="" />
+      </div>
       {show ? (
         <img
           src={sapceship}
@@ -565,12 +594,7 @@ function Buttons() {
             />
 
             <button
-              onClick={() => {
-                playclick();
-                setTimeout(() => {
-                  setShow((show) => !show);
-                }, 300);
-              }}
+              onClick={playclick}
               disabled={disables}
               className="button-29 my-5"
             >
@@ -643,3 +667,36 @@ function Buttons() {
 }
 
 export default Buttons;
+var questionTimeout;
+
+const createTriggerPlayAudio = (btnId) => () => {
+  try {
+    document.getElementById(btnId).click();
+  } catch (error) {
+    console.log("audio", error);
+  }
+}
+
+const createPlayAudioFunc = audioUrl => () => playAudioFunc(audioUrl);
+
+const playAudioFunc = audioUrl => {
+  var btnAudioEl = document.getElementById('audioTagId');
+  handlePlayAudio(audioUrl, btnAudioEl);
+}
+
+const playQuestionAudioFunc = audioUrl => {
+  var questionAudioEl = document.getElementById('audioQuestionId');
+  handlePlayAudio(audioUrl, questionAudioEl);
+}
+
+const handlePlayAudio = (audioUrl, audioEl) => {
+  try {
+    audioEl.src = audioUrl;
+    audioEl.load(); //call this to just preload the audio without playing
+    audioEl.play(); //call this to play the song right away
+  } catch (error) {
+    console.log(audioUrl, error);
+    // Try again
+    audioEl.play();
+  }
+}
